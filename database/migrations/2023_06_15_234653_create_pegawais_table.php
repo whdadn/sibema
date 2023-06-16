@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama_pegawai');
             $table->char('no_telepon_pegawai');
             $table->string('alamat_pegawai');
+            $table->timestamps();
         });
     }
 

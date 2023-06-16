@@ -23,6 +23,7 @@ return new class extends Migration
             $table->binary('khs_semester_5');
             $table->binary('khs_semester_6');
             $table->binary('lembar_sp');
+            $table->timestamps();
         });
     }
 

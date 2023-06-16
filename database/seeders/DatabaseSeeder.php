@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use Database\Factories\BeritaFactory;
 use Illuminate\Database\Seeder;
+use App\Models\berita;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         // \App\Models\User::factory(10)->create();
-        BeritaFactory::factory(5)->create();
+        berita::factory(5)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

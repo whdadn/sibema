@@ -15,6 +15,7 @@ return new class extends Migration
             $table->char('id_prodi')->primary();
             $table->char('id_jurusan', 10)->index();
             $table->string('nama_prodi', 10);
+            $table->timestamps();
         });
     }
 

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->binary('dokumen_perpus');
             $table->string('keterangan');
             $table->string('status_perpus');
+            $table->timestamps();
         });
     }
 

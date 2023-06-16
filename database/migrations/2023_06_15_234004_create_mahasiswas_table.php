@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('alamat_mhs');
             $table->year('tahun_lulus');
             $table->string('status_umum');
+            $table->timestamps();
         });
     }
 

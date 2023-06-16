@@ -6,7 +6,7 @@
             @foreach ($berita as $news)
                 <div class="carousel-item">
                     <div class="card mb-3">
-                        <img src="{{ $news->gambar }}" class="card-img-top" alt="...">
+                        <img src="https://source.unsplash.com/1200x200?graduation" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">{{ $news->judul_berita }}</h5>
                             <p class="card-text">{{ $news->excerpt }}</p>

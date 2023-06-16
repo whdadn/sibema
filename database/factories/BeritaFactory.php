@@ -17,11 +17,11 @@ class BeritaFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_berita' => fake()->regexify(),
-            'id_pegawai' => fake()->regexify(),
+            'id_berita' => fake()->bothify('????-#####'),
+            'id_pegawai' => fake()->bothify('????-#####'),
             'judul_berita' => fake()->sentence(2),
-            'isi_berita' => collect($this->faker->paragraphs(mt_rand(5, 10)))->map(fn ($p) => "<p>$p</p>")->implode(''),
-            'excerpt' => fake()->paragraph(),
+            'isi_berita' => collect(fake()->paragraphs(5)),
+            'excerpt' => fake()->paragraph(2),
             'gambar' => fake()->image()
         ];
     }

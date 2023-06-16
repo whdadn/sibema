@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('isi_berita');
             $table->text('excerpt');
             $table->binary('gambar');
+            $table->timestamps();
         });
     }
 
