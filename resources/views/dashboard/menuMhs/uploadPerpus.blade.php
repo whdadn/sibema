@@ -38,47 +38,30 @@
         <div class="row justify-content-center mb-lg-5">
             <div class="col-md-6 col-sm-12">
                 <div class="title text-center mb-45">
-                    <h4>Tambah Dokumen Tugas Akhir</h4>
+                    <h4>Dokumen Perpustakaan</h4>
                 </div>
             </div>
         </div>
-        <form>
-            <div class="form-group">
-                <label>Lembar Persetujuan</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
+        <div class="clearfix mb-20">
+            <div class="pull-left">
+                <a href="/dashboard/tambahDokPerpus"><i class="bi bi-plus-circle"></i> Tambah</a>
+                <a href="/dashboard/perbaruiDokPerpus"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a>
+                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
             </div>
-            <div class="form-group">
-                <label>Lembar Pengesahan</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Lembar Konsultasi Pembimbing Pertama</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Lembar Konsultasi Pembimbing Kedua</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Lembar Revisi</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
-            </div>
-            <button class="btn btn-primary">Simpan</button>
-        </form>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Bukti Pengembalian</th>
+                    <th scope="col">Keterangan</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 @endsection

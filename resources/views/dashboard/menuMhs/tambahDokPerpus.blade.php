@@ -38,45 +38,21 @@
         <div class="row justify-content-center mb-lg-5">
             <div class="col-md-6 col-sm-12">
                 <div class="title text-center mb-45">
-                    <h4>Tambah Dokumen Tugas Akhir</h4>
+                    <h4>Tambah Dokumen Perpustakaan</h4>
                 </div>
             </div>
         </div>
         <form>
             <div class="form-group">
-                <label>Lembar Persetujuan</label>
+                <label>Bukti Pengembalian</label>
                 <div class="custom-file">
                     <input type="file" class="custom-file-input">
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
-                <label>Lembar Pengesahan</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Lembar Konsultasi Pembimbing Pertama</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Lembar Konsultasi Pembimbing Kedua</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Lembar Revisi</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input">
-                    <label class="custom-file-label">Choose file</label>
-                </div>
+                <label>Keterangan</label>
+                <input class="form-control" type="text">
             </div>
             <button class="btn btn-primary">Simpan</button>
         </form>

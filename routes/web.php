@@ -42,6 +42,15 @@ Route::get('/dashboard/tambahDokRegis', function () {
 Route::get('/dashboard/perbaruiDokRegis', function () {
     return view('dashboard.menuMhs.PerbaruiDokRegis');
 });
+Route::get('/dashboard/uploadPerpus', function () {
+    return view('dashboard.menuMhs.uploadPerpus');
+});
+Route::get('/dashboard/tambahDokPerpus', function () {
+    return view('dashboard.menuMhs.tambahDokPerpus');
+});
+Route::get('/dashboard/perbaruiDokPerpus', function () {
+    return view('dashboard.menuMhs.perbaruiDokperpus');
+});
 
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::get('/lupaPassword', function () {

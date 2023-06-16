@@ -20,12 +20,12 @@
                             <span class="micon dw dw-upload1"></span><span class="mtext">Upload Dokumen</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="dashboard/uploadTa">Dokumen Tugas Akhir</a></li>
+                            <li><a href="">Dokumen Tugas Akhir</a></li>
                             <li>
-                                <a href="#">Dokumen Registrasi</a>
+                                <a href="">Dokumen Registrasi</a>
                             </li>
-                            <li><a href="#">Dokumen Perpustakaan</a></li>
-                            <li><a href="#">Dokumen Akademik</a></li>
+                            <li><a href="">Dokumen Perpustakaan</a></li>
+                            <li><a href="">Dokumen Akademik</a></li>
                         </ul>
                     </li>
 
@@ -61,7 +61,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">1</th>
+                    <td>1</td>
                     <td>Mark</td>
                     <td>Otto</td>
                     <td>@mdo</td>
