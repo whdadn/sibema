@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class berita extends Model
 {
     use HasFactory;
-    protected $fillable = ['judul_berita', 'isi_berita', 'gambar'];
+    protected $guarded = [];
 
     public function pegawai()
     {

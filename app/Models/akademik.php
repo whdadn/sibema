@@ -9,6 +9,8 @@ class akademik extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function pegawai()
     {
         return $this->belongsTo(pegawai::class);

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class akun extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     public function mahasiswa()
     {
