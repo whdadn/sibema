@@ -25,7 +25,7 @@
                                 <a href="/dashboard/uploadRegis">Dokumen Registrasi</a>
                             </li>
                             <li><a href="/dashboard/uploadPerpus">Dokumen Perpustakaan</a></li>
-                            <li><a href="#">Dokumen Akademik</a></li>
+                            <li><a href="/dashboard/uploadAkademik">Dokumen Akademik</a></li>
                         </ul>
                     </li>
 

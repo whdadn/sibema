@@ -38,25 +38,38 @@
         <div class="row justify-content-center mb-lg-5">
             <div class="col-md-6 col-sm-12">
                 <div class="title text-center mb-45">
-                    <h4>Dokumen Registrasi</h4>
+                    <h4>Dokumen Akademik</h4>
                 </div>
             </div>
         </div>
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboard/tambahDokRegis"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboard/perbaruiDokRegis"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a>
+                <a href="/dashboard/tambahDokAkademik"><i class="bi bi-plus-circle"></i> Tambah</a>
+                <a href="/dashboard/perbaruiDokAkademik"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a>
                 <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
             </div>
         </div>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Dokumen Registrasi</th>
+                    <th scope="col">KHS Semester 1</th>
+                    <th scope="col">KHS Semester 2</th>
+                    <th scope="col">KHS Semester 3</th>
+                    <th scope="col">KHS Semester 4</th>
+                    <th scope="col">KHS Semester 5</th>
+                    <th scope="col">KHS Semester 6</th>
+                    <th scope="col">Lembar SP</th>
+                </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Revisi</td>
+                    <td>KHS</td>
+                    <td>KSH</td>
                 </tr>
             </tbody>
         </table>

@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BeritaController;
-use App\Http\Controllers\LupaPasswordController;
-use App\Http\Controllers\UbahPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +47,16 @@ Route::get('/dashboard/tambahDokPerpus', function () {
     return view('dashboard.menuMhs.tambahDokPerpus');
 });
 Route::get('/dashboard/perbaruiDokPerpus', function () {
-    return view('dashboard.menuMhs.perbaruiDokperpus');
+    return view('dashboard.menuMhs.perbaruiDokPerpus');
+});
+Route::get('/dashboard/uploadAkademik', function () {
+    return view('dashboard.menuMhs.uploadAkademik');
+});
+Route::get('/dashboard/tambahDokAkademik', function () {
+    return view('dashboard.menuMhs.tambahDokAkademik');
+});
+Route::get('/dashboard/perbaruiDokAkademik', function () {
+    return view('dashboard.menuMhs.perbaruiDokAkademik');
 });
 
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
