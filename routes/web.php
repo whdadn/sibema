@@ -33,6 +33,15 @@ Route::get('/dashboard/tambahDokTa', function () {
 Route::get('/dashboard/perbaruiDokTa', function () {
     return view('dashboard.menuMhs.perbaruiDokTa');
 });
+Route::get('/dashboard/uploadRegis', function () {
+    return view('dashboard.menuMhs.uploadRegis');
+});
+Route::get('/dashboard/tambahDokRegis', function () {
+    return view('dashboard.menuMhs.tambahDokRegis');
+});
+Route::get('/dashboard/perbaruiDokRegis', function () {
+    return view('dashboard.menuMhs.PerbaruiDokRegis');
+});
 
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::get('/lupaPassword', function () {

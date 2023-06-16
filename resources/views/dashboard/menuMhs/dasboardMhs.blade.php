@@ -22,7 +22,7 @@
                         <ul class="submenu">
                             <li><a href="dashboard/uploadTa">Dokumen Tugas Akhir</a></li>
                             <li>
-                                <a href="#">Dokumen Registrasi</a>
+                                <a href="/dashboard/uploadRegis">Dokumen Registrasi</a>
                             </li>
                             <li><a href="#">Dokumen Perpustakaan</a></li>
                             <li><a href="#">Dokumen Akademik</a></li>
