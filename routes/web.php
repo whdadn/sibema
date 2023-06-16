@@ -15,10 +15,12 @@ use App\Http\Controllers\BeritaController;
 |
 */
 
+//Halaman Utama
 Route::get('/', function () {
     return view('index');
 });
 
+// Bagian Mahasiswa
 Route::get('/dashboard', function () {
     return view('dashboard.menuMhs.dasboardMhs');
 });
@@ -59,6 +61,7 @@ Route::get('/dashboard/perbaruiDokAkademik', function () {
     return view('dashboard.menuMhs.perbaruiDokAkademik');
 });
 
+//Bagian Login, Lupa Passowrd, dan Ubah Password
 Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::get('/lupaPassword', function () {
     return view('lupaPassword');
@@ -67,4 +70,5 @@ Route::get('/ubahPassword', function () {
     return view('ubahPassword');
 });
 
+//Bagian Berita
 Route::get('/', [BeritaController::class, 'index']);
