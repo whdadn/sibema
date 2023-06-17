@@ -21,6 +21,7 @@ return new class extends Migration
             $table->binary('lembar_konsul_pemb_2');
             $table->binary('lembar_revisi');
             $table->string('status_ta');
+            $table->text('rincian_ta');
             $table->timestamps();
         });
     }

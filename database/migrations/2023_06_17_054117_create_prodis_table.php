@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('prodis', function (Blueprint $table) {
             $table->char('id_prodi')->primary();
-            $table->char('id_jurusan', 10)->index();
-            $table->string('nama_prodi', 10);
+            $table->char('id_jurusan')->index();
+            $table->char('nama_prodi');
             $table->timestamps();
         });
     }

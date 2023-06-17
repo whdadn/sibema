@@ -17,6 +17,7 @@ return new class extends Migration
             $table->char('id_pegawai', 10)->index();
             $table->binary('dokumen_keuangan');
             $table->string('status_keuangan');
+            $table->text('rincian_keuangan');
             $table->timestamps();
         });
     }

@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class prodi extends Model
 {
     use HasFactory;
-    protected $guarded = [];
 
     public function jurusan()
     {

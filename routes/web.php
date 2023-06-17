@@ -62,7 +62,7 @@ Route::get('/dashboard/perbaruiDokAkademik', function () {
 });
 
 //Bagian Login, Lupa Passowrd, dan Ubah Password
-Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('login', [LoginController::class, 'index']);
 Route::get('/lupaPassword', function () {
     return view('lupaPassword');
 });
