@@ -16,6 +16,7 @@ use App\Models\mahasiswa;
 use App\Models\perpustakaan;
 use App\Models\prodi;
 use App\Models\tugas_akhir;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -30,9 +31,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
         akademik::factory(5)->create();
-        akun::factory(5)->create();
         berita::factory(5)->create();
         jurusan::factory(5)->create();
         keuangan::factory(5)->create();
@@ -41,5 +40,27 @@ class DatabaseSeeder extends Seeder
         perpustakaan::factory(5)->create();
         prodi::factory(5)->create();
         tugas_akhir::factory(5)->create();
+
+        $akun = [
+            [
+                'username' => 'mhs',
+                'id_pegawai' => '1234567890',
+                'nim' => 'c012345678',
+                'email' => 'mhs@gmail.com',
+                'password' => bcrypt('cobamhs'),
+                'role' => 'mahasiswa'
+            ],
+            [
+                'username' => 'admin',
+                'id_pegawai' => '0987654321',
+                'nim' => 'c087654321',
+                'email' => 'admin@gmail.com',
+                'password' => bcrypt('cobaadmin'),
+                'role' => 'admin'
+            ],
+        ];
+        foreach ($akun as $key => $val) {
+            User::create($val);
+        }
     }
 }

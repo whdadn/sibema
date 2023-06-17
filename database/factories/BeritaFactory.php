@@ -20,7 +20,7 @@ class BeritaFactory extends Factory
             'id_berita' => fake()->bothify('????-#####'),
             'id_pegawai' => fake()->bothify('????-#####'),
             'judul_berita' => fake()->sentence(2),
-            'isi_berita' => collect(fake()->paragraphs(5)),
+            'isi_berita' => collect(fake()->paragraphs(5, false)),
             'excerpt' => fake()->paragraph(2),
             'gambar' => fake()->image()
         ];

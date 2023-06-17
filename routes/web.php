@@ -62,13 +62,14 @@ Route::get('/dashboard/perbaruiDokAkademik', function () {
 });
 
 //Bagian Login, Lupa Passowrd, dan Ubah Password
-Route::get('login', [LoginController::class, 'index']);
+Route::get('login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('login', [LoginController::class, 'login']);
 Route::get('/lupaPassword', function () {
     return view('lupaPassword');
 });
 Route::get('/ubahPassword', function () {
     return view('ubahPassword');
 });
-
+Route::post('/logout', [LoginController::class, 'logout']);
 //Bagian Berita
 Route::get('/', [BeritaController::class, 'index']);
