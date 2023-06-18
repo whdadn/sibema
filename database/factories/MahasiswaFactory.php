@@ -18,6 +18,7 @@ class MahasiswaFactory extends Factory
     {
         return [
             'nim' => fake()->bothify('????-#####'),
+            'username' => fake()->bothify('????-#####'),
             'id_pegawai' => fake()->bothify('????-#####'),
             'id_prodi' => fake()->bothify('????-#####'),
             'nama_mhs' => fake()->name(),

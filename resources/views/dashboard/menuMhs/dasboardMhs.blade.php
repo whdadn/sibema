@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts.utama')
 
 @section('container')
     <div class="left-side-bar">

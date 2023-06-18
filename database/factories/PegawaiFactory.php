@@ -18,6 +18,7 @@ class PegawaiFactory extends Factory
     {
         return [
             'id_pegawai' => fake()->bothify('????-#####'),
+            'username' => fake()->bothify('????-#####'),
             'nama_pegawai' => fake()->name(),
             'no_telepon_pegawai' => fake()->randomNumber(9),
             'alamat_pegawai' => fake()->address()

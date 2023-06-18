@@ -10,7 +10,7 @@ class pegawai extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function akun()
+    public function user()
     {
         return $this->belongsTo(pegawai::class);
     }

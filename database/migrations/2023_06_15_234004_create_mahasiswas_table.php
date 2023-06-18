@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->char('nim', 10)->primary();
-            $table->char('id_prodi', 10)->index();
+            $table->char('username', 10)->index();
             $table->char('id_pegawai', 10)->index();
+            $table->char('id_prodi', 10)->index();
             $table->string('nama_mhs');
             $table->char('no_telpon_mhs', 13);
             $table->string('alamat_mhs');

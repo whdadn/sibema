@@ -44,7 +44,7 @@ class User extends Authenticatable
 
     public function mahasiswa()
     {
-        return $this->belongsTo(mahasiswa::class);
+        return $this->hasOne(mahasiswa::class);
     }
 
     public function pegawai()

@@ -20,9 +20,9 @@ class mahasiswa extends Model
         return $this->belongsTo(pegawai::class);
     }
 
-    public function akun()
+    public function user()
     {
-        return $this->hasOne(akun::class);
+        return $this->belongsTo(akun::class);
     }
 
     public function tugas_akhir()
