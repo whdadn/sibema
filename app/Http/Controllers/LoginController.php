@@ -16,15 +16,15 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             'username' => 'required',
-            'password' => 'required'
+            'password' => 'required',
         ]);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
+
             return redirect()->intended('/dashboard');
         }
-
-        return back()->with('loginError', 'Login Failed');
+        return back()->with('loginError', 'Login Gagal');
     }
 
     public function logout(Request $request)
