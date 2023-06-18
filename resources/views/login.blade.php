@@ -1,4 +1,4 @@
-@extends('halamanUtama.main')
+@extends('halamanUtama.utama')
 
 @section('container')
     <div class="row justify-content-center">

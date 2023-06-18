@@ -22,44 +22,44 @@ Route::get('/', function () {
 
 
 // Bagian Mahasiswa
-Route::prefix('/dashboard')->group(function () {
+Route::prefix('/dashboardMhs')->group(function () {
     Route::get('/', function () {
         return view('dashboard.menuMhs.dasboardMhs');
     });
     Route::get('/uploadTa', function () {
         return view('dashboard.menuMhs.uploadTa');
     });
-    Route::get('/tambahDokTa', function () {
+    Route::get('/uploadTa/tambahDokTa', function () {
         return view('dashboard.menuMhs.tambahDokTa');
     });
-    Route::get('/perbaruiDokTa', function () {
+    Route::get('/uploadTa/perbaruiDokTa', function () {
         return view('dashboard.menuMhs.perbaruiDokTa');
     });
     Route::get('/uploadRegis', function () {
         return view('dashboard.menuMhs.uploadRegis');
     });
-    Route::get('/tambahDokRegis', function () {
+    Route::get('/uploadRegis/tambahDokRegis', function () {
         return view('dashboard.menuMhs.tambahDokRegis');
     });
-    Route::get('/perbaruiDokRegis', function () {
+    Route::get('/uploadRegis/perbaruiDokRegis', function () {
         return view('dashboard.menuMhs.PerbaruiDokRegis');
     });
     Route::get('/uploadPerpus', function () {
         return view('dashboard.menuMhs.uploadPerpus');
     });
-    Route::get('/tambahDokPerpus', function () {
+    Route::get('/uploadPerpus/tambahDokPerpus', function () {
         return view('dashboard.menuMhs.tambahDokPerpus');
     });
-    Route::get('/perbaruiDokPerpus', function () {
+    Route::get('/uploadPerpus/perbaruiDokPerpus', function () {
         return view('dashboard.menuMhs.perbaruiDokPerpus');
     });
     Route::get('/uploadAkademik', function () {
         return view('dashboard.menuMhs.uploadAkademik');
     });
-    Route::get('/tambahDokAkademik', function () {
+    Route::get('/uploadAkademik/tambahDokAkademik', function () {
         return view('dashboard.menuMhs.tambahDokAkademik');
     });
-    Route::get('/perbaruiDokAkademik', function () {
+    Route::get('/uploadAkademik/perbaruiDokAkademik', function () {
         return view('dashboard.menuMhs.perbaruiDokAkademik');
     });
 });

@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('dashboard.layouts.utama')
 
 @section('container')
     <div class="left-side-bar">
@@ -11,7 +11,7 @@
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
                     <li class="dropdown">
-                        <a href="/dashboard" class="dropdown-toggle no-arrow">
+                        <a href="/dashboard/Mhs" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-grid"></span><span class="mtext">Dasboard</span>
                         </a>
                     </li>
@@ -20,12 +20,12 @@
                             <span class="micon dw dw-upload1"></span><span class="mtext">Upload Dokumen</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="">Dokumen Tugas Akhir</a></li>
+                            <li><a href="/dashboardMhs/uploadTa">Dokumen Tugas Akhir</a></li>
                             <li>
-                                <a href="">Dokumen Registrasi</a>
+                                <a href="/dashboardMhs/uploadRegis">Dokumen Registrasi</a>
                             </li>
-                            <li><a href="">Dokumen Perpustakaan</a></li>
-                            <li><a href="">Dokumen Akademik</a></li>
+                            <li><a href="/dashboardMhs/uploadPerpus">Dokumen Perpustakaan</a></li>
+                            <li><a href="/dashboardMhs/uploadAkademik">Dokumen Akademik</a></li>
                         </ul>
                     </li>
 
@@ -44,8 +44,9 @@
         </div>
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboard/tambahDokPerpus"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboard/perbaruiDokPerpus"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a>
+                <a href="/dashboardMhs/uploadPerpus/tambahDokPerpus"><i class="bi bi-plus-circle"></i> Tambah</a>
+                <a href="/dashboardMhs/uploadPerpus/perbaruiDokPerpus"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
+                    Perbarui</a>
                 <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
             </div>
         </div>

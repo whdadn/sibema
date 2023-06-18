@@ -11,7 +11,7 @@
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
                     <li class="dropdown">
-                        <a href="/dashboard" class="dropdown-toggle no-arrow">
+                        <a href="/dashboardMhs" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-grid"></span><span class="mtext">Dasboard</span>
                         </a>
                     </li>
@@ -20,12 +20,12 @@
                             <span class="micon dw dw-upload1"></span><span class="mtext">Upload Dokumen</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="dashboard/uploadTa">Dokumen Tugas Akhir</a></li>
+                            <li><a href="dashboardMhs/uploadTa">Dokumen Tugas Akhir</a></li>
                             <li>
-                                <a href="/dashboard/uploadRegis">Dokumen Registrasi</a>
+                                <a href="/dashboardMhs/uploadRegis">Dokumen Registrasi</a>
                             </li>
-                            <li><a href="/dashboard/uploadPerpus">Dokumen Perpustakaan</a></li>
-                            <li><a href="/dashboard/uploadAkademik">Dokumen Akademik</a></li>
+                            <li><a href="/dashboardMhs/uploadPerpus">Dokumen Perpustakaan</a></li>
+                            <li><a href="/dashboardMhs/uploadAkademik">Dokumen Akademik</a></li>
                         </ul>
                     </li>
 
