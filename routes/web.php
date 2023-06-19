@@ -36,6 +36,10 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/', [BeritaController::class, 'index']);
 });
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> trial
 // Bagian Mahasiswa
 Route::prefix('/dashboardMhs')->group(function () {
     Route::get('/', function () {
@@ -78,3 +82,49 @@ Route::prefix('/dashboardMhs')->group(function () {
         return view('dashboard.menuMhs.perbaruiDokAkademik');
     });
 });
+<<<<<<< HEAD
+=======
+
+//bagian Admin Prodi
+Route::prefix('/dashboardAdmin')->group(function () {
+    Route::get('/', function () {
+        return view('dashboard.menuAdmin.dashboardAdmin');
+    });
+    Route::get('/statusAkademik', function () {
+        return view('dashboard.menuAdmin.statusAkademik');
+    });
+    Route::get('/ubahStatusUmum', function () {
+        return view('dashboard.menuAdmin.ubahStatusUmum');
+    });
+    Route::get('/UbahStatusAkademik', function () {
+        return view('dashboard.menuAdmin.ubahStatusAkademik');
+    });
+    Route::get('/akunMahasiswa', function () {
+        return view('dashboard.menuAdmin.akunMahasiswa');
+    });
+    Route::get('/akunMahasiswa/tambahAkunMhs', function () {
+        return view('dashboard.menuAdmin.tambahAkunMhs');
+    });
+    Route::get('/akunMahasiswa/perbaruiAkunMhs', function () {
+        return view('dashboard.menuAdmin.perbaruiAkunMhs');
+    });
+    Route::get('/akunPanitia', function () {
+        return view('dashboard.menuAdmin.akunPanitia');
+    });
+    Route::get('/akunPanitia/tambahAkunPanitia', function () {
+        return view('dashboard.menuAdmin.tambahAkunPanitia');
+    });
+    Route::get('/akunPanitia/perbaruiAkunPanitia', function () {
+        return view('dashboard.menuAdmin.perbaruiAkunPanitia');
+    });
+    Route::get('/beritaUtama', function () {
+        return view('dashboard.menuAdmin.beritaUtama');
+    });
+    Route::get('/beritaUtama/tambahBeritaUtama', function () {
+        return view('dashboard.menuAdmin.tambahBeritaUtama');
+    });
+    Route::get('/beritaUtama/perbaruiBeritaUtama', function () {
+        return view('dashboard.menuAdmin.perbaruiBeritaUtama');
+    });
+});
+>>>>>>> trial
