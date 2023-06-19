@@ -1,4 +1,4 @@
-@extends('halamanUtama.main')
+@extends('halamanUtama.utama')
 
 @section('container')
     <div id="carouselExample" class="carousel slide">

@@ -85,4 +85,16 @@ Route::prefix('/dashboardAdmin')->group(function () {
     Route::get('/', function () {
         return view('dashboard.menuAdmin.dashboardAdmin');
     });
+    Route::get('/statusAkademik', function () {
+        return view('dashboard.menuAdmin.statusAkademik');
+    });
+    Route::get('/ubahStatusUmum', function () {
+        return view('dashboard.menuAdmin.ubahStatusUmum');
+    });
+    Route::get('/UbahStatusAkademik', function () {
+        return view('dashboard.menuAdmin.ubahStatusAkademik');
+    });
+    Route::get('/akunMahasiswa', function () {
+        return view('dashboard.menuAdmin.akunMahasiswa');
+    });
 });

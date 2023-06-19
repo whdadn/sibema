@@ -11,24 +11,32 @@
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
                     <li class="dropdown">
-                        <a href="/dashboardMhs" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-grid"></span><span class="mtext">Dasboard</span>
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-grid"></span><span class="mtext">Dashboard</span>
                         </a>
+                        <ul class="submenu">
+                            <li><a href="/dashboardAdmin">Ubah Status Umum</a></li>
+                            <li>
+                                <a href="/dashboardAdmin/statusAkademik">Ubah Status Akademik</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-upload1"></span><span class="mtext">Upload Dokumen</span>
+                            <span class="micon dw dw-notepad-2"></span><span class="mtext">Daftar Akun</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="dashboardMhs/uploadTa">Dokumen Tugas Akhir</a></li>
+                            <li><a href="/dashboardAdmin/akunMahasiswa">Mahasiswa</a></li>
                             <li>
-                                <a href="/dashboardMhs/uploadRegis">Dokumen Registrasi</a>
+                                <a href="">Panitia</a>
                             </li>
-                            <li><a href="/dashboardMhs/uploadPerpus">Dokumen Perpustakaan</a></li>
-                            <li><a href="/dashboardMhs/uploadAkademik">Dokumen Akademik</a></li>
                         </ul>
                     </li>
-
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-newspaper-1"></span><span class="mtext">Berita Utama</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -51,9 +59,13 @@
 
         <div class="pd-20 card-box mb-30">
             <div class="clearfix mb-20">
+                <div class="text-center mb-20">
+                    <h4>Status Bebas Masalah Umum</h4>
+                </div>
                 <div class="pull-left">
-                    <a class="btn" href=""><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                        Perbarui</a>
+                    <a class="btn" href="/dashboardAdmin/ubahStatusUmum"><i
+                            class="icon-copy dw dw-edit-1 ml-2 linked"></i>
+                        Ubah Status</a>
                 </div>
 
                 <div class="pull-right">
@@ -62,7 +74,6 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="#">Jurusan</a>
-                            <a class="dropdown-item" href="#">Prodi</a>
                             <a class="dropdown-item" href="#">Status Bebas Masalah</a>
                         </div>
                     </div>
