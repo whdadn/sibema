@@ -112,4 +112,13 @@ Route::prefix('/dashboardAdmin')->group(function () {
     Route::get('/akunPanitia/perbaruiAkunPanitia', function () {
         return view('dashboard.menuAdmin.perbaruiAkunPanitia');
     });
+    Route::get('/beritaUtama', function () {
+        return view('dashboard.menuAdmin.beritaUtama');
+    });
+    Route::get('/beritaUtama/tambahBeritaUtama', function () {
+        return view('dashboard.menuAdmin.tambahBeritaUtama');
+    });
+    Route::get('/beritaUtama/perbaruiBeritaUtama', function () {
+        return view('dashboard.menuAdmin.perbaruiBeritaUtama');
+    });
 });

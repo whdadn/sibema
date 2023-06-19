@@ -43,39 +43,33 @@
     </div>
 
     <div class="pd-20 card-box mb-30">
-
-
-        <div class="clearfix justify-content-center">
+        <div class="clearfix mb-8">
             <div class="text-center mb-30">
-                <h4>Tambah Akun Panitia</h4>
+                <h4>Berita Utama</h4>
+            </div>
+            <div class="pull-left mt-15">
+                <a href="/dashboardAdmin/beritaUtama/tambahBeritaUtama"><i class="bi bi-plus-circle"></i>
+                    Tambah</a>
+                <a href="/dashboardAdmin/beritaUtama/perbaruiBeritaUtama"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
+                    Perbarui</a>
+                <a href=""><i class="icon-copy dw dw-delete-2 ml-2 linked"></i>
+                    Hapus</a>
             </div>
         </div>
-        <form>
-            <div class="form-group">
-                <label>Username</label>
-                <input class="form-control" type="text" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input class="form-control" type="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input class="form-control" type="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label>Role</label>
-                <select class="form-control">
-                    <option>Admin Prodi</option>
-                    <option>Panitia Tugas Akhir</option>
-                    <option>Panitia Keuangan</option>
-                    <option>Panitia Perpustakaan</option>
-                    <option>Ketua Jurusan</option>
-                </select>
-            </div>
-
-            <button type="button" class="btn btn-primary">Simpan</button>
-        </form>
+        <table class="table mt-2">
+            <thead>
+                <tr>
+                    <th scope="col">Judul Berita</th>
+                    <th scope="col">Berita</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Mark</td>
+                </tr>
+            </tbody>
+        </table>
 
     </div>
 @endsection

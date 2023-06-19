@@ -43,39 +43,31 @@
     </div>
 
     <div class="pd-20 card-box mb-30">
-
-
-        <div class="clearfix justify-content-center">
+        <div class="clearfix mb-8">
             <div class="text-center mb-30">
-                <h4>Tambah Akun Panitia</h4>
+                <h4>Perbarui Berita Utama</h4>
             </div>
         </div>
-        <form>
+
+        <form action="">
             <div class="form-group">
-                <label>Username</label>
-                <input class="form-control" type="text" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <label>Email</label>
-                <input class="form-control" type="email" placeholder="Email">
-            </div>
-            <div class="form-group">
-                <label>Password</label>
-                <input class="form-control" type="password" placeholder="Password">
-            </div>
-            <div class="form-group">
-                <label>Role</label>
-                <select class="form-control">
-                    <option>Admin Prodi</option>
-                    <option>Panitia Tugas Akhir</option>
-                    <option>Panitia Keuangan</option>
-                    <option>Panitia Perpustakaan</option>
-                    <option>Ketua Jurusan</option>
-                </select>
+                <label>Judul Berita</label>
+                <input class="form-control" type="text" placeholder="Masukkan Judul Berita">
             </div>
 
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <div class="form-group">
+                <label>Isi Berita</label>
+                <textarea class="form-control"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Gambar</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input">
+                    <label class="custom-file-label">Choose file</label>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary"> Perbarui</button>
         </form>
-
     </div>
 @endsection

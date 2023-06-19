@@ -33,7 +33,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle no-arrow">
+                        <a href="/dashboardAdmin/beritaUtama" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-newspaper-1"></span><span class="mtext">Berita Utama</span>
                         </a>
                     </li>
