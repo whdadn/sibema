@@ -36,10 +36,6 @@ Route::middleware(['guest'])->group(function () {
     Route::get('/', [BeritaController::class, 'index']);
 });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> trial
 // Bagian Mahasiswa
 Route::prefix('/dashboardMhs')->group(function () {
     Route::get('/', function () {
@@ -82,8 +78,6 @@ Route::prefix('/dashboardMhs')->group(function () {
         return view('dashboard.menuMhs.perbaruiDokAkademik');
     });
 });
-<<<<<<< HEAD
-=======
 
 //bagian Admin Prodi
 Route::prefix('/dashboardAdmin')->group(function () {
@@ -127,4 +121,3 @@ Route::prefix('/dashboardAdmin')->group(function () {
         return view('dashboard.menuAdmin.perbaruiBeritaUtama');
     });
 });
->>>>>>> trial
