@@ -28,7 +28,7 @@
                         <ul class="submenu">
                             <li><a href="/dashboardAdmin">Mahasiswa</a></li>
                             <li>
-                                <a href="">Panitia</a>
+                                <a href="/dashboardAdmin/akunPanitia">Panitia</a>
                             </li>
                         </ul>
                     </li>

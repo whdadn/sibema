@@ -97,4 +97,19 @@ Route::prefix('/dashboardAdmin')->group(function () {
     Route::get('/akunMahasiswa', function () {
         return view('dashboard.menuAdmin.akunMahasiswa');
     });
+    Route::get('/akunMahasiswa/tambahAkunMhs', function () {
+        return view('dashboard.menuAdmin.tambahAkunMhs');
+    });
+    Route::get('/akunMahasiswa/perbaruiAkunMhs', function () {
+        return view('dashboard.menuAdmin.perbaruiAkunMhs');
+    });
+    Route::get('/akunPanitia', function () {
+        return view('dashboard.menuAdmin.akunPanitia');
+    });
+    Route::get('/akunPanitia/tambahAkunPanitia', function () {
+        return view('dashboard.menuAdmin.tambahAkunPanitia');
+    });
+    Route::get('/akunPanitia/perbaruiAkunPanitia', function () {
+        return view('dashboard.menuAdmin.perbaruiAkunPanitia');
+    });
 });

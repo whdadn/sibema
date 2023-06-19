@@ -15,9 +15,9 @@
                             <span class="micon dw dw-grid"></span><span class="mtext">Dashboard</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="/dashboardAdmin">Ubah Status Umum</a></li>
+                            <li><a href="/dashboardAdmin">Bebas Masalah Umum</a></li>
                             <li>
-                                <a href="/dashboardAdmin/statusAkademik">Ubah Status Akademik</a>
+                                <a href="/dashboardAdmin/statusAkademik">Bebas Masalah Akademik</a>
                             </li>
                         </ul>
                     </li>
@@ -26,7 +26,7 @@
                             <span class="micon dw dw-notepad-2"></span><span class="mtext">Daftar Akun</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="/dashboardAdmin">Mahasiswa</a></li>
+                            <li><a href="/dashboardAdmin/akunMahasiswa">Mahasiswa</a></li>
                             <li>
                                 <a href="/dashboardAdmin/akunPanitia">Panitia</a>
                             </li>
@@ -42,23 +42,36 @@
         </div>
     </div>
 
-    <div class=" pd-20 card-box mb-30">
+    <div class="pd-20 card-box mb-30">
+
 
         <div class="clearfix justify-content-center">
             <div class="text-center mb-30">
-                <h4>Ubah Status Bebas Masalah Umum</h4>
+                <h4>Perbarui Akun Mahasiswa</h4>
             </div>
         </div>
         <form>
             <div class="form-group">
-                <label>Status Bebas Masalah</label>
+                <label>Username</label>
+                <input class="form-control" type="text" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input class="form-control" type="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <label>Role</label>
                 <select class="form-control">
-                    <option>Bermasalah</option>
-                    <option>Bebas Masalah</option>
+                    <option>Mahasiswa</option>
                 </select>
             </div>
 
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="button" class="btn btn-primary">Perbarui</button>
         </form>
+
     </div>
 @endsection
