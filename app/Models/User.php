@@ -44,11 +44,11 @@ class User extends Authenticatable
 
     public function mahasiswa()
     {
-        return $this->hasOne(mahasiswa::class);
+        return $this->hasOne(mahasiswa::class, 'username', 'username');
     }
 
     public function pegawai()
     {
-        return $this->hasOne(pegawai::class);
+        return $this->hasOne(pegawai::class, 'username', 'username');
     }
 }

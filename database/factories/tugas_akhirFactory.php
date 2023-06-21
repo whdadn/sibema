@@ -18,8 +18,6 @@ class tugas_akhirFactory extends Factory
     {
         return [
             'id_ta' => fake()->bothify('????-#####'),
-            'id_pegawai' => fake()->bothify('????-#####'),
-            'nim' => fake()->bothify('????-#####'),
             'lembar_persetujuan' => fake()->fileExtension(),
             'lembar_pengesahan' => fake()->fileExtension(),
             'lembar_konsul_pemb_1' => fake()->fileExtension(),

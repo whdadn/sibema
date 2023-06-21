@@ -18,8 +18,6 @@ class KeuanganFactory extends Factory
     {
         return [
             'id_keuangan' => fake()->bothify('????-#####'),
-            'nim' => fake()->bothify('????-#####'),
-            'id_pegawai' => fake()->bothify('????-#####'),
             'dokumen_keuangan' => fake()->fileExtension(),
             'status_keuangan' => fake()->word(),
             'rincian_keuangan' => fake()->paragraphs(6, true)

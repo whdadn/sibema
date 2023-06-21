@@ -13,13 +13,16 @@ return new class extends Migration
     {
         Schema::create('perpustakaans', function (Blueprint $table) {
             $table->char('id_perpus', 10)->primary();
-            $table->char('nim', 10)->index();
-            $table->char('id_pegawai', 10)->index();
+            $table->char('nim', 10);
+            $table->char('id_pegawai', 10);
             $table->binary('dokumen_perpus');
             $table->string('keterangan');
             $table->string('status_perpus');
             $table->text('rincian_perpus');
             $table->timestamps();
+
+            $table->foreign('nim')->references('nim')->on('mahasiswas');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
         });
     }
 

@@ -18,7 +18,6 @@ class ProdiFactory extends Factory
     {
         return [
             'id_prodi' => fake()->bothify('????-#####'),
-            'id_jurusan' => fake()->bothify('????-#####'),
             'nama_prodi' => fake()->word()
         ];
     }

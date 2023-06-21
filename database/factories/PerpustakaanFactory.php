@@ -18,8 +18,6 @@ class PerpustakaanFactory extends Factory
     {
         return [
             'id_perpus' => fake()->bothify('????-#####'),
-            'nim' => fake()->bothify('????-#####'),
-            'id_pegawai' => fake()->bothify('????-#####'),
             'dokumen_perpus' => fake()->fileExtension(),
             'keterangan' => fake()->word(),
             'status_perpus' => fake()->word(),

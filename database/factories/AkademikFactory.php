@@ -18,8 +18,6 @@ class AkademikFactory extends Factory
     {
         return [
             'id_akademik' => fake()->bothify('????-#####'),
-            'id_pegawai' => fake()->bothify('????-#####'),
-            'nim' => fake()->bothify('????-#####'),
             'khs_semester_1' => fake()->fileExtension(),
             'khs_semester_2' => fake()->fileExtension(),
             'khs_semester_3' => fake()->fileExtension(),

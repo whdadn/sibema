@@ -25,6 +25,9 @@ return new class extends Migration
             $table->binary('lembar_sp');
             $table->text('rincian_akademik');
             $table->timestamps();
+
+            $table->foreign('nim')->references('nim')->on('mahasiswas');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
         });
     }
 

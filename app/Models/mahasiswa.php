@@ -12,36 +12,36 @@ class mahasiswa extends Model
 
     public function prodi()
     {
-        return $this->belongsTo(prodi::class);
+        return $this->belongsTo(prodi::class, 'id_prodi', 'id_prodi');
     }
 
     public function pegawai()
     {
-        return $this->belongsTo(pegawai::class);
+        return $this->belongsTo(pegawai::class, 'id_pegawai', 'id_pegawai');
     }
 
     public function user()
     {
-        return $this->belongsTo(akun::class);
+        return $this->hasOne(User::class, 'username', 'username');
     }
 
     public function tugas_akhir()
     {
-        return $this->HasMany(tugas_akhir::class);
+        return $this->HasMany(tugas_akhir::class, 'nim', 'nim');
     }
 
     public function keuangan()
     {
-        return $this->hasMany(keuangan::class);
+        return $this->hasMany(keuangan::class, 'nim', 'nim');
     }
 
     public function perpustakaan()
     {
-        return $this->hasMany(perpustakaan::class);
+        return $this->hasMany(perpustakaan::class, 'nim', 'nim');
     }
 
     public function akademik()
     {
-        return $this->hasMany(akademik::class);
+        return $this->hasMany(akademik::class, 'nim', 'nim');
     }
 }

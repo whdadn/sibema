@@ -13,12 +13,15 @@ return new class extends Migration
     {
         Schema::create('keuangans', function (Blueprint $table) {
             $table->char('id_keuangan', 10)->primary();
-            $table->char('nim', 10)->index();
-            $table->char('id_pegawai', 10)->index();
+            $table->char('nim', 10);
+            $table->char('id_pegawai', 10);
             $table->binary('dokumen_keuangan');
             $table->string('status_keuangan');
             $table->text('rincian_keuangan');
             $table->timestamps();
+
+            $table->foreign('nim')->references('nim')->on('mahasiswas');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
         });
     }
 

@@ -13,15 +13,19 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->char('nim', 10)->primary();
-            $table->char('username', 10)->index();
-            $table->char('id_pegawai', 10)->index();
-            $table->char('id_prodi', 10)->index();
+            $table->string('username', 10);
+            $table->char('id_pegawai', 10);
+            $table->char('id_prodi', 10);
             $table->string('nama_mhs');
             $table->char('no_telpon_mhs', 13);
             $table->string('alamat_mhs');
             $table->year('tahun_lulus');
             $table->string('status_umum');
             $table->timestamps();
+
+            $table->foreign('username')->references('username')->on('users');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
+            $table->foreign('id_prodi')->references('id_prodi')->on('prodis');
         });
     }
 

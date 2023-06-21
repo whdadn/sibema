@@ -12,11 +12,11 @@ class keuangan extends Model
 
     public function pegawai()
     {
-        return $this->belongsTo(pegawai::class);
+        return $this->belongsTo(pegawai::class, 'id_pegawai', 'id_pegawai');
     }
 
     public function mahasiswa()
     {
-        return $this->belongsTo(mahasiswa::class);
+        return $this->belongsTo(mahasiswa::class, 'nim', 'nim');
     }
 }
