@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\pegawai;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PegawaiFactory extends Factory
 {
+    protected $model = pegawai::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +20,7 @@ class PegawaiFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_pegawai' => fake()->bothify('????-#####'),
+            'id_user' => User::factory(),
             'nama_pegawai' => fake()->name(),
             'no_telepon_pegawai' => fake()->randomNumber(9),
             'alamat_pegawai' => fake()->address()

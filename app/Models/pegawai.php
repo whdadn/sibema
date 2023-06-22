@@ -12,7 +12,7 @@ class pegawai extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'username', 'username');
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
     public function mahasiswa()

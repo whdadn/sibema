@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\jurusan;
+use App\Models\prodi;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ProdiFactory extends Factory
 {
+    protected $model = prodi::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +21,7 @@ class ProdiFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_prodi' => fake()->bothify('????-#####'),
+            'id_jurusan' => jurusan::factory(),
             'nama_prodi' => fake()->word()
         ];
     }

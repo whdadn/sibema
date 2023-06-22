@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\jurusan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class JurusanFactory extends Factory
 {
+    protected $model = jurusan::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +19,6 @@ class JurusanFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_jurusan' => fake()->bothify('????-#####'),
             'nama_jurusan' => fake()->text()
         ];
     }

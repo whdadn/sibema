@@ -22,26 +22,26 @@ class mahasiswa extends Model
 
     public function user()
     {
-        return $this->hasOne(User::class, 'username', 'username');
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
     public function tugas_akhir()
     {
-        return $this->HasMany(tugas_akhir::class, 'nim', 'nim');
+        return $this->HasMany(tugas_akhir::class, 'id_mahasiswa', 'id_mahasiswa');
     }
 
     public function keuangan()
     {
-        return $this->hasMany(keuangan::class, 'nim', 'nim');
+        return $this->hasMany(keuangan::class, 'id_mahasiswa', 'id_mahasiswa');
     }
 
     public function perpustakaan()
     {
-        return $this->hasMany(perpustakaan::class, 'nim', 'nim');
+        return $this->hasMany(perpustakaan::class, 'id_mahasiswa', 'id_mahasiswa');
     }
 
     public function akademik()
     {
-        return $this->hasMany(akademik::class, 'nim', 'nim');
+        return $this->hasMany(akademik::class, 'id_mahasiswa', 'id_mahasiswa');
     }
 }

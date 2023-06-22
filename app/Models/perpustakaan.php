@@ -17,6 +17,6 @@ class perpustakaan extends Model
 
     public function mahasiswa()
     {
-        return $this->belongsTo(mahasiswa::class, 'nim', 'nim');
+        return $this->belongsTo(mahasiswa::class, 'id_mahasiswa', 'id_mahasiswa');
     }
 }

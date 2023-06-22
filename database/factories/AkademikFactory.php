@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\akademik;
+use App\Models\mahasiswa;
+use App\Models\pegawai;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class AkademikFactory extends Factory
 {
+    protected $model = akademik::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +21,8 @@ class AkademikFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_akademik' => fake()->bothify('????-#####'),
+            'id_mahasiswa' => mahasiswa::factory(),
+            'id_pegawai' => pegawai::factory(),
             'khs_semester_1' => fake()->fileExtension(),
             'khs_semester_2' => fake()->fileExtension(),
             'khs_semester_3' => fake()->fileExtension(),

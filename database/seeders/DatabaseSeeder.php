@@ -32,10 +32,34 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        jurusan::factory(count: 5)
-            ->has(prodi::factory(count: 3)
-                ->has(mahasiswa::factory(count: 3)
-                    ->has(User::factory(count: 3))))
+        User::factory(5)
+            ->create();
+
+        jurusan::factory(5)
+            ->create();
+
+        pegawai::factory(5)
+            ->create();
+
+        prodi::factory(5)
+            ->create();
+
+        mahasiswa::factory(5)
+            ->create();
+
+        berita::factory(5)
+            ->create();
+
+        akademik::factory(5)
+            ->create();
+
+        perpustakaan::factory(5)
+            ->create();
+
+        keuangan::factory(5)
+            ->create();
+
+        tugas_akhir::factory(5)
             ->create();
     }
 }

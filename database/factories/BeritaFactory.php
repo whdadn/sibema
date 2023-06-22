@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\berita;
+use App\Models\pegawai;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class BeritaFactory extends Factory
 {
+    protected $model = berita::class;
     /**
      * Define the model's default state.
      *
@@ -17,7 +20,7 @@ class BeritaFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_berita' => fake()->bothify('????-#####'),
+            'id_pegawai' => pegawai::factory(),
             'judul_berita' => fake()->sentence(2),
             'isi_berita' => collect(fake()->paragraphs(5, false)),
             'excerpt' => fake()->paragraph(2),
