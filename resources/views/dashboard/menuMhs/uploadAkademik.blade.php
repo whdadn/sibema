@@ -50,6 +50,7 @@
                 <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
             </div>
         </div>
+
         <table class="table">
             <thead>
                 <tr>
@@ -63,15 +64,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Revisi</td>
-                    <td>KHS</td>
-                    <td>KSH</td>
-                </tr>
+                @foreach ($akademik as $akd)
+                    <tr>
+                        <td>{{ $akd->khs_semester_1 }}</td>
+                        <td>{{ $akd->khs_semester_2 }}</td>
+                        <td>{{ $akd->khs_semester_3 }}</td>
+                        <td>{{ $akd->khs_semester_4 }}</td>
+                        <td>{{ $akd->khs_semester_5 }}</td>
+                        <td>{{ $akd->khs_semester_6 }}</td>
+                        <td>{{ $akd->lembar_sp }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 

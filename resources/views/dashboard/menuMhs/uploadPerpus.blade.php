@@ -50,19 +50,22 @@
                 <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
             </div>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Bukti Pengembalian</th>
-                    <th scope="col">Keterangan</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
-            </tbody>
-        </table>
+
+        @foreach ($perpustakaan as $perpus)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Bukti Pengembalian</th>
+                        <th scope="col">Keterangan</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $perpus->dokumen_perpus }}</td>
+                        <td>{{ $perpus->keterangan }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        @endforeach
 
     </div>
 @endsection

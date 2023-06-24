@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
+use App\Models\tugas_akhir;
 use Illuminate\Http\Request;
 
 class MahasiswaController extends Controller
@@ -12,7 +13,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.menuMhs.dasboardMhs');
     }
 
     /**
@@ -66,5 +67,37 @@ class MahasiswaController extends Controller
     public function destroy(mahasiswa $mahasiswa)
     {
         //
+    }
+
+    public function showTa(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(20);
+        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
+
+        return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir'));
+    }
+
+    public function showRegis(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(20);
+        $keuangan = $mahasiswa->keuangan()->get();
+
+        return view('dashboard.menuMhs.uploadRegis', compact('keuangan'));
+    }
+
+    public function showPerpus(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(20);
+        $perpustakaan = $mahasiswa->perpustakaan()->get();
+
+        return view('dashboard.menuMhs.uploadPerpus', compact('perpustakaan'));
+    }
+
+    public function showAkademik(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(20);
+        $akademik = $mahasiswa->akademik()->get();
+
+        return view('dashboard.menuMhs.uploadAkademik', compact('akademik'));
     }
 }

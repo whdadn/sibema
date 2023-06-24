@@ -50,17 +50,20 @@
                 <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
             </div>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Dokumen Registrasi</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                </tr>
-            </tbody>
-        </table>
+
+        @foreach ($keuangan as $regis)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Dokumen Registrasi</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $regis->dokumen_keuangan }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        @endforeach
 
     </div>
 @endsection

@@ -50,26 +50,29 @@
                 <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
             </div>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Lembar Persetujuan</th>
-                    <th scope="col">Lembar Pengesahan</th>
-                    <th scope="col">Lembar Konsultasi Pembimbing Pertama</th>
-                    <th scope="col">Lembar Konsultasi Pembimbing Kedua</th>
-                    <th scope="col">Lembar Revisi</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Revisi</td>
-                </tr>
-            </tbody>
-        </table>
+
+        @foreach ($tugas_akhir as $ta)
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Lembar Persetujuan</th>
+                        <th scope="col">Lembar Pengesahan</th>
+                        <th scope="col">Lembar Konsultasi Pembimbing Pertama</th>
+                        <th scope="col">Lembar Konsultasi Pembimbing Kedua</th>
+                        <th scope="col">Lembar Revisi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $ta->lembar_persetujuan }}</td>
+                        <td>{{ $ta->lembar_pengesahan }}</td>
+                        <td>{{ $ta->lembar_konsul_pemb_1 }}</td>
+                        <td>{{ $ta->lembar_konsul_pemb_2 }}</td>
+                        <td>{{ $ta->lembar_revisi }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        @endforeach
 
     </div>
 @endsection

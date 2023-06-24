@@ -39,42 +39,47 @@ Route::middleware(['guest'])->group(function () {
 
 // Bagian Mahasiswa
 Route::prefix('/dashboardMhs')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard.menuMhs.dasboardMhs');
-    });
-
+    Route::get('/', [MahasiswaController::class, 'index']);
     Route::get('/', [MahasiswaController::class, 'show']);
 
     Route::get('/uploadTa', function () {
         return view('dashboard.menuMhs.uploadTa');
     });
+    Route::get('/uploadTa', [MahasiswaController::class, 'showTa']);
     Route::get('/uploadTa/tambahDokTa', function () {
         return view('dashboard.menuMhs.tambahDokTa');
     });
     Route::get('/uploadTa/perbaruiDokTa', function () {
         return view('dashboard.menuMhs.perbaruiDokTa');
     });
+
     Route::get('/uploadRegis', function () {
         return view('dashboard.menuMhs.uploadRegis');
     });
+    Route::get('/uploadRegis', [MahasiswaController::class, 'showRegis']);
+
     Route::get('/uploadRegis/tambahDokRegis', function () {
         return view('dashboard.menuMhs.tambahDokRegis');
     });
     Route::get('/uploadRegis/perbaruiDokRegis', function () {
         return view('dashboard.menuMhs.PerbaruiDokRegis');
     });
+
     Route::get('/uploadPerpus', function () {
         return view('dashboard.menuMhs.uploadPerpus');
     });
+    Route::get('/uploadPerpus', [MahasiswaController::class, 'showPerpus']);
     Route::get('/uploadPerpus/tambahDokPerpus', function () {
         return view('dashboard.menuMhs.tambahDokPerpus');
     });
     Route::get('/uploadPerpus/perbaruiDokPerpus', function () {
         return view('dashboard.menuMhs.perbaruiDokPerpus');
     });
+
     Route::get('/uploadAkademik', function () {
         return view('dashboard.menuMhs.uploadAkademik');
     });
+    Route::get('/uploadAkademik', [MahasiswaController::class, 'showAkademik']);
     Route::get('/uploadAkademik/tambahDokAkademik', function () {
         return view('dashboard.menuMhs.tambahDokAkademik');
     });
