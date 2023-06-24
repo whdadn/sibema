@@ -42,8 +42,9 @@ Route::prefix('/dashboardMhs')->group(function () {
     Route::get('/', function () {
         return view('dashboard.menuMhs.dasboardMhs');
     });
+
     Route::get('/', [MahasiswaController::class, 'show']);
-    Route::get('/{mahasiswa}', [MahasiswaController::class, 'show']);
+
     Route::get('/uploadTa', function () {
         return view('dashboard.menuMhs.uploadTa');
     });
