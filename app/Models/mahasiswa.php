@@ -9,6 +9,8 @@ class mahasiswa extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $with = ['tugas_akhir'];
+    protected $primaryKey = 'id_mahasiswa';
 
     public function prodi()
     {
@@ -27,7 +29,7 @@ class mahasiswa extends Model
 
     public function tugas_akhir()
     {
-        return $this->HasMany(tugas_akhir::class, 'id_mahasiswa', 'id_mahasiswa');
+        return $this->hasMany(tugas_akhir::class, 'id_mahasiswa', 'id_mahasiswa');
     }
 
     public function keuangan()
