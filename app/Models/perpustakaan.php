@@ -9,6 +9,7 @@ class perpustakaan extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'id_perpus';
 
     public function pegawai()
     {

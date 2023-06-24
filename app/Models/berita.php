@@ -9,6 +9,7 @@ class berita extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'id_berita';
 
     public function pegawai()
     {
