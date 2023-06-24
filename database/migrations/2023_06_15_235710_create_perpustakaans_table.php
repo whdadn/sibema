@@ -12,14 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('perpustakaans', function (Blueprint $table) {
-            $table->char('id_perpus', 10)->primary();
-            $table->char('nim', 10)->index();
-            $table->char('id_pegawai', 10)->index();
+            $table->unsignedBigInteger('id_perpus')->autoIncrement();
+            $table->unsignedBigInteger('id_mahasiswa');
+            $table->unsignedBigInteger('id_pegawai');
             $table->binary('dokumen_perpus');
             $table->string('keterangan');
             $table->string('status_perpus');
             $table->text('rincian_perpus');
             $table->timestamps();
+
+            $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
         });
     }
 

@@ -11,11 +11,11 @@ class prodi extends Model
 
     public function jurusan()
     {
-        return $this->belongsTo(jurusan::class);
+        return $this->belongsTo(jurusan::class, 'id_jurusan', 'id_jurusan');
     }
 
     public function mahasiswa()
     {
-        return $this->hasMany(mahasiswa::class);
+        return $this->hasMany(mahasiswa::class, 'id_prodi', 'id_prodi');
     }
 }

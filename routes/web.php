@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\MahasiswaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +42,9 @@ Route::prefix('/dashboardMhs')->group(function () {
     Route::get('/', function () {
         return view('dashboard.menuMhs.dasboardMhs');
     });
+
+    Route::get('/', [MahasiswaController::class, 'show']);
+
     Route::get('/uploadTa', function () {
         return view('dashboard.menuMhs.uploadTa');
     });

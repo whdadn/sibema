@@ -12,12 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pegawais', function (Blueprint $table) {
-            $table->char('id_pegawai', 10)->primary();
-            $table->char('username', 10)->index();
+            $table->unsignedBigInteger('id_pegawai')->autoIncrement();
+            $table->unsignedBigInteger('id_user');
             $table->string('nama_pegawai');
             $table->char('no_telepon_pegawai');
             $table->string('alamat_pegawai');
             $table->timestamps();
+
+            $table->foreign('id_user')->references('id_user')->on('users');
         });
     }
 

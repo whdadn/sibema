@@ -12,6 +12,6 @@ class berita extends Model
 
     public function pegawai()
     {
-        return $this->belongsTo(pegawai::class);
+        return $this->belongsTo(pegawai::class, 'id_pegawai', 'id_pegawai');
     }
 }

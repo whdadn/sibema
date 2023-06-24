@@ -17,22 +17,10 @@ class AkunFactory extends Factory
     public function definition(): array
     {
         return [
-            $akun = [
-                'username' => 'mhs',
-                'id_pegawai' => '1234567890',
-                'nim' => 'c012345678',
-                'email' => 'mhs@gmail.com',
-                'password' => bcrypt('cobamhs'),
-                'role' => 'mahasiswa'
-            ],
-            [
-                'username' => 'admin',
-                'id_pegawai' => '0987654321',
-                'nim' => 'c087654321',
-                'email' => 'admin@gmail.com',
-                'password' => bcrypt('cobaadmin'),
-                'role' => 'admin'
-            ],
+            'username' => fake()->userName(),
+            'email' => fake()->email(),
+            'password' => bcrypt(fake()->password()),
+            'role' => fake()->jobTitle(),
         ];
     }
 }

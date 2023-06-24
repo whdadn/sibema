@@ -12,36 +12,36 @@ class pegawai extends Model
 
     public function user()
     {
-        return $this->belongsTo(pegawai::class);
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
     public function mahasiswa()
     {
-        return $this->hasMany(mahasiswa::class);
+        return $this->hasMany(mahasiswa::class, 'id_pegawai', 'id_pegawai');
     }
 
     public function berita()
     {
-        return $this->hasMany(berita::class);
+        return $this->hasMany(berita::class, 'id_pegawai', 'id_pegawai');
     }
 
     public function akademik()
     {
-        return $this->hasMany(akademik::class);
+        return $this->hasMany(akademik::class, 'id_pegawai', 'id_pegawai');
     }
 
     public function perpustakaan()
     {
-        return $this->hasMany(perpustakaan::class);
+        return $this->hasMany(perpustakaan::class, 'id_pegawai', 'id_pegawai');
     }
 
     public function keuangan()
     {
-        return $this->hasMany(keuangan::class);
+        return $this->hasMany(keuangan::class, 'id_pegawai', 'id_pegawai');
     }
 
     public function tugas_akhir()
     {
-        return $this->hasMany(tugas_akhir::class);
+        return $this->hasMany(tugas_akhir::class, 'id_pegawai', 'id_pegawai');
     }
 }

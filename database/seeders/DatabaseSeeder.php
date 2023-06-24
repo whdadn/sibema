@@ -32,39 +32,34 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        akademik::factory(5)->create();
-        berita::factory(5)->create();
-        jurusan::factory(5)->create();
-        keuangan::factory(5)->create();
-        mahasiswa::factory(5)->create();
-        pegawai::factory(5)->create();
-        perpustakaan::factory(5)->create();
-        prodi::factory(5)->create();
-        tugas_akhir::factory(5)->create();
+        User::factory(5)
+            ->create();
 
-        $akun = [
-            [
-                'username' => 'mhs',
-                'email' => 'mhs@gmail.com',
-                'password' => bcrypt('cobamhs'),
-                'role' => 'mahasiswa'
-            ],
-            [
-                'username' => 'admin',
-                'email' => 'admin@gmail.com',
-                'password' => bcrypt('cobaadmin'),
-                'role' => 'admin'
-            ],
-        ];
-        foreach ($akun as $key => $val) {
-            User::create($val);
-        }
+        jurusan::factory(5)
+            ->create();
 
-        User::create([
-            'username' => 'panitia',
-            'password' => bcrypt('cobapanitia'),
-            'email' => 'panitia@gmail.com',
-            'role' => 'panitia keuangan',
-        ]);
+        pegawai::factory(5)
+            ->create();
+
+        prodi::factory(5)
+            ->create();
+
+        mahasiswa::factory(5)
+            ->create();
+
+        berita::factory(5)
+            ->create();
+
+        akademik::factory(5)
+            ->create();
+
+        perpustakaan::factory(5)
+            ->create();
+
+        keuangan::factory(5)
+            ->create();
+
+        tugas_akhir::factory(5)
+            ->create();
     }
 }

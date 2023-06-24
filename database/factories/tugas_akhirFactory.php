@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\tugas_akhir;
+use App\Models\pegawai;
+use App\Models\mahasiswa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class tugas_akhirFactory extends Factory
 {
+    protected $model = tugas_akhir::class;
     /**
      * Define the model's default state.
      *
@@ -17,9 +21,8 @@ class tugas_akhirFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_ta' => fake()->bothify('????-#####'),
-            'id_pegawai' => fake()->bothify('????-#####'),
-            'nim' => fake()->bothify('????-#####'),
+            'id_mahasiswa' => mahasiswa::factory(),
+            'id_pegawai' => pegawai::factory(),
             'lembar_persetujuan' => fake()->fileExtension(),
             'lembar_pengesahan' => fake()->fileExtension(),
             'lembar_konsul_pemb_1' => fake()->fileExtension(),

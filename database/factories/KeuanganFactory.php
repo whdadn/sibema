@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\keuangan;
+use App\Models\pegawai;
+use App\Models\mahasiswa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class KeuanganFactory extends Factory
 {
+    protected $model = keuangan::class;
     /**
      * Define the model's default state.
      *
@@ -17,9 +21,8 @@ class KeuanganFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_keuangan' => fake()->bothify('????-#####'),
-            'nim' => fake()->bothify('????-#####'),
-            'id_pegawai' => fake()->bothify('????-#####'),
+            'id_mahasiswa' => mahasiswa::factory(),
+            'id_pegawai' => pegawai::factory(),
             'dokumen_keuangan' => fake()->fileExtension(),
             'status_keuangan' => fake()->word(),
             'rincian_keuangan' => fake()->paragraphs(6, true)

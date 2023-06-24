@@ -19,6 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
+        'email',
         'password',
     ];
 
@@ -44,11 +45,11 @@ class User extends Authenticatable
 
     public function mahasiswa()
     {
-        return $this->hasOne(mahasiswa::class);
+        return $this->hasOne(mahasiswa::class, 'id_user', 'id_user');
     }
 
     public function pegawai()
     {
-        return $this->hasOne(pegawai::class);
+        return $this->hasOne(pegawai::class, 'id_user', 'id_user');
     }
 }

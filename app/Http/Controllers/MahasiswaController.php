@@ -36,7 +36,12 @@ class MahasiswaController extends Controller
      */
     public function show(mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa = mahasiswa::find(20);
+        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
+        $keuangan = $mahasiswa->keuangan()->get();
+        $perpustakaan = $mahasiswa->perpustakaan()->get();
+        $akademik = $mahasiswa->akademik()->get();
+        return view('dashboard.menuMhs.dasboardMhs', compact('mahasiswa', 'tugas_akhir', 'keuangan', 'perpustakaan', 'akademik'));
     }
 
     /**

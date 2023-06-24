@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tugas_akhirs', function (Blueprint $table) {
-            $table->char('id_ta', 10)->primary();
-            $table->char('nim', 10)->index();
-            $table->char('id_pegawai', 10)->index();
+            $table->unsignedBigInteger('id_ta')->autoIncrement();
+            $table->unsignedBigInteger('id_mahasiswa');
+            $table->unsignedBigInteger('id_pegawai');
             $table->binary('lembar_persetujuan');
             $table->binary('lembar_pengesahan');
             $table->binary('lembar_konsul_pemb_1');
@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('status_ta');
             $table->text('rincian_ta');
             $table->timestamps();
+
+
+            $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
         });
     }
 

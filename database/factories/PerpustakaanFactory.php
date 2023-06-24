@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\perpustakaan;
+use App\Models\pegawai;
+use App\Models\mahasiswa;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,6 +12,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class PerpustakaanFactory extends Factory
 {
+    protected $model = perpustakaan::class;
     /**
      * Define the model's default state.
      *
@@ -17,9 +21,8 @@ class PerpustakaanFactory extends Factory
     public function definition(): array
     {
         return [
-            'id_perpus' => fake()->bothify('????-#####'),
-            'nim' => fake()->bothify('????-#####'),
-            'id_pegawai' => fake()->bothify('????-#####'),
+            'id_mahasiswa' => mahasiswa::factory(),
+            'id_pegawai' => pegawai::factory(),
             'dokumen_perpus' => fake()->fileExtension(),
             'keterangan' => fake()->word(),
             'status_perpus' => fake()->word(),

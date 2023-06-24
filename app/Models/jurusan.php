@@ -12,6 +12,6 @@ class jurusan extends Model
 
     public function prodi()
     {
-        return $this->hasMany(prodi::class);
+        return $this->hasMany(prodi::class, 'id_jurusan', 'id_jurusan');
     }
 }
