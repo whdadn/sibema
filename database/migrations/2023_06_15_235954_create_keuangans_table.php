@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('dokumen_keuangan');
             $table->string('status_keuangan');
             $table->text('rincian_keuangan');
+            $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');

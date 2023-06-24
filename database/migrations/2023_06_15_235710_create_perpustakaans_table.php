@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('keterangan');
             $table->string('status_perpus');
             $table->text('rincian_perpus');
+            $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
