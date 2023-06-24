@@ -37,7 +37,7 @@ class MahasiswaController extends Controller
      */
     public function show(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(20);
+        $mahasiswa = mahasiswa::find(10);
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();
@@ -71,7 +71,7 @@ class MahasiswaController extends Controller
 
     public function showTa(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(20);
+        $mahasiswa = mahasiswa::find(10);
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
 
         return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir'));
@@ -79,7 +79,7 @@ class MahasiswaController extends Controller
 
     public function showRegis(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(20);
+        $mahasiswa = mahasiswa::find(10);
         $keuangan = $mahasiswa->keuangan()->get();
 
         return view('dashboard.menuMhs.uploadRegis', compact('keuangan'));
@@ -87,7 +87,7 @@ class MahasiswaController extends Controller
 
     public function showPerpus(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(20);
+        $mahasiswa = mahasiswa::find(10);
         $perpustakaan = $mahasiswa->perpustakaan()->get();
 
         return view('dashboard.menuMhs.uploadPerpus', compact('perpustakaan'));
@@ -95,7 +95,7 @@ class MahasiswaController extends Controller
 
     public function showAkademik(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(20);
+        $mahasiswa = mahasiswa::find(10);
         $akademik = $mahasiswa->akademik()->get();
 
         return view('dashboard.menuMhs.uploadAkademik', compact('akademik'));

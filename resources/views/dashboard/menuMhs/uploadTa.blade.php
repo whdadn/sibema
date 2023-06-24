@@ -51,18 +51,18 @@
             </div>
         </div>
 
-        @foreach ($tugas_akhir as $ta)
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Lembar Persetujuan</th>
-                        <th scope="col">Lembar Pengesahan</th>
-                        <th scope="col">Lembar Konsultasi Pembimbing Pertama</th>
-                        <th scope="col">Lembar Konsultasi Pembimbing Kedua</th>
-                        <th scope="col">Lembar Revisi</th>
-                    </tr>
-                </thead>
-                <tbody>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Lembar Persetujuan</th>
+                    <th scope="col">Lembar Pengesahan</th>
+                    <th scope="col">Lembar Konsultasi Pembimbing Pertama</th>
+                    <th scope="col">Lembar Konsultasi Pembimbing Kedua</th>
+                    <th scope="col">Lembar Revisi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($tugas_akhir as $ta)
                     <tr>
                         <td>{{ $ta->lembar_persetujuan }}</td>
                         <td>{{ $ta->lembar_pengesahan }}</td>
@@ -70,9 +70,9 @@
                         <td>{{ $ta->lembar_konsul_pemb_2 }}</td>
                         <td>{{ $ta->lembar_revisi }}</td>
                     </tr>
-                </tbody>
-            </table>
-        @endforeach
+                @endforeach
+            </tbody>
+        </table>
 
     </div>
 @endsection
