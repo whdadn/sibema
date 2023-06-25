@@ -12,6 +12,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet" />
+
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/core.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/icon-font.min.css') }}" />
@@ -21,6 +22,7 @@
         href="{{ asset('src/plugins/datatables/css/responsive.bootstrap4.min.css') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('vendors/styles/style.css') }}" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ asset('percantik/style.css') }}">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
@@ -34,6 +36,13 @@
 
         gtag("config", "UA-119386393-1");
     </script>
+
+    <style>
+        .clicked-row {
+            background-color: antiquewhite;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -55,6 +64,7 @@
     <script src="{{ asset('src/plugins/datatables/js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('vendors/scripts/dashboard.js') }}"></script>
+    <script src="{{ asset('/js/klik.js') }}"></script>
 </body>
 
 </html>

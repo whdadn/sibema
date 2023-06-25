@@ -47,7 +47,14 @@
                 <a href="/dashboardMhs/uploadAkademik/tambahDokAkademik"><i class="bi bi-plus-circle"></i> Tambah</a>
                 <a href="/dashboardMhs/uploadAkademik/perbaruiDokAkademik"><i
                         class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
+                <form action="/dashboardMhs/uploadAkademik{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
+                    @method('delete')
+                    @csrf
+
+                    <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                            class="icon-copy dw dw-delete-2"></i>
+                        Hapus</button>
+                </form>
             </div>
         </div>
 
@@ -65,7 +72,7 @@
             </thead>
             <tbody>
                 @foreach ($akademik as $akd)
-                    <tr>
+                    <tr class="clickable-row" data-id="{{ $akd->id_akademik }}">
                         <td>{{ $akd->khs_semester_1 }}</td>
                         <td>{{ $akd->khs_semester_2 }}</td>
                         <td>{{ $akd->khs_semester_3 }}</td>

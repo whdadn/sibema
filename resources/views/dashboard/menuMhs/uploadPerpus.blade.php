@@ -47,25 +47,33 @@
                 <a href="/dashboardMhs/uploadPerpus/tambahDokPerpus"><i class="bi bi-plus-circle"></i> Tambah</a>
                 <a href="/dashboardMhs/uploadPerpus/perbaruiDokPerpus"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
                     Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
+                <form action="/dashboardMhs/uploadPerpus{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
+                    @method('delete')
+                    @csrf
+
+                    <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                            class="icon-copy dw dw-delete-2"></i>
+                        Hapus</button>
+                </form>
             </div>
         </div>
 
-        @foreach ($perpustakaan as $perpus)
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Bukti Pengembalian</th>
-                        <th scope="col">Keterangan</th>
-                </thead>
-                <tbody>
-                    <tr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Bukti Pengembalian</th>
+                    <th scope="col">Keterangan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($perpustakaan as $perpus)
+                    <tr class="clickable-row" data-id="{{ $perpus->id_perpus }}">
                         <td>{{ $perpus->dokumen_perpus }}</td>
                         <td>{{ $perpus->keterangan }}</td>
                     </tr>
-                </tbody>
-            </table>
-        @endforeach
+                @endforeach
+            </tbody>
+        </table>
 
     </div>
 @endsection

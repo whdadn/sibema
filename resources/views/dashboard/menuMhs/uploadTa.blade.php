@@ -42,16 +42,23 @@
                 </div>
             </div>
         </div>
-        <div class="clearfix mb-20">
-            <div class="pull-left">
-                <a href="/dashboardMhs/uploadTa/tambahDokTa"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadTa/perbaruiDokTa"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
-            </div>
-        </div>
 
         <table class="table">
+            <div class="clearfix mb-20">
+                <div class="pull-left">
+                    <a href="/dashboardMhs/uploadTa/tambahDokTa"><i class="bi bi-plus-circle"></i> Tambah</a>
+                    <a href="/dashboardMhs/uploadTa/perbaruiDokTa"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
+                        Perbarui</a>
+                    <form action="/dashboardMhs/uploadTa{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+
+                        <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                                class="icon-copy dw dw-delete-2"></i>
+                            Hapus</button>
+                    </form>
+                </div>
+            </div>
             <thead>
                 <tr>
                     <th scope="col">Lembar Persetujuan</th>
@@ -63,7 +70,7 @@
             </thead>
             <tbody>
                 @foreach ($tugas_akhir as $ta)
-                    <tr>
+                    <tr class="clickable-row" data-id="{{ $ta->id_ta }}">
                         <td>{{ $ta->lembar_persetujuan }}</td>
                         <td>{{ $ta->lembar_pengesahan }}</td>
                         <td>{{ $ta->lembar_konsul_pemb_1 }}</td>

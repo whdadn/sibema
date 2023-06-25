@@ -47,7 +47,14 @@
                 <a href="/dashboardMhs/uploadRegis/tambahDokRegis"><i class="bi bi-plus-circle"></i> Tambah</a>
                 <a href="/dashboardMhs/uploadRegis/perbaruiDokRegis"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
                     Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
+                <form action="/dashboardMhs/uploadTa{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
+                    @method('delete')
+                    @csrf
+
+                    <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                            class="icon-copy dw dw-delete-2"></i>
+                        Hapus</button>
+                </form>
             </div>
         </div>
 
@@ -58,7 +65,7 @@
                         <th scope="col">Dokumen Registrasi</th>
                 </thead>
                 <tbody>
-                    <tr>
+                    <tr class="clickable-row" data-id="{{ $regis->id_keuangan }}">
                         <td>{{ $regis->dokumen_keuangan }}</td>
                     </tr>
                 </tbody>

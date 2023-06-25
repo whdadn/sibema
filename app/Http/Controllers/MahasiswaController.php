@@ -66,7 +66,10 @@ class MahasiswaController extends Controller
      */
     public function destroy(mahasiswa $mahasiswa)
     {
-        //
+        $mahasiswa = mahasiswa::find(10);
+
+        $mahasiswa->tugas_akhir()->delete();
+        return redirect('/dashboardMhs/uploadTa');
     }
 
     public function showTa(mahasiswa $mahasiswa)
@@ -74,7 +77,7 @@ class MahasiswaController extends Controller
         $mahasiswa = mahasiswa::find(10);
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
 
-        return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir'));
+        return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir', 'mahasiswa'));
     }
 
     public function showRegis(mahasiswa $mahasiswa)
@@ -82,7 +85,15 @@ class MahasiswaController extends Controller
         $mahasiswa = mahasiswa::find(10);
         $keuangan = $mahasiswa->keuangan()->get();
 
-        return view('dashboard.menuMhs.uploadRegis', compact('keuangan'));
+        return view('dashboard.menuMhs.uploadRegis', compact('keuangan', 'mahasiswa'));
+    }
+
+    public function destroyRegis(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(10);
+
+        $mahasiswa->keuangan()->delete();
+        return redirect('/dashboardMhs/uploadRegis');
     }
 
     public function showPerpus(mahasiswa $mahasiswa)
@@ -90,7 +101,15 @@ class MahasiswaController extends Controller
         $mahasiswa = mahasiswa::find(10);
         $perpustakaan = $mahasiswa->perpustakaan()->get();
 
-        return view('dashboard.menuMhs.uploadPerpus', compact('perpustakaan'));
+        return view('dashboard.menuMhs.uploadPerpus', compact('mahasiswa', 'perpustakaan'));
+    }
+
+    public function destroyPerpus(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(10);
+
+        $mahasiswa->perpustakaan()->delete();
+        return redirect('/dashboardMhs/uploadPerpus');
     }
 
     public function showAkademik(mahasiswa $mahasiswa)
@@ -98,6 +117,14 @@ class MahasiswaController extends Controller
         $mahasiswa = mahasiswa::find(10);
         $akademik = $mahasiswa->akademik()->get();
 
-        return view('dashboard.menuMhs.uploadAkademik', compact('akademik'));
+        return view('dashboard.menuMhs.uploadAkademik', compact('akademik', 'mahasiswa'));
+    }
+
+    public function destroyAkademik(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(10);
+
+        $mahasiswa->akademik()->delete();
+        return redirect('/dashboardMhs/uploadAkademik');
     }
 }

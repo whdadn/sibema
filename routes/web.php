@@ -46,6 +46,7 @@ Route::prefix('/dashboardMhs')->group(function () {
         return view('dashboard.menuMhs.uploadTa');
     });
     Route::get('/uploadTa', [MahasiswaController::class, 'showTa']);
+    Route::delete('/uploadTa{mahasiswa}', [MahasiswaController::class, 'destroy']);
     Route::get('/uploadTa/tambahDokTa', function () {
         return view('dashboard.menuMhs.tambahDokTa');
     });
@@ -53,6 +54,7 @@ Route::prefix('/dashboardMhs')->group(function () {
         return view('dashboard.menuMhs.perbaruiDokTa');
     });
 
+    Route::delete('/uploadRegis{mahasiswa}', [MahasiswaController::class, 'destroyRegis']);
     Route::get('/uploadRegis', function () {
         return view('dashboard.menuMhs.uploadRegis');
     });
@@ -65,6 +67,7 @@ Route::prefix('/dashboardMhs')->group(function () {
         return view('dashboard.menuMhs.PerbaruiDokRegis');
     });
 
+    Route::delete('/uploadPerpus{mahasiswa}', [MahasiswaController::class, 'destroyPerpus']);
     Route::get('/uploadPerpus', function () {
         return view('dashboard.menuMhs.uploadPerpus');
     });
@@ -76,6 +79,7 @@ Route::prefix('/dashboardMhs')->group(function () {
         return view('dashboard.menuMhs.perbaruiDokPerpus');
     });
 
+    Route::delete('/uploadAkademik{mahasiswa}', [MahasiswaController::class, 'destroyAkademik']);
     Route::get('/uploadAkademik', function () {
         return view('dashboard.menuMhs.uploadAkademik');
     });
