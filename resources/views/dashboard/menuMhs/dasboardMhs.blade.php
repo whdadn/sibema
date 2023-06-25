@@ -63,8 +63,8 @@
                         @endforeach
                         <div class="d-grid gap-2 col-7 mx-auto">
                             @foreach ($tugas_akhir as $ta)
-                                <button type="button" class="btn btn-link" data-toggle="modal"
-                                    data-target="#myModal{{ $ta->id_ta }}">Lihat
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
+                                    data-target="#myTa{{ $ta->id_ta }}">Lihat
                                     Rinci</button>
                             @endforeach
                         </div>
@@ -80,7 +80,7 @@
                         @endforeach
                         <div class="d-grid gap-2 col-7 mx-auto">
                             @foreach ($keuangan as $regis)
-                                <button type="button" class="btn btn-link" data-toggle="modal"
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
                                     data-target="#myModal{{ $regis->id_regis }}">Lihat
                                     Rinci</button>
                             @endforeach
@@ -98,7 +98,7 @@
                         <div class="d-grid gap-2 col-7 mx-auto">
                             <!-- Trigger the modal with a button -->
                             @foreach ($perpustakaan as $perpus)
-                                <button type="button" class="btn btn-link" data-toggle="modal"
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
                                     data-target="#rincian{{ $perpus->id_perpus }}">Lihat Rinci</button>
                             @endforeach
                         </div>
@@ -115,7 +115,7 @@
                         @endforeach
                         <div class="d-grid gap-2 col-7 mx-auto">
                             @foreach ($akademik as $akd)
-                                <button type="button" class="btn btn-link" data-toggle="modal"
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
                                     data-target="#myModal{{ $akd->id_akademik }}">Lihat
                                     Rinci</button>
                             @endforeach
@@ -148,7 +148,7 @@
 
         @foreach ($tugas_akhir as $ta)
             <!-- Modal -->
-            <div class="modal fade" id="myModal{{ $ta->id_ta }}" role="dialog">
+            <div class="modal fade" id="myTa{{ $ta->id_ta }}" role="dialog">
                 <div class="modal-dialog modal-dialog-scrollable">
 
                     <!-- Modal content-->

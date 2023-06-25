@@ -39,7 +39,7 @@
 
     <style>
         .clicked-row {
-            background-color: antiquewhite;
+            background-color: #90BCFF;
             cursor: pointer;
         }
     </style>

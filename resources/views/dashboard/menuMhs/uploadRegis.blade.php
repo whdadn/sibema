@@ -58,19 +58,19 @@
             </div>
         </div>
 
-        @foreach ($keuangan as $regis)
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">Dokumen Registrasi</th>
-                </thead>
-                <tbody>
+        <table class="table">
+            <thead>
+                <tr>
+                    <thead scope="col">Dokumen Registrasi</th>
+                    </thead>
+            <tbody>
+                @foreach ($keuangan as $regis)
                     <tr class="clickable-row" data-id="{{ $regis->id_keuangan }}">
                         <td>{{ $regis->dokumen_keuangan }}</td>
                     </tr>
-                </tbody>
-            </table>
-        @endforeach
+                @endforeach
+            </tbody>
+        </table>
 
     </div>
 @endsection

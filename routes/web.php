@@ -39,17 +39,16 @@ Route::middleware(['guest'])->group(function () {
 
 // Bagian Mahasiswa
 Route::prefix('/dashboardMhs')->group(function () {
+
     Route::get('/', [MahasiswaController::class, 'index']);
     Route::get('/', [MahasiswaController::class, 'show']);
-
     Route::get('/uploadTa', function () {
         return view('dashboard.menuMhs.uploadTa');
     });
     Route::get('/uploadTa', [MahasiswaController::class, 'showTa']);
     Route::delete('/uploadTa{mahasiswa}', [MahasiswaController::class, 'destroy']);
-    Route::get('/uploadTa/tambahDokTa', function () {
-        return view('dashboard.menuMhs.tambahDokTa');
-    });
+    Route::get('/uploadTa/tambahDokTa', [MahasiswaController::class, 'create']);
+    Route::post('/uploadTa/tambahDokTa{mahasiswa}', [MahasiswaController::class, 'store']);
     Route::get('/uploadTa/perbaruiDokTa', function () {
         return view('dashboard.menuMhs.perbaruiDokTa');
     });

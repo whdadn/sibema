@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('lembar_konsul_pemb_1');
             $table->string('lembar_konsul_pemb_2');
             $table->string('lembar_revisi');
-            $table->string('status_ta');
-            $table->text('rincian_ta');
+            $table->string('status_ta')->default('Bermasalah');
+            $table->text('rincian_ta')->nullable();
             $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
