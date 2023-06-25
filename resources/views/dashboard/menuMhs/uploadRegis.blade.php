@@ -47,7 +47,7 @@
                 <a href="/dashboardMhs/uploadRegis/tambahDokRegis"><i class="bi bi-plus-circle"></i> Tambah</a>
                 <a href="/dashboardMhs/uploadRegis/perbaruiDokRegis"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
                     Perbarui</a>
-                <form action="/dashboardMhs/uploadTa{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
+                <form action="/dashboardMhs/uploadRegis{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
                     @method('delete')
                     @csrf
 
