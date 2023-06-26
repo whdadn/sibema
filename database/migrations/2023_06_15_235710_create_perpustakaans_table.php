@@ -16,9 +16,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_mahasiswa');
             $table->unsignedBigInteger('id_pegawai');
             $table->string('dokumen_perpus')->nullable();
-            $table->string('keterangan');
-            $table->string('status_perpus');
-            $table->text('rincian_perpus');
+            $table->string('keterangan')->nullable();
+            $table->string('status_perpus')->nullable();
+            $table->text('rincian_perpus')->nullable();
             $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');

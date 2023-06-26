@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\TugasAkhirController;
+use App\Models\mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,12 +48,12 @@ Route::prefix('/dashboardMhs')->group(function () {
         return view('dashboard.menuMhs.uploadTa');
     });
     Route::get('/uploadTa', [MahasiswaController::class, 'showTa']);
-    Route::delete('/uploadTa{id_ta}', [MahasiswaController::class, 'destroy']);
-    Route::get('/uploadTa/tambahDokTa', [MahasiswaController::class, 'create']);
-    Route::post('/uploadTa/tambahDokTa{mahasiswa}', [MahasiswaController::class, 'store']);
-    Route::get('/uploadTa/perbaruiDokTa', function () {
-        return view('dashboard.menuMhs.perbaruiDokTa');
-    });
+    Route::delete('/uploadTa{mahasiswa}', [MahasiswaController::class, 'destroy']);
+    Route::get('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'create']);
+    Route::post('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'store']);
+    Route::get('/uploadTa/perbaruiDokTa', [MahasiswaController::class, 'edit']);
+    Route::post('/uploadTa/perbaruiDokTa{id_mahasiswa}', [MahasiswaController::class, 'update']);
+
 
     Route::delete('/uploadRegis{mahasiswa}', [MahasiswaController::class, 'destroyRegis']);
     Route::get('/uploadRegis', function () {

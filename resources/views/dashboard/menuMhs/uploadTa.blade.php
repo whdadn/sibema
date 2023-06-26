@@ -46,15 +46,16 @@
         <div class="clearfix mb-20">
             <div class="pull-left">
                 <a href="/dashboardMhs/uploadTa/tambahDokTa"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadTa/perbaruiDokTa"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
+                <a href="/dashboardMhs/uploadTa/perbaruiDokTa"><i class="icon-copy dw dw-edit-1 ml-2 linked"
+                        id="1"></i>
                     Perbarui</a>
 
                 <form action="/dashboardMhs/uploadTa{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
                     @method('delete')
                     @csrf
 
-                    <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
-                            class="icon-copy dw dw-delete-2"></i>
+                    <button class="btn btn-link-red ml-1 p-0" id="1"
+                        onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
                         Hapus</button>
                 </form>
             </div>

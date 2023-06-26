@@ -33,41 +33,6 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $pegawai = pegawai::find(55);
-
-        $tugasAkhir = new tugas_akhir();
-        $tugasAkhir->id_mahasiswa = $mahasiswa->id_mahasiswa;
-        $tugasAkhir->id_pegawai = $pegawai->id_pegawai;
-
-        if ($request->has('persetujuan')) {
-            $request->file('persetujuan')->move('lembarPersetujuan/', $request->file('persetujuan')->getClientOriginalName());
-            $tugasAkhir->lembar_persetujuan = $request->file('persetujuan')->getClientOriginalName();
-        }
-
-        if ($request->has('pengesahan')) {
-            $request->file('pengesahan')->move('lembarPengesahan/', $request->file('pengesahan')->getClientOriginalName());
-            $tugasAkhir->lembar_pengesahan = $request->file('pengesahan')->getClientOriginalName();
-        }
-
-        if ($request->has('konsul1')) {
-            $request->file('konsul1')->move('lembarKonsul1/', $request->file('konsul1')->getClientOriginalName());
-            $tugasAkhir->lembar_konsul_pemb_1 = $request->file('konsul1')->getClientOriginalName();
-        }
-
-        if ($request->has('konsul2')) {
-            $request->file('konsul2')->move('lembarKonsul2/', $request->file('konsul2')->getClientOriginalName());
-            $tugasAkhir->lembar_konsul_pemb_2 = $request->file('konsul2')->getClientOriginalName();
-        }
-
-        if ($request->has('revisi')) {
-            $request->file('revisi')->move('lembarRevisi/', $request->file('revisi')->getClientOriginalName());
-            $tugasAkhir->lembar_revisi = $request->file('revisi')->getClientOriginalName();
-        }
-
-        $tugasAkhir->save();
-
-        return redirect('/dashboardMhs/uploadTa');
     }
 
     /**
@@ -86,17 +51,43 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(mahasiswa $mahasiswa)
+    public function edit($id)
     {
-        //
+        $mahasiswa = mahasiswa::findorfail('id');
+        return view('dashboard.menuMhs.perbaruiDokTa', compact('mahasiswa'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, mahasiswa $mahasiswa)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'lembar_pengesahan' => 'required',
+            'lembar_persetujuan' => 'required',
+            'lembar_konsul_pemb_1' => 'required',
+            'lembar_konsul_pemb_2' => 'required',
+            'lembar_revisi' => 'required',
+        ]);
+
+        $tugasAkhir = tugas_akhir::where('mahasiswa_id', $id)->first();
+
+        // Cek apakah tugas akhir ditemukan untuk mahasiswa yang diberikan
+        if (!$tugasAkhir) {
+            return redirect()->back()->with('error', 'Tugas Akhir tidak ditemukan untuk mahasiswa ini.');
+        }
+
+        // Update data tugas_akhir
+        $tugasAkhir->lembar_pengesahan = $request->lembar_pengesahan;
+        $tugasAkhir->lembar_persetujuan = $request->lembar_persetujuan;
+        $tugasAkhir->lembar_konsul_pemb_1 = $request->lembar_konsul_pemb_1;
+        $tugasAkhir->lembar_konsul_pemb_2 = $request->lembar_konsul_pemb_2;
+        $tugasAkhir->lembar_revisi = $request->lembar_revisi;
+
+        // Simpan perubahan
+        $tugasAkhir->save();
+
+        return redirect()->back()->with('success', 'Perubahan berhasil disimpan.');
     }
 
     /**

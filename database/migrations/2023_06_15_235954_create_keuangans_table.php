@@ -15,9 +15,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_keuangan')->autoIncrement();
             $table->unsignedBigInteger('id_mahasiswa');
             $table->unsignedBigInteger('id_pegawai');
-            $table->string('dokumen_keuangan');
-            $table->string('status_keuangan');
-            $table->text('rincian_keuangan');
+            $table->string('dokumen_keuangan')->nullable();
+            $table->string('status_keuangan')->default('Bermasalah');
+            $table->text('rincian_keuangan')->nullable();
             $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
