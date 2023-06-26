@@ -6,6 +6,8 @@ use App\Models\mahasiswa;
 use App\Models\pegawai;
 use App\Models\tugas_akhir;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
 {
@@ -38,57 +40,29 @@ class MahasiswaController extends Controller
         $tugasAkhir->id_mahasiswa = $mahasiswa->id_mahasiswa;
         $tugasAkhir->id_pegawai = $pegawai->id_pegawai;
 
-        $persetujuan = $request->file('persetujuan');
-        $pengesahan = $request->file('pengesahan');
-        $konsul1 = $request->file('konsul1');
-        $konsul2 = $request->file('konsul2');
-        $revisi = $request->file('revisi');
+        if ($request->has('persetujuan')) {
+            $request->file('persetujuan')->move('lembarPersetujuan/', $request->file('persetujuan')->getClientOriginalName());
+            $tugasAkhir->lembar_persetujuan = $request->file('persetujuan')->getClientOriginalName();
+        }
 
-        // Simpan setiap file ke penyimpanan
-        if ($persetujuan) {
-            try {
-                $path = $persetujuan->store('public');
-                $tugasAkhir->lembar_persetujuan = $path;
-            } catch (\Exception $e) {
-                // Log or display the error message
-                dd($e->getMessage());
-            }
+        if ($request->has('pengesahan')) {
+            $request->file('pengesahan')->move('lembarPengesahan/', $request->file('pengesahan')->getClientOriginalName());
+            $tugasAkhir->lembar_pengesahan = $request->file('pengesahan')->getClientOriginalName();
         }
-        if ($pengesahan) {
-            try {
-                $path = $pengesahan->store('public');
-                $tugasAkhir->lembar_pengesahan = $path;
-            } catch (\Exception $e) {
-                // Log or display the error message
-                dd($e->getMessage());
-            }
+
+        if ($request->has('konsul1')) {
+            $request->file('konsul1')->move('lembarKonsul1/', $request->file('konsul1')->getClientOriginalName());
+            $tugasAkhir->lembar_konsul_pemb_1 = $request->file('konsul1')->getClientOriginalName();
         }
-        if ($konsul1) {
-            try {
-                $path = $konsul1->store('public');
-                $tugasAkhir->lembar_konsul_pemb_1 = $path;
-            } catch (\Exception $e) {
-                // Log or display the error message
-                dd($e->getMessage());
-            }
+
+        if ($request->has('konsul2')) {
+            $request->file('konsul2')->move('lembarKonsul2/', $request->file('konsul2')->getClientOriginalName());
+            $tugasAkhir->lembar_konsul_pemb_2 = $request->file('konsul2')->getClientOriginalName();
         }
-        if ($konsul2) {
-            try {
-                $path = $konsul2->store('public');
-                $tugasAkhir->lembar_konsul_pemb_2 = $path;
-            } catch (\Exception $e) {
-                // Log or display the error message
-                dd($e->getMessage());
-            }
-        }
-        if ($revisi) {
-            try {
-                $path = $revisi->store('public/lembarPersetujuan');
-                $tugasAkhir->lembar_revisi = $path;
-            } catch (\Exception $e) {
-                // Log or display the error message
-                dd($e->getMessage());
-            }
+
+        if ($request->has('revisi')) {
+            $request->file('revisi')->move('lembarRevisi/', $request->file('revisi')->getClientOriginalName());
+            $tugasAkhir->lembar_revisi = $request->file('revisi')->getClientOriginalName();
         }
 
         $tugasAkhir->save();
@@ -132,7 +106,10 @@ class MahasiswaController extends Controller
     {
         $mahasiswa = mahasiswa::find(10);
 
+        // Hapus relasi tugas akhir
         $mahasiswa->tugas_akhir()->delete();
+
+
         return redirect('/dashboardMhs/uploadTa');
     }
 
