@@ -101,4 +101,12 @@ class TugasAkhirController extends Controller
     {
         //
     }
+
+    public function showTa(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::find(10);
+        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
+
+        return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir', 'mahasiswa'));
+    }
 }

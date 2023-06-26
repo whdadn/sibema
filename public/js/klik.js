@@ -1,3 +1,14 @@
+var table = document.getElementById('data-table');
+    var rows = table.getElementsByTagName('tr');
+
+    for (var i = 0; i < rows.length; i++) {
+      var currentRow = rows[i];
+      currentRow.addEventListener('click', function() {
+        var id = this.getAttribute('data-id');
+        // Lakukan operasi lain dengan ID yang dipilih
+      });
+    }
+
 
     document.addEventListener('DOMContentLoaded', function() {
         var tableRows = document.getElementsByClassName('clickable-row');
@@ -16,27 +27,15 @@
                 clickedRow = this;
             });
         });
-
-        deleteButton.addEventListener('click', function(event) {
-            if (clickedRow) {
-                var id = clickedRow.getAttribute('data-id');
-                console.log('Hapus Item ID:', id); // Anda dapat mengganti ini dengan aksi penghapusan item di database
-
-                // Hapus baris dari tabel
-                clickedRow.parentNode.removeChild(clickedRow);
-                clickedRow = null;
-            }
-        });
-
-        document.addEventListener('click', function(event) {
-            var target = event.target;
-            if (!target.closest('table') && target !== deleteButton) {
-                // Menghapus penanda pada baris jika bagian di luar tabel diklik
-                if (clickedRow) {
-                    clickedRow.classList.remove('clicked-row');
-                    clickedRow = null;
-                }
-            }
-        });
     });
+
+    var addDataButton = document.getElementById('add-button');
+    var table = document.getElementById('data-table');
+    var rows = table.getElementsByTagName('tr');
+
+    if (rows.length > 1) {
+        addDataButton.disabled = true;
+        addDataButton.classList.add('disabled');
+    }
+
 

@@ -104,13 +104,7 @@ class MahasiswaController extends Controller
         return redirect('/dashboardMhs/uploadTa');
     }
 
-    public function showTa(mahasiswa $mahasiswa)
-    {
-        $mahasiswa = mahasiswa::find(10);
-        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
 
-        return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir', 'mahasiswa'));
-    }
 
     public function showRegis(mahasiswa $mahasiswa)
     {

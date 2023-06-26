@@ -47,7 +47,7 @@ Route::prefix('/dashboardMhs')->group(function () {
     Route::get('/uploadTa', function () {
         return view('dashboard.menuMhs.uploadTa');
     });
-    Route::get('/uploadTa', [MahasiswaController::class, 'showTa']);
+    Route::get('/uploadTa', [TugasAkhirController::class, 'showTa']);
     Route::delete('/uploadTa{mahasiswa}', [MahasiswaController::class, 'destroy']);
     Route::get('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'create']);
     Route::post('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'store']);

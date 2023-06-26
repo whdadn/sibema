@@ -45,12 +45,13 @@
 
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboardMhs/uploadTa/tambahDokTa"><i class="bi bi-plus-circle"></i> Tambah</a>
+                <a href="/dashboardMhs/uploadTa/tambahDokTa" class="btn btn-link-red ml-1 p-0" id="add-button"><i
+                        class="bi bi-plus-circle"></i> Tambah</a>
                 <a href="/dashboardMhs/uploadTa/perbaruiDokTa"><i class="icon-copy dw dw-edit-1 ml-2 linked"
                         id="1"></i>
                     Perbarui</a>
 
-                <form action="/dashboardMhs/uploadTa{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
+                <form action="/dashboardMhs/uploadTa{{ $tugas_akhir }}" method="POST" class="d-inline">
                     @method('delete')
                     @csrf
 
@@ -61,7 +62,7 @@
             </div>
         </div>
 
-        <table class="table">
+        <table class="table" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Lembar Persetujuan</th>
