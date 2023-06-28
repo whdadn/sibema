@@ -1,9 +1,14 @@
 <?php
 
+use App\Http\Controllers\AkademikController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PerpusController;
+use App\Http\Controllers\RegistrasiController;
+use App\Http\Controllers\TugasAkhirController;
+use App\Models\mahasiswa;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,48 +44,50 @@ Route::middleware(['guest'])->group(function () {
 
 // Bagian Mahasiswa
 Route::prefix('/dashboardMhs')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard.menuMhs.dasboardMhs');
-    });
 
+    Route::get('/', [MahasiswaController::class, 'index']);
     Route::get('/', [MahasiswaController::class, 'show']);
-
     Route::get('/uploadTa', function () {
         return view('dashboard.menuMhs.uploadTa');
     });
-    Route::get('/uploadTa/tambahDokTa', function () {
-        return view('dashboard.menuMhs.tambahDokTa');
-    });
-    Route::get('/uploadTa/perbaruiDokTa', function () {
-        return view('dashboard.menuMhs.perbaruiDokTa');
-    });
+    Route::get('/uploadTa', [TugasAkhirController::class, 'showTa']);
+    Route::delete('/uploadTa{tugas_akhir}', [TugasAkhirController::class, 'destroy']);
+    Route::get('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'create']);
+    Route::post('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'store']);
+    // Route::get('/uploadTa/perbaruiDokTa{tugas_akhir}', [TugasAkhirController::class, 'edit']);
+    // Route::post('/uploadTa/perbaruiDokTa{tugas_akhir}', [TugasAkhirController::class, 'update']);
+
+
     Route::get('/uploadRegis', function () {
         return view('dashboard.menuMhs.uploadRegis');
     });
+    Route::get('/uploadRegis', [RegistrasiController::class, 'showRegis']);
+    Route::delete('/uploadRegis{keuangan}', [RegistrasiController::class, 'destroy']);
+    Route::get('/uploadRegis/tambahDokRegis', [RegistrasiController::class, 'create']);
+    Route::post('/uploadRegis/tambahDokRegis', [RegistrasiController::class, 'store']);
+
     Route::get('/uploadRegis/tambahDokRegis', function () {
         return view('dashboard.menuMhs.tambahDokRegis');
     });
     Route::get('/uploadRegis/perbaruiDokRegis', function () {
         return view('dashboard.menuMhs.PerbaruiDokRegis');
     });
+
     Route::get('/uploadPerpus', function () {
         return view('dashboard.menuMhs.uploadPerpus');
     });
-    Route::get('/uploadPerpus/tambahDokPerpus', function () {
-        return view('dashboard.menuMhs.tambahDokPerpus');
-    });
-    Route::get('/uploadPerpus/perbaruiDokPerpus', function () {
-        return view('dashboard.menuMhs.perbaruiDokPerpus');
-    });
+    Route::get('/uploadPerpus', [PerpusController::class, 'showPerpus']);
+    Route::delete('/uploadPerpus{perpustakaan}', [PerpusController::class, 'destroy']);
+    Route::get('uploadPerpus/tambahDokPerpus', [PerpusController::class, 'create']);
+    Route::post('uploadPerpus/tambahDokPerpus', [PerpusController::class, 'store']);
+
     Route::get('/uploadAkademik', function () {
         return view('dashboard.menuMhs.uploadAkademik');
     });
-    Route::get('/uploadAkademik/tambahDokAkademik', function () {
-        return view('dashboard.menuMhs.tambahDokAkademik');
-    });
-    Route::get('/uploadAkademik/perbaruiDokAkademik', function () {
-        return view('dashboard.menuMhs.perbaruiDokAkademik');
-    });
+    Route::get('/uploadAkademik', [AkademikController::class, 'showAkademik']);
+    Route::delete('/uploadAkademik{akademik}', [AkademikController::class, 'destroy']);
+    Route::get('/uploadAkademik/tambahDokAkademik', [AkademikController::class, 'create']);
+    Route::post('/uploadAkademik/tambahDokAkademik', [AkademikController::class, 'store']);
 });
 
 //bagian Admin Prodi

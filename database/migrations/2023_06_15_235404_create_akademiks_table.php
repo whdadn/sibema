@@ -15,15 +15,15 @@ return new class extends Migration
             $table->unsignedBigInteger('id_akademik')->autoIncrement();
             $table->unsignedBigInteger('id_mahasiswa');
             $table->unsignedBigInteger('id_pegawai',);
-            $table->string('status_akademik');
-            $table->binary('khs_semester_1');
-            $table->binary('khs_semester_2');
-            $table->binary('khs_semester_3');
-            $table->binary('khs_semester_4');
-            $table->binary('khs_semester_5');
-            $table->binary('khs_semester_6');
-            $table->binary('lembar_sp');
-            $table->text('rincian_akademik');
+            $table->string('status_akademik')->default('Bermasalah');
+            $table->string('khs_semester_1')->nullable();
+            $table->string('khs_semester_2')->nullable();
+            $table->string('khs_semester_3')->nullable();
+            $table->string('khs_semester_4')->nullable();
+            $table->string('khs_semester_5')->nullable();
+            $table->string('khs_semester_6')->nullable();
+            $table->string('lembar_sp')->nullable();
+            $table->text('rincian_akademik')->nullable();
             $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');

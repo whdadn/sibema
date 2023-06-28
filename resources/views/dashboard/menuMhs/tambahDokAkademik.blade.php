@@ -42,53 +42,55 @@
                 </div>
             </div>
         </div>
-        <form>
+        <form action="/dashboardMhs/uploadAkademik/tambahDokAkademik" method="POST" enctype="multipart/form-data">
+            @csrf
+
             <div class="form-group">
                 <label>KHS Semester 1</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="sem1" id="sem1" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>KHS Semester 2</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="sem2" id="sem2" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>KHS Semester 3</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="sem3" id="sem3" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>KHS Semester 4</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="sem4" id="sem4" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>KHS Semester 5</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="sem5" id="sem5" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>KHS Semester 6</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="sem6" id="sem6" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Lembar SP</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="sp" id="sp">
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>

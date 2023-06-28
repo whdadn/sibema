@@ -42,15 +42,31 @@
                 </div>
             </div>
         </div>
+
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboardMhs/uploadTa/tambahDokTa"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadTa/perbaruiDokTa"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
+                <a href="/dashboardMhs/uploadTa/tambahDokTa" class="btn btn-link-red ml-1 p-0" id="add-button"><i
+                        class="bi bi-plus-circle"></i> Tambah</a>
+                {{-- @if ($tugas_akhir->first() != null)
+                    <a href="/dashboardMhs/uploadTa/perbaruiDokTa{{ $tugas_akhir->first()->id_ta }}"><i
+                            class="icon-copy dw dw-edit-1 ml-2 linked" id="1"></i>
+                        Perbarui</a>
+                @endif --}}
+
+                @if ($tugas_akhir->first() != null)
+                    <form action="/dashboardMhs/uploadTa{{ $tugas_akhir->first()->id_ta }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
+
+                        <button class="btn btn-link-red ml-1 p-0" id="1"
+                            onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
+                            Hapus</button>
+                    </form>
+                @endif
             </div>
         </div>
-        <table class="table">
+
+        <table class="table" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Lembar Persetujuan</th>
@@ -61,13 +77,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Revisi</td>
-                </tr>
+                @foreach ($tugas_akhir as $ta)
+                    <tr class="clickable-row" data-id="{{ $ta->id_ta }}">
+                        <td>{{ $ta->lembar_persetujuan }}</td>
+                        <td>{{ $ta->lembar_pengesahan }}</td>
+                        <td>{{ $ta->lembar_konsul_pemb_1 }}</td>
+                        <td>{{ $ta->lembar_konsul_pemb_2 }}</td>
+                        <td>{{ $ta->lembar_revisi }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 

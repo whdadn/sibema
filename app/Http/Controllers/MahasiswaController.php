@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\mahasiswa;
+use App\Models\pegawai;
+use App\Models\tugas_akhir;
 use Illuminate\Http\Request;
+
 
 class MahasiswaController extends Controller
 {
@@ -12,7 +15,7 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.menuMhs.dasboardMhs');
     }
 
     /**
@@ -20,7 +23,8 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        //
+        $mahasiswa = mahasiswa::find(10);
+        return view('dashboard/menuMhs/tambahDokTa', compact('mahasiswa'));
     }
 
     /**
@@ -28,7 +32,6 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -36,7 +39,7 @@ class MahasiswaController extends Controller
      */
     public function show(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(20);
+        $mahasiswa = mahasiswa::find(10);
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();
@@ -47,17 +50,15 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(mahasiswa $mahasiswa)
+    public function edit()
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, mahasiswa $mahasiswa)
+    public function update(Request $request)
     {
-        //
     }
 
     /**
@@ -65,6 +66,5 @@ class MahasiswaController extends Controller
      */
     public function destroy(mahasiswa $mahasiswa)
     {
-        //
     }
 }

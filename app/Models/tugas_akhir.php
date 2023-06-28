@@ -9,6 +9,7 @@ class tugas_akhir extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'id_ta';
 
     public function pegawai()
     {

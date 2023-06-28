@@ -42,11 +42,12 @@
                 </div>
             </div>
         </div>
-        <form>
+        <form action="/dashboardMhs/uploadRegis/tambahDokRegis" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label>Bukti Registrasi</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" name="registrasi" class="custom-file-input" id="registrasi" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>

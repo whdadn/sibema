@@ -33,7 +33,8 @@
     </script>
 
     {{-- Java Script Sendiri --}}
-    <script src="/js/script.js"></script>
+    <script src="{{ asset('/js/script.js') }}"></script>
+    <script src="{{ asset('/js/klik.js') }}"></script>
 
 </body>
 

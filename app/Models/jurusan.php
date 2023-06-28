@@ -9,6 +9,7 @@ class jurusan extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'id_jurusan';
 
     public function prodi()
     {
