@@ -42,18 +42,19 @@
                 </div>
             </div>
         </div>
-        <form action="/dashboardMhs/uploadTa/perbaruiDokTa{{ $mahasiswa->id_mahasiswa }}" method="POST">
+        <form action="/dashboardMhs/uploadTa/perbaruiDokTa{{ $tugas_akhir->first()->id_ta }}" method="POST">
             @csrf
             <div class="form-group">
                 <label>Lembar Persetujuan</label>
+                <input type="hidden" name="oldPersetujuan" value="{{ $tugas_akhir->first()->lembar_persetujuan }}">
                 <div class="custom-file">
-                    <input type="file" name="persetujuan" id="persetujuan" class="custom-file-input"
-                        value="mahasiswa->tugas_akhir->lembar_persetujuan">
+                    <input type="file" name="persetujuan" id="persetujuan" class="custom-file-input">
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Lembar Pengesahan</label>
+                <input type="hidden" name="oldPengesahan" value="{{ $tugas_akhir->first()->lembar_pengesahan }}">
                 <div class="custom-file">
                     <input type="file" name="pengesahan" id="pengesahan" class="custom-file-input">
                     <label class="custom-file-label">Choose file</label>
@@ -61,6 +62,7 @@
             </div>
             <div class="form-group">
                 <label>Lembar Konsultasi Pembimbing Pertama</label>
+                <input type="hidden" name="oldKonsul1" value="{{ $tugas_akhir->first()->lembar_konsul_pemb_1 }}">
                 <div class="custom-file">
                     <input type="file" name="konsul1" id="konsul1" class="custom-file-input">
                     <label class="custom-file-label">Choose file</label>
@@ -68,6 +70,7 @@
             </div>
             <div class="form-group">
                 <label>Lembar Konsultasi Pembimbing Kedua</label>
+                <input type="hidden" name="oldKonsul2" value="{{ $tugas_akhir->first()->lembar_konsul_pemb_2 }}">
                 <div class="custom-file">
                     <input type="file" name="konsul2" id="konsul2" class="custom-file-input">
                     <label class="custom-file-label">Choose file</label>
@@ -75,6 +78,7 @@
             </div>
             <div class="form-group">
                 <label>Lembar Revisi</label>
+                <input type="hidden" name="oldRevisi" value="{{ $tugas_akhir->first()->lembar_revisi }}">
                 <div class="custom-file">
                     <input type="file" name="revisi" id="revisi" class="custom-file-input">
                     <label class="custom-file-label">Choose file</label>

@@ -42,17 +42,18 @@
                 </div>
             </div>
         </div>
-        <form>
+        <form action="/dashboardMhs/uploadPerpus/tambahDokPerpus" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
                 <label>Bukti Pengembalian</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="pengembalian" id="pengembalian">
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Keterangan</label>
-                <input class="form-control" type="text">
+                <input class="form-control" type="text" name="keterangan" id="keterangan" required>
             </div>
             <button class="btn btn-primary">Simpan</button>
         </form>

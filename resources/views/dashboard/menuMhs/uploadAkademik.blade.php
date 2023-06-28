@@ -44,21 +44,26 @@
         </div>
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboardMhs/uploadAkademik/tambahDokAkademik"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadAkademik/perbaruiDokAkademik"><i
-                        class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a>
-                <form action="/dashboardMhs/uploadAkademik{{ $mahasiswa->id_mahasiswa }}" method="POST" class="d-inline">
-                    @method('delete')
-                    @csrf
+                <a href="/dashboardMhs/uploadAkademik/tambahDokAkademik" class="btn btn-link-red ml-1 p-0"
+                    id="add-button"><i class="bi bi-plus-circle"></i> Tambah</a>
+                {{-- <a href="/dashboardMhs/uploadAkademik/perbaruiDokAkademik"><i
+                        class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a> --}}
 
-                    <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
-                            class="icon-copy dw dw-delete-2"></i>
-                        Hapus</button>
-                </form>
+                @if ($akademik->first() != null)
+                    <form action="/dashboardMhs/uploadAkademik{{ $akademik->first()->id_akademik }}" method="POST"
+                        class="d-inline">
+                        @method('delete')
+                        @csrf
+
+                        <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                                class="icon-copy dw dw-delete-2"></i>
+                            Hapus</button>
+                    </form>
+                @endif
             </div>
         </div>
 
-        <table class="table">
+        <table class="table" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">KHS Semester 1</th>

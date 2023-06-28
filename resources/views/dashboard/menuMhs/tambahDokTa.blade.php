@@ -49,35 +49,35 @@
             <div class="form-group">
                 <label>Lembar Persetujuan</label>
                 <div class="custom-file">
-                    <input type="file" name="persetujuan" id="persetujuan" class="custom-file-input">
+                    <input type="file" name="persetujuan" id="persetujuan" class="custom-file-input" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Lembar Pengesahan</label>
                 <div class="custom-file">
-                    <input type="file" name="pengesahan" id="pengesahan" class="custom-file-input">
+                    <input type="file" name="pengesahan" id="pengesahan" class="custom-file-input" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Lembar Konsultasi Pembimbing Pertama</label>
                 <div class="custom-file">
-                    <input type="file" name="konsul1" id="konsul1" class="custom-file-input">
+                    <input type="file" name="konsul1" id="konsul1" class="custom-file-input" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Lembar Konsultasi Pembimbing Kedua</label>
                 <div class="custom-file">
-                    <input type="file" name="konsul2" id="konsul2" class="custom-file-input">
+                    <input type="file" name="konsul2" id="konsul2" class="custom-file-input" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
             <div class="form-group">
                 <label>Lembar Revisi</label>
                 <div class="custom-file">
-                    <input type="file" name="revisi" id="revisi" class="custom-file-input">
+                    <input type="file" name="revisi" id="revisi" class="custom-file-input" required>
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>

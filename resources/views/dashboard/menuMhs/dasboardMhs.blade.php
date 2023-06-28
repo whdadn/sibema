@@ -92,9 +92,7 @@
                 <div class="card d-grid gap-2 d-md-block">
                     <div class="card-body">
                         <h5 class="card-title text-center">Perpustakaan</h5>
-                        @foreach ($perpustakaan as $perpus)
-                            <p class="card-text text-center text-danger">{{ $perpus->status_perpus }}</p>
-                        @endforeach
+                        <p class="card-text text-center text-danger">{{ $perpustakaan->first()->status_perpus }}</p>
                         <div class="d-grid gap-2 col-7 mx-auto">
                             <!-- Trigger the modal with a button -->
                             @foreach ($perpustakaan as $perpus)

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pegawai');
             $table->string('dokumen_perpus')->nullable();
             $table->string('keterangan')->nullable();
-            $table->string('status_perpus')->nullable();
+            $table->string('status_perpus')->default('Bermasalah');
             $table->text('rincian_perpus')->nullable();
             $table->timestamps();
 

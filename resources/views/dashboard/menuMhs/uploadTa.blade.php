@@ -47,18 +47,22 @@
             <div class="pull-left">
                 <a href="/dashboardMhs/uploadTa/tambahDokTa" class="btn btn-link-red ml-1 p-0" id="add-button"><i
                         class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadTa/perbaruiDokTa"><i class="icon-copy dw dw-edit-1 ml-2 linked"
-                        id="1"></i>
-                    Perbarui</a>
+                {{-- @if ($tugas_akhir->first() != null)
+                    <a href="/dashboardMhs/uploadTa/perbaruiDokTa{{ $tugas_akhir->first()->id_ta }}"><i
+                            class="icon-copy dw dw-edit-1 ml-2 linked" id="1"></i>
+                        Perbarui</a>
+                @endif --}}
 
-                <form action="/dashboardMhs/uploadTa{{ $tugas_akhir }}" method="POST" class="d-inline">
-                    @method('delete')
-                    @csrf
+                @if ($tugas_akhir->first() != null)
+                    <form action="/dashboardMhs/uploadTa{{ $tugas_akhir->first()->id_ta }}" method="POST" class="d-inline">
+                        @method('delete')
+                        @csrf
 
-                    <button class="btn btn-link-red ml-1 p-0" id="1"
-                        onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
-                        Hapus</button>
-                </form>
+                        <button class="btn btn-link-red ml-1 p-0" id="1"
+                            onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
+                            Hapus</button>
+                    </form>
+                @endif
             </div>
         </div>
 
