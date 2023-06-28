@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class prodi extends Model
 {
     use HasFactory;
+    protected $guard = [];
+    protected $primaryKey = 'id_prodi';
 
     public function jurusan()
     {

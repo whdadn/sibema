@@ -62,9 +62,11 @@
                                 {{ $ta->status_ta }}</p>
                         @endforeach
                         <div class="d-grid gap-2 col-7 mx-auto">
-                            <button type="button" class="btn btn-link" data-toggle="modal"
-                                data-target="#myModal{{ $ta->id_ta }}">Lihat
-                                Rinci</button>
+                            @foreach ($tugas_akhir as $ta)
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
+                                    data-target="#myTa{{ $ta->id_ta }}">Lihat
+                                    Rinci</button>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -77,9 +79,11 @@
                             <p class="card-text text-center text-danger">{{ $regis->status_keuangan }}</p>
                         @endforeach
                         <div class="d-grid gap-2 col-7 mx-auto">
-                            <button type="button" class="btn btn-link" data-toggle="modal"
-                                data-target="#myModal{{ $regis->id_regis }}">Lihat
-                                Rinci</button>
+                            @foreach ($keuangan as $regis)
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
+                                    data-target="#myModal{{ $regis->id_regis }}">Lihat
+                                    Rinci</button>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -88,13 +92,13 @@
                 <div class="card d-grid gap-2 d-md-block">
                     <div class="card-body">
                         <h5 class="card-title text-center">Perpustakaan</h5>
-                        @foreach ($perpustakaan as $perpus)
-                            <p class="card-text text-center text-danger">{{ $perpus->status_perpus }}</p>
-                        @endforeach
+                        <p class="card-text text-center text-danger">{{ $perpustakaan->first()->status_perpus }}</p>
                         <div class="d-grid gap-2 col-7 mx-auto">
                             <!-- Trigger the modal with a button -->
-                            <button type="button" class="btn btn-link" data-toggle="modal"
-                                data-target="#rincian{{ $perpus->id_perpus }}">Lihat Rinci</button>
+                            @foreach ($perpustakaan as $perpus)
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
+                                    data-target="#rincian{{ $perpus->id_perpus }}">Lihat Rinci</button>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -108,9 +112,11 @@
                             <p class="card-text text-center text-danger">{{ $akd->status_akademik }}</p>
                         @endforeach
                         <div class="d-grid gap-2 col-7 mx-auto">
-                            <button type="button" class="btn btn-link" data-toggle="modal"
-                                data-target="#myModal{{ $akd->id_akademik }}">Lihat
-                                Rinci</button>
+                            @foreach ($akademik as $akd)
+                                <button type="button" class="btn btn-link btn-sm" data-toggle="modal"
+                                    data-target="#myModal{{ $akd->id_akademik }}">Lihat
+                                    Rinci</button>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -140,7 +146,7 @@
 
         @foreach ($tugas_akhir as $ta)
             <!-- Modal -->
-            <div class="modal fade" id="myModal{{ $ta->id_ta }}" role="dialog">
+            <div class="modal fade" id="myTa{{ $ta->id_ta }}" role="dialog">
                 <div class="modal-dialog modal-dialog-scrollable">
 
                     <!-- Modal content-->

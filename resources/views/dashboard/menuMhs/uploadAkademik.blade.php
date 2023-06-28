@@ -44,13 +44,26 @@
         </div>
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboardMhs/uploadAkademik/tambahDokAkademik"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadAkademik/perbaruiDokAkademik"><i
-                        class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
+                <a href="/dashboardMhs/uploadAkademik/tambahDokAkademik" class="btn btn-link-red ml-1 p-0"
+                    id="add-button"><i class="bi bi-plus-circle"></i> Tambah</a>
+                {{-- <a href="/dashboardMhs/uploadAkademik/perbaruiDokAkademik"><i
+                        class="icon-copy dw dw-edit-1 ml-2 linked"></i> Perbarui</a> --}}
+
+                @if ($akademik->first() != null)
+                    <form action="/dashboardMhs/uploadAkademik{{ $akademik->first()->id_akademik }}" method="POST"
+                        class="d-inline">
+                        @method('delete')
+                        @csrf
+
+                        <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                                class="icon-copy dw dw-delete-2"></i>
+                            Hapus</button>
+                    </form>
+                @endif
             </div>
         </div>
-        <table class="table">
+
+        <table class="table" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">KHS Semester 1</th>
@@ -63,15 +76,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Revisi</td>
-                    <td>KHS</td>
-                    <td>KSH</td>
-                </tr>
+                @foreach ($akademik as $akd)
+                    <tr class="clickable-row" data-id="{{ $akd->id_akademik }}">
+                        <td>{{ $akd->khs_semester_1 }}</td>
+                        <td>{{ $akd->khs_semester_2 }}</td>
+                        <td>{{ $akd->khs_semester_3 }}</td>
+                        <td>{{ $akd->khs_semester_4 }}</td>
+                        <td>{{ $akd->khs_semester_5 }}</td>
+                        <td>{{ $akd->khs_semester_6 }}</td>
+                        <td>{{ $akd->lembar_sp }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 

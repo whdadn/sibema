@@ -44,21 +44,36 @@
         </div>
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboardMhs/uploadRegis/tambahDokRegis"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadRegis/perbaruiDokRegis"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
+                <a href="/dashboardMhs/uploadRegis/tambahDokRegis" class="btn btn-link-red ml-1 p-0" id="add-button"><i
+                        class="bi bi-plus-circle"></i>
+                    Tambah</a>
+                {{-- <a href="/dashboardMhs/uploadRegis/perbaruiDokRegis"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
+                    Perbarui</a> --}}
+                @if ($keuangan->first() != null)
+                    <form action="/dashboardMhs/uploadRegis{{ $keuangan->first()->id_keuangan }}" method="POST"
+                        class="d-inline">
+                        @method('delete')
+                        @csrf
+
+                        <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                                class="icon-copy dw dw-delete-2"></i>
+                            Hapus</button>
+                    </form>
+                @endif
             </div>
         </div>
-        <table class="table">
+
+        <table class="table" id="data-table">
             <thead>
                 <tr>
-                    <th scope="col">Dokumen Registrasi</th>
-            </thead>
+                    <thead scope="col">Dokumen Registrasi</th>
+                    </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                </tr>
+                @foreach ($keuangan as $regis)
+                    <tr class="clickable-row" data-id="{{ $regis->id_keuangan }}">
+                        <td>{{ $regis->dokumen_keuangan }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 

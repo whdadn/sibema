@@ -9,7 +9,6 @@ class mahasiswa extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $with = ['tugas_akhir'];
     protected $primaryKey = 'id_mahasiswa';
 
     public function prodi()

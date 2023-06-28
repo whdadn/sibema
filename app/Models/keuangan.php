@@ -9,6 +9,7 @@ class keuangan extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $primaryKey = 'id_keuangan';
 
     public function pegawai()
     {

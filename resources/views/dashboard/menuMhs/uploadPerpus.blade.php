@@ -11,7 +11,7 @@
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
                     <li class="dropdown">
-                        <a href="/dashboard/Mhs" class="dropdown-toggle no-arrow">
+                        <a href="/dashboardMhs" class="dropdown-toggle no-arrow">
                             <span class="micon dw dw-grid"></span><span class="mtext">Dasboard</span>
                         </a>
                     </li>
@@ -44,23 +44,39 @@
         </div>
         <div class="clearfix mb-20">
             <div class="pull-left">
-                <a href="/dashboardMhs/uploadPerpus/tambahDokPerpus"><i class="bi bi-plus-circle"></i> Tambah</a>
-                <a href="/dashboardMhs/uploadPerpus/perbaruiDokPerpus"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Perbarui</a>
-                <a href="#"><i class="icon-copy dw dw-delete-2 ml-2"></i> Hapus</a>
+                <a href="/dashboardMhs/uploadPerpus/tambahDokPerpus" class="btn btn-link-red ml-1 p-0" id="add-button"><i
+                        class="bi bi-plus-circle"></i> Tambah</a>
+                {{-- <a href="/dashboardMhs/uploadPerpus/perbaruiDokPerpus"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
+                    Perbarui</a> --}}
+
+                @if ($perpustakaan->first() != null)
+                    <form action="/dashboardMhs/uploadPerpus{{ $perpustakaan->first()->id_perpus }}" method="POST"
+                        class="d-inline">
+                        @method('delete')
+                        @csrf
+
+                        <button class="btn btn-link-red ml-1 p-0" onclick="return confirm('Yakin ingin hapus?')"><i
+                                class="icon-copy dw dw-delete-2"></i>
+                            Hapus</button>
+                    </form>
+                @endif
             </div>
         </div>
-        <table class="table">
+
+        <table class="table" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Bukti Pengembalian</th>
                     <th scope="col">Keterangan</th>
+                </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
+                @foreach ($perpustakaan as $perpus)
+                    <tr class="clickable-row" data-id="{{ $perpus->id_perpus }}">
+                        <td>{{ $perpus->dokumen_perpus }}</td>
+                        <td>{{ $perpus->keterangan }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 

@@ -15,15 +15,14 @@ return new class extends Migration
             $table->unsignedBigInteger('id_ta')->autoIncrement();
             $table->unsignedBigInteger('id_mahasiswa');
             $table->unsignedBigInteger('id_pegawai');
-            $table->binary('lembar_persetujuan');
-            $table->binary('lembar_pengesahan');
-            $table->binary('lembar_konsul_pemb_1');
-            $table->binary('lembar_konsul_pemb_2');
-            $table->binary('lembar_revisi');
-            $table->string('status_ta');
-            $table->text('rincian_ta');
+            $table->string('lembar_persetujuan')->nullable();
+            $table->string('lembar_pengesahan')->nullable();
+            $table->string('lembar_konsul_pemb_1')->nullable();
+            $table->string('lembar_konsul_pemb_2')->nullable();
+            $table->string('lembar_revisi')->nullable();
+            $table->string('status_ta')->default('Bermasalah');
+            $table->text('rincian_ta')->nullable();
             $table->timestamps();
-
 
             $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
