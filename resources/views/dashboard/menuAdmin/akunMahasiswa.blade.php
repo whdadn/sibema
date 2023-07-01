@@ -78,8 +78,8 @@
                         <td>{{ $mhs->user->email }}</td>
                         <td>{{ $mhs->user->username }}</td>
                         <td>{{ $mhs->nama_mhs }}</td>
-                        <td>{{ $mhs->jurusan->nama_jurusan }}</td>
-                        <td>{{ $mhs->jurusan->nama_prodi }}</td>
+                        <td>{{ $mhs->jurusan->nama_jurusan ?? '' }}</td>
+                        <td>{{ $mhs->jurusan->nama_prodi ?? '' }}</td>
                         <td> <a href="/dashboardAdmin/akunMahasiswa/perbaruiAkunMhs{{ $mhs->User->id_user }}"><i
                                     class="icon-copy dw dw-edit-1 linked"></i></a></td>
                         <td>
@@ -88,8 +88,8 @@
                                 @method('delete')
 
                                 <button class="btn btn-link-red ml-1 p-0 btn-sm" id="1"
-                                    onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
-                                    Hapus</button>
+                                    onclick="return confirm('Yakin ingin hapus?')"><i
+                                        class="icon-copy dw dw-delete-2"></i></button>
                             </form>
                         </td>
                     </tr>

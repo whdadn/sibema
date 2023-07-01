@@ -73,25 +73,27 @@
             </thead>
             <tbody>
                 @foreach ($pegawai as $pt)
-                    <tr class="clickable-row" data-id="{{ $pt->id_pegawai }}">
-                        <td>{{ $pt->User->email }}</td>
-                        <td>{{ $pt->User->username }}</td>
-                        <td>{{ $pt->nama_pegawai }}</td>
-                        <td>{{ $pt->User->role }}</td>
-                        <td> <a href="/dashboardAdmin/akunPanitia/perbaruiAkunPanitia{{ $pt->User->id_user }}"><i
-                                    class="icon-copy dw dw-edit-1 linked"></i></a>
-                        </td>
-                        <td>
-                            <form action="/dashboardAdmin/akunPanitia{{ $pt->id_user }}" method="POST">
-                                @csrf
-                                @method('delete')
+                    @if ($pt->User->role != 'mahasiswa')
+                        <tr class="clickable-row" data-id="{{ $pt->id_pegawai }}">
+                            <td>{{ $pt->User->email }}</td>
+                            <td>{{ $pt->User->username }}</td>
+                            <td>{{ $pt->nama_pegawai }}</td>
+                            <td>{{ $pt->User->role }}</td>
+                            <td> <a href="/dashboardAdmin/akunPanitia/perbaruiAkunPanitia{{ $pt->User->id_user }}"><i
+                                        class="icon-copy dw dw-edit-1 linked"></i></a>
+                            </td>
+                            <td>
+                                <form action="/dashboardAdmin/akunPanitia{{ $pt->id_user }}" method="POST">
+                                    @csrf
+                                    @method('delete')
 
-                                <button class="btn btn-link-red ml-1 p-0 btn-sm" id="1"
-                                    onclick="return confirm('Yakin ingin hapus?')"><i
-                                        class="icon-copy dw dw-delete-2"></i></button>
-                            </form>
-                        </td>
-                    </tr>
+                                    <button class="btn btn-link-red ml-1 p-0 btn-sm" id="1"
+                                        onclick="return confirm('Yakin ingin hapus?')"><i
+                                            class="icon-copy dw dw-delete-2"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>

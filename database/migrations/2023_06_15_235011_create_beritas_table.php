@@ -20,7 +20,7 @@ return new class extends Migration
             $table->binary('gambar');
             $table->timestamps();
 
-            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
         });
     }
 
