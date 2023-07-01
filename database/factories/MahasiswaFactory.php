@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\mahasiswa;
 use App\Models\pegawai;
-use App\Models\prodi;
+use App\Models\jurusan;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -24,7 +24,7 @@ class MahasiswaFactory extends Factory
         return [
             'nim' => fake()->bothify('????-#####'),
             'id_pegawai' => pegawai::factory(),
-            'id_prodi' => prodi::factory(),
+            'id_jurusan' => jurusan::factory(),
             'id_user' => User::factory(),
             'nama_mhs' => fake()->name(),
             'no_telpon_mhs' => fake()->randomNumber(9),

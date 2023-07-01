@@ -8,13 +8,11 @@ use Database\Factories\BeritaFactory;
 use Illuminate\Database\Seeder;
 use App\Models\berita;
 use App\Models\akademik;
-use App\Models\akun;
 use App\Models\jurusan;
 use App\Models\keuangan;
 use App\Models\pegawai;
 use App\Models\mahasiswa;
 use App\Models\perpustakaan;
-use App\Models\prodi;
 use App\Models\tugas_akhir;
 use App\Models\User;
 
@@ -41,25 +39,22 @@ class DatabaseSeeder extends Seeder
         pegawai::factory(5)
             ->create();
 
-        prodi::factory(5)
-            ->create();
-
         mahasiswa::factory(5)
             ->create();
 
         berita::factory(5)
             ->create();
 
-        akademik::factory(5)
+        akademik::factory(10)
             ->create();
 
-        perpustakaan::factory(5)
+        perpustakaan::factory(10)
             ->create();
 
-        keuangan::factory(5)
+        keuangan::factory(10)
             ->create();
 
-        tugas_akhir::factory(5)
+        tugas_akhir::factory(10)
             ->create();
     }
 }

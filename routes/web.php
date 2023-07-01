@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProdiController;
 use App\Http\Controllers\AkademikController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -92,15 +93,12 @@ Route::prefix('/dashboardMhs')->group(function () {
 
 //bagian Admin Prodi
 Route::prefix('/dashboardAdmin')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard.menuAdmin.dashboardAdmin');
-    });
     Route::get('/statusAkademik', function () {
         return view('dashboard.menuAdmin.statusAkademik');
     });
-    Route::get('/ubahStatusUmum', function () {
-        return view('dashboard.menuAdmin.ubahStatusUmum');
-    });
+    Route::get('/', [AdminProdiController::class, 'index']);
+    Route::get('/ubahStatusUmum{mahasiswa}', [AdminProdiController::class, 'edit']);
+    Route::put('/ubahStatusUmum{mahasiswa}', [AdminProdiController::class, 'update']);
     Route::get('/UbahStatusAkademik', function () {
         return view('dashboard.menuAdmin.ubahStatusAkademik');
     });

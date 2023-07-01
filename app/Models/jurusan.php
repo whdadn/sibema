@@ -11,8 +11,8 @@ class jurusan extends Model
     protected $guarded = [];
     protected $primaryKey = 'id_jurusan';
 
-    public function prodi()
+    public function mahasiswa()
     {
-        return $this->hasMany(prodi::class, 'id_jurusan', 'id_jurusan');
+        return $this->hasMany(mahasiswa::class, 'id_jurusan', 'id_jurusan');
     }
 }

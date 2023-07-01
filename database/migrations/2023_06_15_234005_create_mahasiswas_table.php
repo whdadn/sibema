@@ -16,7 +16,7 @@ return new class extends Migration
             $table->char('nim', 10);
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_pegawai');
-            $table->unsignedBigInteger('id_prodi');
+            $table->unsignedBigInteger('id_jurusan');
             $table->string('nama_mhs');
             $table->char('no_telpon_mhs', 13);
             $table->string('alamat_mhs');
@@ -26,7 +26,7 @@ return new class extends Migration
 
             $table->foreign('id_user')->references('id_user')->on('users');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
-            $table->foreign('id_prodi')->references('id_prodi')->on('prodis');
+            $table->foreign('id_jurusan')->references('id_jurusan')->on('jurusans');
         });
     }
 

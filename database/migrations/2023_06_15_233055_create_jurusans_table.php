@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('jurusans', function (Blueprint $table) {
             $table->unsignedBigInteger('id_jurusan')->autoIncrement();
             $table->string('nama_jurusan');
+            $table->string('nama_prodi');
             $table->timestamps();
         });
     }
