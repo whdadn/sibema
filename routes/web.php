@@ -110,15 +110,13 @@ Route::prefix('/dashboardAdmin')->group(function () {
     Route::delete('/akunMahasiswa{akunMhs}', [AdminProdiController::class, 'destroyAkunMhs']);
     Route::put('/akunMahasiswa/perbaruiAkunMhs{akunMhs}', [AdminProdiController::class, 'updateAkunMhs']);
 
-    Route::get('/akunPanitia', function () {
-        return view('dashboard.menuAdmin.akunPanitia');
-    });
-    Route::get('/akunPanitia/tambahAkunPanitia', function () {
-        return view('dashboard.menuAdmin.tambahAkunPanitia');
-    });
-    Route::get('/akunPanitia/perbaruiAkunPanitia', function () {
-        return view('dashboard.menuAdmin.perbaruiAkunPanitia');
-    });
+    Route::get('/akunPanitia', [AdminProdiController::class, 'showAkunPanitia']);
+    Route::get('/akunPanitia/tambahAkunPanitia', [AdminProdiController::class, 'createAkunPanitia']);
+    Route::post('/akunPanitia/tambahAkunPanitia', [AdminProdiController::class, 'storeAkunPanitia']);
+    Route::get('/akunPanitia/perbaruiAkunPanitia{pegawai}', [AdminProdiController::class, 'editAkunPanitia']);
+    Route::put('/akunPanitia/perbaruiAkunPanitia{pegawai}', [AdminProdiController::class, 'updateAkunPanitia']);
+    Route::delete('/akunPanitia{pegawai}', [AdminProdiController::class, 'destroyAkunPanitia']);
+
     Route::get('/beritaUtama', function () {
         return view('dashboard.menuAdmin.beritaUtama');
     });

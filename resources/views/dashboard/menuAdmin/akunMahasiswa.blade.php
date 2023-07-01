@@ -91,6 +91,7 @@
                                     onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
                                     Hapus</button>
                             </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

@@ -91,9 +91,13 @@
                         <td>{{ $mhs->akademik->pluck('khs_semester_6')->implode(', ') }}</td>
                         <td>{{ $mhs->akademik->pluck('lembar_sp')->implode(', ') }}</td>
                         <td>{{ $mhs->akademik->pluck('status_akademik')->implode(', ') }}</td>
-                        <td><a class="btn badge"
-                                href="/dashboardAdmin/ubahStatusAkademik{{ $mhs->akademik->first()->id_akademik }}"><i
-                                    class="icon-copy dw dw-edit-1 ml-2 linked"></i></a></td>
+                        <td>
+                            @if ($mhs->first() != null)
+                                <a class="btn badge"
+                                    href="/dashboardAdmin/ubahStatusAkademik{{ $mhs->akademik->pluck('id_akademik')->implode(', ') }}"><i
+                                        class="icon-copy dw dw-edit-1 ml-2 linked"></i></a>
+                            @endif
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

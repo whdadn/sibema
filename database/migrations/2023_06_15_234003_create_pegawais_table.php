@@ -14,12 +14,12 @@ return new class extends Migration
         Schema::create('pegawais', function (Blueprint $table) {
             $table->unsignedBigInteger('id_pegawai')->autoIncrement();
             $table->unsignedBigInteger('id_user');
-            $table->string('nama_pegawai');
-            $table->char('no_telepon_pegawai');
-            $table->string('alamat_pegawai');
+            $table->string('nama_pegawai')->nullable();
+            $table->char('no_telepon_pegawai')->nullable();
+            $table->string('alamat_pegawai')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
         });
     }
 

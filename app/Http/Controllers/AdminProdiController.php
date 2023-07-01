@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\akademik;
 use App\Models\mahasiswa;
+use App\Models\pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminProdiController extends Controller
 {
@@ -137,7 +139,7 @@ class AdminProdiController extends Controller
 
         $akunMhs->username = $request->username;
         $akunMhs->email = $request->email;
-        $akunMhs->password = $request->password;
+        $akunMhs->password = Hash::make($request->password);
         $akunMhs->role = $request->role;
         $akunMhs->save();
 
@@ -150,5 +152,64 @@ class AdminProdiController extends Controller
         $akunMhs->delete();
 
         return redirect('/dashboardAdmin/akunMahasiswa');
+    }
+
+    //panitia
+    public function showAkunPanitia(pegawai $pegawai)
+    {
+        $pegawai = pegawai::with('akademik', 'tugas_akhir', 'keuangan', 'perpustakaan', 'user')->paginate(10);
+
+        return view('dashboard.menuAdmin.akunPanitia', compact('pegawai'));
+    }
+
+    public function createAkunPanitia()
+    {
+        return view('dashboard.menuAdmin.tambahAkunPanitia');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeAkunPanitia(Request $request)
+    {
+        $pegawai = new User;
+
+        $pegawai->username = $request->username;
+        $pegawai->email = $request->email;
+        $pegawai->password = Hash::make($request->password);
+        $pegawai->role = $request->role;
+
+        $pegawai->save();
+
+        return redirect('dashboardAdmin/akunPanitia');
+    }
+
+
+    public function editAkunPanitia(User $pegawai)
+    {
+        $pegawai = User::find($pegawai->id_user);
+        return view('dashboard.menuAdmin.perbaruiAkunPanitia', compact('pegawai'));
+    }
+
+    public function updateAkunPanitia(User $pegawai, Request $request)
+    {
+        $pegawai = User::find($pegawai->id_user);
+
+        $pegawai->username = $request->username;
+        $pegawai->email = $request->email;
+        $pegawai->password = Hash::make($request->password);
+        $pegawai->role = $request->role;
+
+        $pegawai->save();
+
+        return redirect('dashboardAdmin/akunPanitia');
+    }
+
+    public function destroyAkunPanitia(User $pegawai)
+    {
+        $pegawai = User::find($pegawai->id_user);
+        $pegawai->delete();
+
+        return redirect('/dashboardAdmin/akunPanitia');
     }
 }

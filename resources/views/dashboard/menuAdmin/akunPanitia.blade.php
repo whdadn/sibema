@@ -50,10 +50,6 @@
             <div class="pull-left mt-15">
                 <a href="/dashboardAdmin/akunPanitia/tambahAkunPanitia"><i class="bi bi-plus-circle"></i>
                     Tambah</a>
-                <a href="/dashboardAdmin/akunPanitia/perbaruiAkunPanitia"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Perbarui</a>
-                <a href=""><i class="icon-copy dw dw-delete-2 ml-2 linked"></i>
-                    Hapus</a>
             </div>
 
             <div class="pull-right mt-15">
@@ -66,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <table class="table mt-2">
+        <table class="table mt-2" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Email</th>
@@ -76,16 +72,31 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
+                @foreach ($pegawai as $pt)
+                    <tr class="clickable-row" data-id="{{ $pt->id_pegawai }}">
+                        <td>{{ $pt->User->email }}</td>
+                        <td>{{ $pt->User->username }}</td>
+                        <td>{{ $pt->nama_pegawai }}</td>
+                        <td>{{ $pt->User->role }}</td>
+                        <td> <a href="/dashboardAdmin/akunPanitia/perbaruiAkunPanitia{{ $pt->User->id_user }}"><i
+                                    class="icon-copy dw dw-edit-1 linked"></i></a>
+                        </td>
+                        <td>
+                            <form action="/dashboardAdmin/akunPanitia{{ $pt->id_user }}" method="POST">
+                                @csrf
+                                @method('delete')
+
+                                <button class="btn btn-link-red ml-1 p-0 btn-sm" id="1"
+                                    onclick="return confirm('Yakin ingin hapus?')"><i
+                                        class="icon-copy dw dw-delete-2"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 
     </div>
 
-    </div>
+    {{ $pegawai->links() }}
 @endsection
