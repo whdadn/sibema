@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\akademik;
 use App\Models\mahasiswa;
 use Illuminate\Http\Request;
 
@@ -69,5 +70,28 @@ class AdminProdiController extends Controller
     public function destroy(mahasiswa $mahasiswa)
     {
         //
+    }
+
+    public function showAkademik(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::with('akademik', 'tugas_akhir', 'keuangan', 'perpustakaan', 'user', 'jurusan')->paginate(10);
+
+        return view('dashboard.menuAdmin.statusAkademik', compact('mahasiswa'));
+    }
+
+    public function editAkademik(akademik $akademik)
+    {
+        $akademik = akademik::find($akademik->id_akademik);
+        return view('dashboard.menuAdmin.ubahStatusAkademik', compact('akademik'));
+    }
+
+    public function updateAkademik(akademik $akademik, Request $request)
+    {
+        $akademik = akademik::find($akademik->id_akademik);
+
+        $akademik->status_akademik = $request->akademik;
+        $akademik->save();
+
+        return redirect('/dashboardAdmin/statusAkademik');
     }
 }

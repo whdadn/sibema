@@ -99,9 +99,10 @@ Route::prefix('/dashboardAdmin')->group(function () {
     Route::get('/', [AdminProdiController::class, 'index']);
     Route::get('/ubahStatusUmum{mahasiswa}', [AdminProdiController::class, 'edit']);
     Route::put('/ubahStatusUmum{mahasiswa}', [AdminProdiController::class, 'update']);
-    Route::get('/UbahStatusAkademik', function () {
-        return view('dashboard.menuAdmin.ubahStatusAkademik');
-    });
+    Route::get('/statusAkademik', [AdminProdiController::class, 'showAkademik']);
+    Route::get('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'editAkademik']);
+    Route::put('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'updateAkademik']);
+
     Route::get('/akunMahasiswa', function () {
         return view('dashboard.menuAdmin.akunMahasiswa');
     });

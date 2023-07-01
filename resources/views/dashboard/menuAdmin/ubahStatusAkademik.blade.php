@@ -49,16 +49,19 @@
                 <h4>Ubah Status Bebas Masalah Akademik</h4>
             </div>
         </div>
-        <form>
+        <form action="/dashboardAdmin/ubahStatusAkademik{{ $akademik->id_akademik }}" method="POST">
+            @method('PUT')
+            @csrf
+
             <div class="form-group">
                 <label>Status Bebas Masalah</label>
-                <select class="form-control">
-                    <option>Bermasalah</option>
-                    <option>Bebas Masalah</option>
+                <select class="form-control" name="akademik" id="akademik">
+                    <option value="Bermasalah">Bermasalah</option>
+                    <option value="Bebas Masalah">Bebas Masalah</option>
                 </select>
             </div>
 
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
 @endsection
