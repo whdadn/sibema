@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('status_umum');
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id_user')->on('users');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
             $table->foreign('id_jurusan')->references('id_jurusan')->on('jurusans');
         });

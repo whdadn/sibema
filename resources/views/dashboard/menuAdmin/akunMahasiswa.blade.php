@@ -50,10 +50,6 @@
             <div class="pull-left mt-15">
                 <a href="/dashboardAdmin/akunMahasiswa/tambahAkunMhs"><i class="bi bi-plus-circle"></i>
                     Tambah</a>
-                <a href="/dashboardAdmin/akunMahasiswa/perbaruiAkunMhs"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Perbarui</a>
-                <a href=""><i class="icon-copy dw dw-delete-2 ml-2 linked"></i>
-                    Hapus</a>
             </div>
 
             <div class="pull-right mt-15">
@@ -66,30 +62,41 @@
                 </div>
             </div>
         </div>
-        <table class="table mt-2">
+        <table class="table mt-2" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Email</th>
                     <th scope="col">Username</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Prodi</th>
                     <th scope="col">Jurusan</th>
                     <th scope="col">Prodi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Revisi</td>
-                    <td>.......</td>
-                </tr>
+                @foreach ($mahasiswa as $mhs)
+                    <tr class="clickable-row" data-id="{{ $mhs->id_mahasiswa }}">
+                        <td>{{ $mhs->user->email }}</td>
+                        <td>{{ $mhs->user->username }}</td>
+                        <td>{{ $mhs->nama_mhs }}</td>
+                        <td>{{ $mhs->jurusan->nama_jurusan }}</td>
+                        <td>{{ $mhs->jurusan->nama_prodi }}</td>
+                        <td> <a href="/dashboardAdmin/akunMahasiswa/perbaruiAkunMhs{{ $mhs->User->id_user }}"><i
+                                    class="icon-copy dw dw-edit-1 linked"></i></a></td>
+                        <td>
+                            <form action="/dashboardAdmin/akunMahasiswa{{ $mhs->User->id_user }}" method="POST">
+                                @csrf
+                                @method('delete')
+
+                                <button class="btn btn-link-red ml-1 p-0 btn-sm" id="1"
+                                    onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
+                                    Hapus</button>
+                            </form>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 
     </div>
 
-    </div>
+    {{ $mahasiswa->links() }}
 @endsection

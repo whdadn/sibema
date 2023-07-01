@@ -103,15 +103,13 @@ Route::prefix('/dashboardAdmin')->group(function () {
     Route::get('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'editAkademik']);
     Route::put('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'updateAkademik']);
 
-    Route::get('/akunMahasiswa', function () {
-        return view('dashboard.menuAdmin.akunMahasiswa');
-    });
-    Route::get('/akunMahasiswa/tambahAkunMhs', function () {
-        return view('dashboard.menuAdmin.tambahAkunMhs');
-    });
-    Route::get('/akunMahasiswa/perbaruiAkunMhs', function () {
-        return view('dashboard.menuAdmin.perbaruiAkunMhs');
-    });
+    Route::get('/akunMahasiswa', [AdminProdiController::class, 'showAkunMhs']);
+    Route::get('/akunMahasiswa/tambahAkunMhs', [AdminProdiController::class, 'createAkunMhs']);
+    Route::post('/akunMahasiswa/tambahAkunMhs', [AdminProdiController::class, 'storeAkunMhs']);
+    Route::get('/akunMahasiswa/perbaruiAkunMhs{akunMhs}', [AdminProdiController::class, 'editAkunMhs']);
+    Route::delete('/akunMahasiswa{akunMhs}', [AdminProdiController::class, 'destroyAkunMhs']);
+    Route::put('/akunMahasiswa/perbaruiAkunMhs{akunMhs}', [AdminProdiController::class, 'updateAkunMhs']);
+
     Route::get('/akunPanitia', function () {
         return view('dashboard.menuAdmin.akunPanitia');
     });

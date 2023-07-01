@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\akademik;
 use App\Models\mahasiswa;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminProdiController extends Controller
@@ -93,5 +94,61 @@ class AdminProdiController extends Controller
         $akademik->save();
 
         return redirect('/dashboardAdmin/statusAkademik');
+    }
+
+    public function createAkunMhs()
+    {
+        return view('dashboard.menuAdmin.tambahAkunMhs');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function storeAkunMhs(Request $request)
+    {
+        $akunMhs = new User;
+
+        $akunMhs->username = $request->username;
+        $akunMhs->email = $request->email;
+        $akunMhs->password = $request->password;
+        $akunMhs->role = $request->role;
+
+        $akunMhs->save();
+
+        return redirect('dashboardAdmin/akunMahasiswa');
+    }
+
+    public function showAkunMhs(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = mahasiswa::with('akademik', 'tugas_akhir', 'keuangan', 'perpustakaan', 'user', 'jurusan')->paginate(10);
+
+        return view('dashboard.menuAdmin.akunMahasiswa', compact('mahasiswa'));
+    }
+
+    public function editAkunMhs(User $akunMhs)
+    {
+        $akunMhs = User::find($akunMhs->id_user);
+        return view('dashboard.menuAdmin.perbaruiAkunMhs', compact('akunMhs'));
+    }
+
+    public function updateAkunMhs(User $akunMhs, Request $request)
+    {
+        $akunMhs = User::find($akunMhs->id_user);
+
+        $akunMhs->username = $request->username;
+        $akunMhs->email = $request->email;
+        $akunMhs->password = $request->password;
+        $akunMhs->role = $request->role;
+        $akunMhs->save();
+
+        return redirect('/dashboardAdmin/akunMahasiswa');
+    }
+
+    public function destroyAkunMhs(User $akunMhs)
+    {
+        $akunMhs = User::find($akunMhs->id_user);
+        $akunMhs->delete();
+
+        return redirect('/dashboardAdmin/akunMahasiswa');
     }
 }
