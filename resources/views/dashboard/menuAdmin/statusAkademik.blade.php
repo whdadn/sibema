@@ -81,8 +81,8 @@
                     <tr class="clickable-row" data-id="{{ $mhs->id_mahasiswa }}">
                         <td>{{ $mhs->nim }}</td>
                         <td>{{ $mhs->nama_mhs }}</td>
-                        <td>{{ $mhs->jurusan->nama_jurusan }}</td>
-                        <td>{{ $mhs->jurusan->nama_prodi }}</td>
+                        <td>{{ $mhs->jurusan->nama_jurusan ?? '' }}</td>
+                        <td>{{ $mhs->jurusan->nama_prodi ?? '' }}</td>
                         <td>{{ $mhs->akademik->pluck('khs_semester_1')->implode(', ') }}</td>
                         <td>{{ $mhs->akademik->pluck('khs_semester_2')->implode(', ') }}</td>
                         <td>{{ $mhs->akademik->pluck('khs_semester_3')->implode(', ') }}</td>
@@ -91,9 +91,10 @@
                         <td>{{ $mhs->akademik->pluck('khs_semester_6')->implode(', ') }}</td>
                         <td>{{ $mhs->akademik->pluck('lembar_sp')->implode(', ') }}</td>
                         <td>{{ $mhs->akademik->pluck('status_akademik')->implode(', ') }}</td>
+                        <td><a class="btn ml-n2" href=""><i class="icon-copy dw dw-eye mr-n5"></i></a></td>
                         <td>
                             @if ($mhs->first() != null)
-                                <a class="btn badge"
+                                <a class="btn ml-n3"
                                     href="/dashboardAdmin/ubahStatusAkademik{{ $mhs->akademik->pluck('id_akademik')->implode(', ') }}"><i
                                         class="icon-copy dw dw-edit-1 ml-2 linked"></i></a>
                             @endif

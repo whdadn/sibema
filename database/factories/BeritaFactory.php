@@ -24,7 +24,6 @@ class BeritaFactory extends Factory
             'judul_berita' => fake()->sentence(2),
             'isi_berita' => collect(fake()->paragraphs(5, false)),
             'excerpt' => fake()->paragraph(2),
-            'gambar' => fake()->image()
         ];
     }
 }

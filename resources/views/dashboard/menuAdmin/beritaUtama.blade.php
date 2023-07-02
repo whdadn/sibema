@@ -50,13 +50,9 @@
             <div class="pull-left mt-15">
                 <a href="/dashboardAdmin/beritaUtama/tambahBeritaUtama"><i class="bi bi-plus-circle"></i>
                     Tambah</a>
-                <a href="/dashboardAdmin/beritaUtama/perbaruiBeritaUtama"><i class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Perbarui</a>
-                <a href=""><i class="icon-copy dw dw-delete-2 ml-2 linked"></i>
-                    Hapus</a>
             </div>
         </div>
-        <table class="table mt-2">
+        <table class="table mt-2" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Judul Berita</th>
@@ -64,12 +60,29 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                </tr>
+                @foreach ($berita as $brt)
+                    <tr class="clickable-row" data-id="{{ $brt->id_berita }}">
+                        <td>{{ $brt->judul_berita }}</td>
+                        <td>{{ $brt->excerpt }}</td>
+                        <td>
+                            <a href="/dashboardAdmin/beritaUtama/perbaruiBeritaUtama{{ $brt->id_berita }}"><i
+                                    class="icon-copy dw dw-edit-1 ml-2 linked"></i></a>
+                        </td>
+                        <td>
+                            <form action="/dashboardAdmin/beritaUtama{{ $brt->id_berita }}" method="POST" class="d-inline">
+                                @method('delete')
+                                @csrf
+
+                                <button class="btn btn-link-red ml-1 p-0 btn-sm" id="1"
+                                    onclick="return confirm('Yakin ingin hapus?')"><i
+                                        class="icon-copy dw dw-delete-2"></i></button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 
     </div>
+    {{ $berita->links() }}
 @endsection

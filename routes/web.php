@@ -117,13 +117,10 @@ Route::prefix('/dashboardAdmin')->group(function () {
     Route::put('/akunPanitia/perbaruiAkunPanitia{pegawai}', [AdminProdiController::class, 'updateAkunPanitia']);
     Route::delete('/akunPanitia{pegawai}', [AdminProdiController::class, 'destroyAkunPanitia']);
 
-    Route::get('/beritaUtama', function () {
-        return view('dashboard.menuAdmin.beritaUtama');
-    });
-    Route::get('/beritaUtama/tambahBeritaUtama', function () {
-        return view('dashboard.menuAdmin.tambahBeritaUtama');
-    });
-    Route::get('/beritaUtama/perbaruiBeritaUtama', function () {
-        return view('dashboard.menuAdmin.perbaruiBeritaUtama');
-    });
+    Route::get('/beritaUtama', [BeritaController::class, 'show']);
+    Route::get('/beritaUtama/tambahBeritaUtama', [BeritaController::class, 'create']);
+    Route::post('/beritaUtama/tambahBeritaUtama', [BeritaController::class, 'store']);
+    Route::get('/beritaUtama/perbaruiBeritaUtama{berita}', [BeritaController::class, 'edit']);
+    Route::put('/beritaUtama/perbaruiBeritaUtama{berita}', [BeritaController::class, 'update']);
+    Route::delete('/beritaUtama{berita}', [BeritaController::class, 'destroy']);
 });

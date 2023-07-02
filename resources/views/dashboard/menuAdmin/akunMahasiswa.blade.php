@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <table class="table mt-2" id="data-table">
+        <table class="table" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Email</th>

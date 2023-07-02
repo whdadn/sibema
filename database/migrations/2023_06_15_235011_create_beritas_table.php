@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->unsignedBigInteger('id_berita')->autoIncrement();
-            $table->unsignedBigInteger('id_pegawai');
+            $table->unsignedBigInteger('id_pegawai')->nullable();
             $table->string('judul_berita');
             $table->text('isi_berita');
             $table->text('excerpt');
-            $table->binary('gambar');
+            $table->string('gambar')->nullable();
             $table->timestamps();
 
             $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');

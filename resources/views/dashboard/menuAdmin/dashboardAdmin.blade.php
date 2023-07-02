@@ -95,8 +95,8 @@
                         <tr class="clickable-row" data-id="{{ $mhs->id_mahasiswa }}">
                             <td>{{ $mhs->nim }}</td>
                             <td>{{ $mhs->nama_mhs }}</td>
-                            <td>{{ $mhs->jurusan->nama_jurusan }}</td>
-                            <td>{{ $mhs->jurusan->nama_prodi }}</td>
+                            <td>{{ $mhs->jurusan->nama_jurusan ?? '' }}</td>
+                            <td>{{ $mhs->jurusan->nama_prodi ?? '' }}</td>
                             <td>{{ $mhs->tugas_akhir->pluck('status_ta')->implode(', ') }}</td>
                             <td>{{ $mhs->keuangan->pluck('status_keuangan')->implode(', ') }}</td>
                             <td>{{ $mhs->perpustakaan->pluck('status_perpus')->implode(', ') }}</td>
