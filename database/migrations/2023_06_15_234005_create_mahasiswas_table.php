@@ -13,20 +13,20 @@ return new class extends Migration
     {
         Schema::create('mahasiswas', function (Blueprint $table) {
             $table->unsignedBigInteger('id_mahasiswa')->autoIncrement();
-            $table->char('nim', 10);
+            $table->char('nim', 10)->nullable();
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_pegawai');
-            $table->unsignedBigInteger('id_prodi');
-            $table->string('nama_mhs');
-            $table->char('no_telpon_mhs', 13);
-            $table->string('alamat_mhs');
-            $table->year('tahun_lulus');
-            $table->string('status_umum');
+            $table->unsignedBigInteger('id_pegawai')->nullable();
+            $table->unsignedBigInteger('id_jurusan')->nullable();
+            $table->string('nama_mhs')->nullable();
+            $table->char('no_telpon_mhs', 13)->nullable();
+            $table->string('alamat_mhs')->nullable();
+            $table->year('tahun_lulus')->nullable();
+            $table->string('status_umum')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id_user')->on('users');
-            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
-            $table->foreign('id_prodi')->references('id_prodi')->on('prodis');
+            $table->foreign('id_user')->references('id_user')->on('users')->onDelete('cascade');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
+            $table->foreign('id_jurusan')->references('id_jurusan')->on('jurusans')->onDelete('cascade');
         });
     }
 

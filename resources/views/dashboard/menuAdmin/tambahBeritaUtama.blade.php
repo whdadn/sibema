@@ -48,25 +48,28 @@
                 <h4>Tambah Berita Utama</h4>
             </div>
         </div>
-        <form action="">
+        <form action="/dashboardAdmin/beritaUtama/tambahBeritaUtama" method="POST" enctype="multipart/form-data">
+            @csrf
+
             <div class="form-group">
                 <label>Judul Berita</label>
-                <input class="form-control" type="text" placeholder="Masukkan Judul Berita">
+                <input class="form-control" type="text" placeholder="Masukkan Judul Berita" name="judul"
+                    id="judul">
             </div>
 
             <div class="form-group">
                 <label>Isi Berita</label>
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" name="berita" id="berita"></textarea>
             </div>
 
             <div class="form-group">
                 <label>Gambar</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="file" class="custom-file-input" name="gambar" id="gambar">
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary"> Simpan</button>
+            <button type="submit" class="btn btn-primary"> Simpan</button>
         </form>
     </div>
 @endsection

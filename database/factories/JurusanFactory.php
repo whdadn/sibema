@@ -19,7 +19,8 @@ class JurusanFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama_jurusan' => fake()->text()
+            'nama_jurusan' => fake()->word(),
+            'nama_prodi' => fake()->word(),
         ];
     }
 }

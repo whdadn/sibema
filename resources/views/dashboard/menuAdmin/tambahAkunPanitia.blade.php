@@ -50,31 +50,33 @@
                 <h4>Tambah Akun Panitia</h4>
             </div>
         </div>
-        <form>
+        <form action="/dashboardAdmin/akunPanitia/tambahAkunPanitia" method="POST">
+            @csrf
+
             <div class="form-group">
                 <label>Username</label>
-                <input class="form-control" type="text" placeholder="Username">
+                <input class="form-control" type="text" placeholder="Username" name="username" id="username" required>
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input class="form-control" type="email" placeholder="Email">
+                <input class="form-control" type="email" placeholder="Email" name="email" id="email" required>
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input class="form-control" type="password" placeholder="Password">
+                <input class="form-control" type="password" placeholder="Password" name="password" id="password" required>
             </div>
             <div class="form-group">
                 <label>Role</label>
-                <select class="form-control">
-                    <option>Admin Prodi</option>
-                    <option>Panitia Tugas Akhir</option>
-                    <option>Panitia Keuangan</option>
-                    <option>Panitia Perpustakaan</option>
-                    <option>Ketua Jurusan</option>
+                <select class="form-control" name="role" id="role" required>
+                    <option value="Admin Prodi">Admin Prodi</option>
+                    <option value="Panitia Tugas Akhir">Panitia Tugas Akhir</option>
+                    <option value="Panitia Keuangan">Panitia Keuangan</option>
+                    <option value="Panitia Perpustakan">Panitia Perpustakaan</option>
+                    <option value="Ketua Jurusan">Ketua Jurusan</option>
                 </select>
             </div>
 
-            <button type="button" class="btn btn-primary">Simpan</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
 
     </div>

@@ -47,11 +47,6 @@
             <div class="text-center mb-30">
                 <h4>Status Bebas Masalah Akademik</h4>
             </div>
-            <div class="pull-left mt-15">
-                <a class="btn" href="/dashboardAdmin/UbahStatusAkademik"><i
-                        class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                    Ubah Status</a>
-            </div>
 
             <div class="pull-right mt-15">
                 <div class="dropdown">
@@ -64,7 +59,7 @@
                 </div>
             </div>
         </div>
-        <table class="table">
+        <table class="table" id="data-table">
             <thead>
                 <tr>
                     <th scope="col">Nim</th>
@@ -78,27 +73,39 @@
                     <th scope="col">KHS Semester 5</th>
                     <th scope="col">KHS Semester 6</th>
                     <th scope="col">Lembar SP</th>
+                    <th scope="col">Status Akademik</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>Revisi</td>
-                    <td>.......</td>
-                    <td>.......</td>
-                    <td>.......</td>
-                    <td>.......</td>
-                    <td>.......</td>
-                    <td>.......</td>
-                    <td>.......</td>
-                </tr>
+                @foreach ($mahasiswa as $mhs)
+                    <tr class="clickable-row" data-id="{{ $mhs->id_mahasiswa }}">
+                        <td>{{ $mhs->nim }}</td>
+                        <td>{{ $mhs->nama_mhs }}</td>
+                        <td>{{ $mhs->jurusan->nama_jurusan ?? '' }}</td>
+                        <td>{{ $mhs->jurusan->nama_prodi ?? '' }}</td>
+                        <td>{{ $mhs->akademik->pluck('khs_semester_1')->implode(', ') }}</td>
+                        <td>{{ $mhs->akademik->pluck('khs_semester_2')->implode(', ') }}</td>
+                        <td>{{ $mhs->akademik->pluck('khs_semester_3')->implode(', ') }}</td>
+                        <td>{{ $mhs->akademik->pluck('khs_semester_4')->implode(', ') }}</td>
+                        <td>{{ $mhs->akademik->pluck('khs_semester_5')->implode(', ') }}</td>
+                        <td>{{ $mhs->akademik->pluck('khs_semester_6')->implode(', ') }}</td>
+                        <td>{{ $mhs->akademik->pluck('lembar_sp')->implode(', ') }}</td>
+                        <td>{{ $mhs->akademik->pluck('status_akademik')->implode(', ') }}</td>
+                        <td><a class="btn ml-n2" href=""><i class="icon-copy dw dw-eye mr-n5"></i></a></td>
+                        <td>
+                            @if ($mhs->first() != null)
+                                <a class="btn ml-n3"
+                                    href="/dashboardAdmin/ubahStatusAkademik{{ $mhs->akademik->pluck('id_akademik')->implode(', ') }}"><i
+                                        class="icon-copy dw dw-edit-1 ml-2 linked"></i></a>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
 
     </div>
 
     </div>
+    {{ $mahasiswa->links() }}
 @endsection

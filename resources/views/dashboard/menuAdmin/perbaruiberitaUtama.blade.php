@@ -49,25 +49,31 @@
             </div>
         </div>
 
-        <form action="">
+        <form action="/dashboardAdmin/beritaUtama/perbaruiBeritaUtama{{ $berita->id_berita }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            @method('put')
+
             <div class="form-group">
                 <label>Judul Berita</label>
-                <input class="form-control" type="text" placeholder="Masukkan Judul Berita">
+                <input class="form-control" type="text" placeholder="Masukkan Judul Berita" name="judul" id="judul"
+                    value="{{ $berita->judul_berita }}">
             </div>
 
             <div class="form-group">
                 <label>Isi Berita</label>
-                <textarea class="form-control"></textarea>
+                <textarea class="form-control" name="berita" id="berita">{{ $berita->isi_berita }}</textarea>
             </div>
 
             <div class="form-group">
                 <label>Gambar</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input">
+                    <input type="hidden" name="oldGambar" value="{{ $berita->gambar }}">
+                    <input type="file" class="custom-file-input" name="gambar" id="gambar">
                     <label class="custom-file-label">Choose file</label>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary"> Perbarui</button>
+            <button type="submit" class="btn btn-primary"> Perbarui</button>
         </form>
     </div>
 @endsection

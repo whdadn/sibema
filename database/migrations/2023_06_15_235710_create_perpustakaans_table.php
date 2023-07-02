@@ -21,8 +21,8 @@ return new class extends Migration
             $table->text('rincian_perpus')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas');
-            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais');
+            $table->foreign('id_mahasiswa')->references('id_mahasiswa')->on('mahasiswas')->onDelete('cascade');
+            $table->foreign('id_pegawai')->references('id_pegawai')->on('pegawais')->onDelete('cascade');
         });
     }
 

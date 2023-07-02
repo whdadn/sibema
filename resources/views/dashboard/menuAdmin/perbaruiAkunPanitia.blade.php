@@ -50,14 +50,19 @@
                 <h4>Perbarui Akun Panitia</h4>
             </div>
         </div>
-        <form>
+        <form action="/dashboardAdmin/akunPanitia/perbaruiAkunPanitia{{ $pegawai->id_user }}" method="POST">
+            @csrf
+            @method('put')
+
             <div class="form-group">
                 <label>Username</label>
-                <input class="form-control" type="text" placeholder="Username">
+                <input class="form-control" type="text" placeholder="Username" name="username" id="usename"
+                    value="{{ $pegawai->username }}">
             </div>
             <div class="form-group">
                 <label>Email</label>
-                <input class="form-control" type="email" placeholder="Email">
+                <input class="form-control" type="email" placeholder="Email" name="email" id="email"
+                    value="{{ $pegawai->email }}">
             </div>
             <div class="form-group">
                 <label>Password</label>
@@ -65,16 +70,16 @@
             </div>
             <div class="form-group">
                 <label>Role</label>
-                <select class="form-control">
-                    <option>Admin Prodi</option>
-                    <option>Panitia Tugas Akhir</option>
-                    <option>Panitia Keuangan</option>
-                    <option>Panitia Perpustakaan</option>
-                    <option>Ketua Jurusan</option>
+                <select class="form-control" name="role" id="role">
+                    <option value="Admin Prodi">Admin Prodi</option>
+                    <option value="Panitia Tugas Akhir">Panitia Tugas Akhir</option>
+                    <option value="Panitia Keuangan">Panitia Keuangan</option>
+                    <option value="Panitia Perpustakaan">Panitia Perpustakaan</option>
+                    <option value="Ketua Jurusan">Ketua Jurusan</option>
                 </select>
             </div>
 
-            <button type="button" class="btn btn-primary">Perbarui</button>
+            <button type="submit" class="btn btn-primary">Perbarui</button>
         </form>
 
     </div>

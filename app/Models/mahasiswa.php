@@ -11,9 +11,9 @@ class mahasiswa extends Model
     protected $guarded = [];
     protected $primaryKey = 'id_mahasiswa';
 
-    public function prodi()
+    public function jurusan()
     {
-        return $this->belongsTo(prodi::class, 'id_prodi', 'id_prodi');
+        return $this->belongsTo(jurusan::class, 'id_jurusan', 'id_jurusan');
     }
 
     public function pegawai()
