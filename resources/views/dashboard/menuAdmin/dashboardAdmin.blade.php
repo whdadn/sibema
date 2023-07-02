@@ -62,24 +62,21 @@
                 <div class="text-center mb-20">
                     <h4>Status Bebas Masalah Umum</h4>
                 </div>
-                <div class="pull-left">
-                    <a class="btn" href="/dashboardAdmin/ubahStatusUmum"><i
-                            class="icon-copy dw dw-edit-1 ml-2 linked"></i>
-                        Ubah Status</a>
-                </div>
 
                 <div class="pull-right">
                     <div class="dropdown">
                         <a class="btn dropdown-toggle dw dw-filter-1" href="#" role="button" data-toggle="dropdown">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Jurusan</a>
-                            <a class="dropdown-item" href="#">Status Bebas Masalah</a>
+                            <a class="dropdown-item" href="#">Teknik Elektro</a>
+                            <a class="dropdown-item" href="#">Teknik Mesin</a>
+                            <a class="dropdown-item" href="#">Bebas Masalah</a>
+                            <a class="dropdown-item" href="#">Bermasalah</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <table class="table">
+            <table class="table" id="data-table">
                 <thead>
                     <tr>
                         <th scope="col">Nim</th>
@@ -94,21 +91,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Revisi</td>
-                        <td>.......</td>
-                        <td>.......</td>
-                        <td>.......</td>
-                        <td>.......</td>
-                    </tr>
+                    @foreach ($mahasiswa as $mhs)
+                        <tr class="clickable-row" data-id="{{ $mhs->id_mahasiswa }}">
+                            <td>{{ $mhs->nim }}</td>
+                            <td>{{ $mhs->nama_mhs }}</td>
+                            <td>{{ $mhs->jurusan->nama_jurusan ?? '' }}</td>
+                            <td>{{ $mhs->jurusan->nama_prodi ?? '' }}</td>
+                            <td>{{ $mhs->tugas_akhir->pluck('status_ta')->implode(', ') }}</td>
+                            <td>{{ $mhs->keuangan->pluck('status_keuangan')->implode(', ') }}</td>
+                            <td>{{ $mhs->perpustakaan->pluck('status_perpus')->implode(', ') }}</td>
+                            <td>{{ $mhs->akademik->pluck('status_akademik')->implode(', ') }}</td>
+                            <td>{{ $mhs->status_umum }}</td>
+                            <td><a href="/dashboardAdmin/ubahStatusUmum{{ $mhs->id_mahasiswa }}" class="badge"><i
+                                        class="icon-copy dw dw-edit-1 ml-2 linked"></i></a></td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
 
         </div>
 
     </div>
+
+    {{ $mahasiswa->links() }}
 @endsection

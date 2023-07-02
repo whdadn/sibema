@@ -6,7 +6,15 @@
             @foreach ($berita as $news)
                 <div class="carousel-item">
                     <div class="card mb-3">
-                        <img src="https://source.unsplash.com/1200x200?graduation" class="card-img-top" alt="...">
+                        @if ($news->gambar)
+                            <div style="max-height: 200px; overflow:hidden">
+                                <img src="{{ asset('storage/' . $news->gambar) }}" alt="">
+                            </div>
+                        @else
+                            <div style="max-height: 200px; overflow:hidden">
+                                <img src="https://source.unsplash.com/1200x200?graduation" alt="Default Image">
+                            </div>
+                        @endif
                         <div class="card-body">
                             <h5 class="card-title">{{ $news->judul_berita }}</h5>
                             <p class="card-text">{{ $news->excerpt }}</p>

@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
     ];
 
+    protected $primaryKey = 'id_user';
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -51,5 +53,26 @@ class User extends Authenticatable
     public function pegawai()
     {
         return $this->hasOne(pegawai::class, 'id_user', 'id_user');
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($user) {
+            if ($user->role === 'Mahasiswa') {
+                $user->mahasiswa()->create();
+            } elseif ($user->role === 'Admin Prodi') {
+                $user->pegawai()->create();
+            } elseif ($user->role === 'Panitia Tugas Akhir') {
+                $user->pegawai()->create();
+            } elseif ($user->role === 'Panitia Keuangan') {
+                $user->pegawai()->create();
+            } elseif ($user->role === 'Panitia Perpustakaan') {
+                $user->pegawai()->create();
+            } elseif ($user->role === 'Ketua Jurusan') {
+                $user->pegawai()->create();
+            }
+        });
     }
 }

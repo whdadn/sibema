@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminProdiController;
 use App\Http\Controllers\AkademikController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -92,43 +93,34 @@ Route::prefix('/dashboardMhs')->group(function () {
 
 //bagian Admin Prodi
 Route::prefix('/dashboardAdmin')->group(function () {
-    Route::get('/', function () {
-        return view('dashboard.menuAdmin.dashboardAdmin');
-    });
     Route::get('/statusAkademik', function () {
         return view('dashboard.menuAdmin.statusAkademik');
     });
-    Route::get('/ubahStatusUmum', function () {
-        return view('dashboard.menuAdmin.ubahStatusUmum');
-    });
-    Route::get('/UbahStatusAkademik', function () {
-        return view('dashboard.menuAdmin.ubahStatusAkademik');
-    });
-    Route::get('/akunMahasiswa', function () {
-        return view('dashboard.menuAdmin.akunMahasiswa');
-    });
-    Route::get('/akunMahasiswa/tambahAkunMhs', function () {
-        return view('dashboard.menuAdmin.tambahAkunMhs');
-    });
-    Route::get('/akunMahasiswa/perbaruiAkunMhs', function () {
-        return view('dashboard.menuAdmin.perbaruiAkunMhs');
-    });
-    Route::get('/akunPanitia', function () {
-        return view('dashboard.menuAdmin.akunPanitia');
-    });
-    Route::get('/akunPanitia/tambahAkunPanitia', function () {
-        return view('dashboard.menuAdmin.tambahAkunPanitia');
-    });
-    Route::get('/akunPanitia/perbaruiAkunPanitia', function () {
-        return view('dashboard.menuAdmin.perbaruiAkunPanitia');
-    });
-    Route::get('/beritaUtama', function () {
-        return view('dashboard.menuAdmin.beritaUtama');
-    });
-    Route::get('/beritaUtama/tambahBeritaUtama', function () {
-        return view('dashboard.menuAdmin.tambahBeritaUtama');
-    });
-    Route::get('/beritaUtama/perbaruiBeritaUtama', function () {
-        return view('dashboard.menuAdmin.perbaruiBeritaUtama');
-    });
+    Route::get('/', [AdminProdiController::class, 'index']);
+    Route::get('/ubahStatusUmum{mahasiswa}', [AdminProdiController::class, 'edit']);
+    Route::put('/ubahStatusUmum{mahasiswa}', [AdminProdiController::class, 'update']);
+    Route::get('/statusAkademik', [AdminProdiController::class, 'showAkademik']);
+    Route::get('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'editAkademik']);
+    Route::put('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'updateAkademik']);
+
+    Route::get('/akunMahasiswa', [AdminProdiController::class, 'showAkunMhs']);
+    Route::get('/akunMahasiswa/tambahAkunMhs', [AdminProdiController::class, 'createAkunMhs']);
+    Route::post('/akunMahasiswa/tambahAkunMhs', [AdminProdiController::class, 'storeAkunMhs']);
+    Route::get('/akunMahasiswa/perbaruiAkunMhs{akunMhs}', [AdminProdiController::class, 'editAkunMhs']);
+    Route::delete('/akunMahasiswa{akunMhs}', [AdminProdiController::class, 'destroyAkunMhs']);
+    Route::put('/akunMahasiswa/perbaruiAkunMhs{akunMhs}', [AdminProdiController::class, 'updateAkunMhs']);
+
+    Route::get('/akunPanitia', [AdminProdiController::class, 'showAkunPanitia']);
+    Route::get('/akunPanitia/tambahAkunPanitia', [AdminProdiController::class, 'createAkunPanitia']);
+    Route::post('/akunPanitia/tambahAkunPanitia', [AdminProdiController::class, 'storeAkunPanitia']);
+    Route::get('/akunPanitia/perbaruiAkunPanitia{pegawai}', [AdminProdiController::class, 'editAkunPanitia']);
+    Route::put('/akunPanitia/perbaruiAkunPanitia{pegawai}', [AdminProdiController::class, 'updateAkunPanitia']);
+    Route::delete('/akunPanitia{pegawai}', [AdminProdiController::class, 'destroyAkunPanitia']);
+
+    Route::get('/beritaUtama', [BeritaController::class, 'show']);
+    Route::get('/beritaUtama/tambahBeritaUtama', [BeritaController::class, 'create']);
+    Route::post('/beritaUtama/tambahBeritaUtama', [BeritaController::class, 'store']);
+    Route::get('/beritaUtama/perbaruiBeritaUtama{berita}', [BeritaController::class, 'edit']);
+    Route::put('/beritaUtama/perbaruiBeritaUtama{berita}', [BeritaController::class, 'update']);
+    Route::delete('/beritaUtama{berita}', [BeritaController::class, 'destroy']);
 });
