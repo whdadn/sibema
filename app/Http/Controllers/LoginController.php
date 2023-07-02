@@ -21,8 +21,15 @@ class LoginController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-            return redirect()->intended('/dashboardMhs');
+            if (Auth::user()->role === 'Mahasiswa') {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboardMhs');
+            }
+
+            if (Auth::user()->role === 'Admin Prodi') {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboardAdmin');
+            }
         }
         return back()->with('loginError', 'Login Gagal');
     }

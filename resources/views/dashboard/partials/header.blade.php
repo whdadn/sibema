@@ -9,10 +9,12 @@
                     <span class="user-name">Selamat Datang, {{ Auth::User()->username }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href="\"><i class="dw dw-user1"></i>Halaman Utama</a>
+                    <a class="dropdown-item" href=""><i class="dw dw-user1"></i>Profile</a>
+                    <a class="dropdown-item" href="/"><i class="dw dw-newspaper-1"></i>Halaman Utama</a>
                     <form action="/logout" method="POST">
                         @csrf
-                        <button type="submit" class="dropdown-item"> Logout</button>
+                        <button type="submit" class="dropdown-item"><i class="icon-copy dw dw-logout"></i>
+                            Logout</button>
                     </form>
                 </div>
             </div>
