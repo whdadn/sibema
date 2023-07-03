@@ -48,23 +48,12 @@ class TugasAkhirController extends Controller
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
         $validateData['id_pegawai'] = $pegawai->id_pegawai;
 
-        $filePersetujuan = $request->file('persetujuan')->getClientOriginalName();
-        $filePengesahan = $request->file('pengesahan')->getClientOriginalName();
-        $fileKonsul1 = $request->file('konsul1')->getClientOriginalName();
-        $fileKonsul2 = $request->file('persetujuan')->getClientOriginalName();
-        $fileRevisi = $request->file('persetujuan')->getClientOriginalName();
-
         $tugas_akhir = new tugas_akhir;
         $tugas_akhir->lembar_persetujuan = $validateData['lembar_persetujuan'];
         $tugas_akhir->lembar_pengesahan = $validateData['lembar_pengesahan'];
         $tugas_akhir->lembar_konsul_pemb_1 = $validateData['lembar_konsul_pemb_1'];
         $tugas_akhir->lembar_konsul_pemb_2 = $validateData['lembar_konsul_pemb_2'];
         $tugas_akhir->lembar_revisi = $validateData['lembar_revisi'];
-        $tugas_akhir->lembar_persetujuan = $filePersetujuan;
-        $tugas_akhir->lembar_pengesahan = $filePengesahan;
-        $tugas_akhir->lembar_konsul_pemb_1 = $fileKonsul1;
-        $tugas_akhir->lembar_konsul_pemb_2 = $fileKonsul2;
-        $tugas_akhir->lembar_revisi = $fileRevisi;
         $tugas_akhir->id_mahasiswa = $mahasiswa->id_mahasiswa;
         $tugas_akhir->id_pegawai = $pegawai->id_pegawai;
         $tugas_akhir->save();
@@ -175,5 +164,12 @@ class TugasAkhirController extends Controller
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
 
         return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir', 'mahasiswa'));
+    }
+
+    public function viewTa(tugas_akhir $tugas_akhir)
+    {
+        $tugas_akhir = tugas_akhir::find($tugas_akhir->id_ta);
+
+        return view('dashboard.menuMhs.viewTa', compact('tugas_akhir'));
     }
 }

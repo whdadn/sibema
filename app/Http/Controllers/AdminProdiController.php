@@ -8,6 +8,7 @@ use App\Models\pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProdiController extends Controller
 {
@@ -211,5 +212,12 @@ class AdminProdiController extends Controller
         $pegawai->delete();
 
         return redirect('/dashboardAdmin/akunPanitia');
+    }
+
+    public function viewAkademik(akademik $akademik)
+    {
+        $akademik = akademik::find($akademik->id_akademik);
+
+        return view('dashboard.menuAdmin.viewAkademik', compact('akademik'));
     }
 }

@@ -44,10 +44,8 @@ class PerpusController extends Controller
 
         if ($request->hasFile('pengembalian')) {
             $validateData['dokumen_perpus'] = $request->file('pengembalian')->store('DokPengembalian');
-            $filePerpus = $request->file('pengembalian')->getClientOriginalName();
         } else {
             $validateData['dokumen_perpus'] = null;
-            $filePerpus = null;
         }
 
         $ketPerpus = $request->keterangan;
@@ -102,5 +100,12 @@ class PerpusController extends Controller
         $perpustakaan = $mahasiswa->perpustakaan()->get();
 
         return view('dashboard.menuMhs.uploadPerpus', compact('mahasiswa', 'perpustakaan'));
+    }
+
+    public function viewPerpus(perpustakaan $perpus)
+    {
+        $perpus = perpustakaan::find($perpus->id_keuangan);
+
+        return view('dashboard.menuMhs.viewperpus', compact('perpus'));
     }
 }

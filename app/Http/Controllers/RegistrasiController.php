@@ -42,11 +42,8 @@ class RegistrasiController extends Controller
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
         $validateData['id_pegawai'] = $pegawai->id_pegawai;
 
-        $fileRegis = $request->file('registrasi')->getClientOriginalName();
-
         $keuangan = new keuangan;
         $keuangan->dokumen_keuangan = $validateData['dokumen_keuangan'];
-        $keuangan->dokumen_keuangan = $fileRegis;
 
         $keuangan->id_mahasiswa = $mahasiswa->id_mahasiswa;
         $keuangan->id_pegawai = $pegawai->id_pegawai;
@@ -95,5 +92,12 @@ class RegistrasiController extends Controller
         $keuangan = $mahasiswa->keuangan()->get();
 
         return view('dashboard.menuMhs.uploadRegis', compact('keuangan', 'mahasiswa'));
+    }
+
+    public function viewRegis(keuangan $regis)
+    {
+        $regis = keuangan::find($regis->id_keuangan);
+
+        return view('dashboard.menuMhs.viewRegis', compact('regis'));
     }
 }

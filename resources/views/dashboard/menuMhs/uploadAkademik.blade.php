@@ -66,25 +66,18 @@
         <table class="table" id="data-table">
             <thead>
                 <tr>
-                    <th scope="col">KHS Semester 1</th>
-                    <th scope="col">KHS Semester 2</th>
-                    <th scope="col">KHS Semester 3</th>
-                    <th scope="col">KHS Semester 4</th>
-                    <th scope="col">KHS Semester 5</th>
-                    <th scope="col">KHS Semester 6</th>
-                    <th scope="col">Lembar SP</th>
+                    <th scope="col">Status Dokumen</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($akademik as $akd)
                     <tr class="clickable-row" data-id="{{ $akd->id_akademik }}">
-                        <td>{{ $akd->khs_semester_1 }}</td>
-                        <td>{{ $akd->khs_semester_2 }}</td>
-                        <td>{{ $akd->khs_semester_3 }}</td>
-                        <td>{{ $akd->khs_semester_4 }}</td>
-                        <td>{{ $akd->khs_semester_5 }}</td>
-                        <td>{{ $akd->khs_semester_6 }}</td>
-                        <td>{{ $akd->lembar_sp }}</td>
+                        <td>Dokumen Berhasil Diupload </td>
+                        <td>
+                            <a class="btn" href="/dashboardMhs/uploadAkademik{{ $akd->id_akademik }}"><i
+                                    class="icon-copy dw dw-eye mr-n5"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

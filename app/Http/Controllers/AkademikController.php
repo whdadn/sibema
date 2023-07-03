@@ -47,19 +47,10 @@ class AkademikController extends Controller
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
         $validateData['id_pegawai'] = $pegawai->id_pegawai;
 
-        $fileSem1 = $request->file('sem1')->getClientOriginalName();
-        $fileSem2 = $request->file('sem2')->getClientOriginalName();
-        $fileSem3 = $request->file('sem3')->getClientOriginalName();
-        $fileSem4 = $request->file('sem4')->getClientOriginalName();
-        $fileSem5 = $request->file('sem5')->getClientOriginalName();
-        $fileSem6 = $request->file('sem6')->getClientOriginalName();
-
         if ($request->hasFile('sp')) {
             $validateData['lembar_sp'] = $request->file('sp')->store('lembarSP');
-            $fileSp = $request->file('sp')->getClientOriginalName();
         } else {
             $validateData['lembar_sp'] = null;
-            $fileSp = null;
         }
 
         $akademik = new akademik;
@@ -70,13 +61,6 @@ class AkademikController extends Controller
         $akademik->khs_semester_5 = $validateData['khs_semester_5'];
         $akademik->khs_semester_6 = $validateData['khs_semester_6'];
         $akademik->lembar_sp = $validateData['lembar_sp'];
-        $akademik->khs_semester_1 = $fileSem1;
-        $akademik->khs_semester_2 = $fileSem2;
-        $akademik->khs_semester_3 = $fileSem3;
-        $akademik->khs_semester_4 = $fileSem4;
-        $akademik->khs_semester_5 = $fileSem5;
-        $akademik->khs_semester_6 = $fileSem6;
-        $akademik->lembar_sp = $fileSp;
         $akademik->id_mahasiswa = $mahasiswa->id_mahasiswa;
         $akademik->id_pegawai = $pegawai->id_pegawai;
         $akademik->save();
@@ -124,5 +108,12 @@ class AkademikController extends Controller
         $akademik = $mahasiswa->akademik()->get();
 
         return view('dashboard.menuMhs.uploadAkademik', compact('akademik', 'mahasiswa'));
+    }
+
+    public function viewAkademik(akademik $akademik)
+    {
+        $akademik = akademik::find($akademik->id_akademik);
+
+        return view('dashboard.menuMhs.viewAkademik', compact('akademik'));
     }
 }
