@@ -6,6 +6,7 @@ use App\Models\akademik;
 use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AkademikController extends Controller
 {
@@ -14,7 +15,7 @@ class AkademikController extends Controller
      */
     public function index()
     {
-        $mahasiswa = mahasiswa::find(10);
+        $mahasiswa = auth()->user()->mahasiswa;
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();
@@ -35,8 +36,8 @@ class AkademikController extends Controller
      */
     public function store(Request $request)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $pegawai = pegawai::find(55);
+        $mahasiswa = auth()->user()->mahasiswa;
+        $pegawai = auth()->user()->pegawai;
 
         $validateData['khs_semester_1'] = $request->file('sem1')->store('KHSSem1');
         $validateData['khs_semester_2'] = $request->file('sem2')->store('KHSSem2');
@@ -45,7 +46,7 @@ class AkademikController extends Controller
         $validateData['khs_semester_5'] = $request->file('sem5')->store('KHSSem5');
         $validateData['khs_semester_6'] = $request->file('sem6')->store('KHSSem6');
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
-        $validateData['id_pegawai'] = $pegawai->id_pegawai;
+        $validateData['id_pegawai'] = null;
 
         if ($request->hasFile('sp')) {
             $validateData['lembar_sp'] = $request->file('sp')->store('lembarSP');
@@ -62,7 +63,14 @@ class AkademikController extends Controller
         $akademik->khs_semester_6 = $validateData['khs_semester_6'];
         $akademik->lembar_sp = $validateData['lembar_sp'];
         $akademik->id_mahasiswa = $mahasiswa->id_mahasiswa;
-        $akademik->id_pegawai = $pegawai->id_pegawai;
+
+        // Tambahkan kondisi untuk mengatur id_pegawai hanya diisi jika pegawai ada
+        if ($pegawai) {
+            $akademik->id_pegawai = $pegawai->id_pegawai;
+        } else {
+            $akademik->id_pegawai = null;
+        }
+
         $akademik->save();
 
         return redirect('/dashboardMhs/uploadAkademik');
@@ -99,13 +107,42 @@ class AkademikController extends Controller
     {
         $akademik->delete();
 
+        if ($akademik->khs_semester_1) {
+            Storage::delete($akademik->khs_semester_1);
+        }
+
+        if ($akademik->khs_semester_2) {
+            Storage::delete($akademik->khs_semester_2);
+        }
+
+        if ($akademik->khs_semester_3) {
+            Storage::delete($akademik->khs_semester_3);
+        }
+
+        if ($akademik->khs_semester_4) {
+            Storage::delete($akademik->khs_semester_4);
+        }
+
+        if ($akademik->khs_semester_5) {
+            Storage::delete($akademik->khs_semester_5);
+        }
+
+        if ($akademik->khs_semester_6) {
+            Storage::delete($akademik->khs_semester_6);
+        }
+
+        if ($akademik->lembar_sp) {
+            Storage::delete($akademik->lembar_sp);
+        }
+
         return redirect('/dashboardMhs/uploadAkademik');
     }
 
-    public function showAkademik(mahasiswa $mahasiswa)
+    public function showAkademik(mahasiswa $mahasiswa, akademik $akademik)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $akademik = $mahasiswa->akademik()->get();
+        $mahasiswa = Mahasiswa::find($mahasiswa->id_mahasiswa);
+
+        $akademik = akademik::all();
 
         return view('dashboard.menuMhs.uploadAkademik', compact('akademik', 'mahasiswa'));
     }

@@ -39,7 +39,7 @@ class MahasiswaController extends Controller
      */
     public function show(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(10);
+        $mahasiswa = auth()->user()->mahasiswa;
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();

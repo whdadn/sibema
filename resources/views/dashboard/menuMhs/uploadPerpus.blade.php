@@ -66,7 +66,7 @@
         <table class="table" id="data-table">
             <thead>
                 <tr>
-                    <th scope="col">Bukti Pengembalian</th>
+                    <th scope="col">Status Dokumen</th>
                     <th scope="col">Keterangan</th>
                 </tr>
             </thead>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PerbaruiTaRequset;
+use App\Models\akademik;
 use App\Models\tugas_akhir;
 use App\Models\mahasiswa;
 use App\Models\pegawai;
@@ -14,9 +15,9 @@ class TugasAkhirController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(10);
+        $mahasiswa = mahasiswa::find($mahasiswa->id_mahasiswa);
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();
@@ -37,8 +38,8 @@ class TugasAkhirController extends Controller
      */
     public function store(Request $request)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $pegawai = pegawai::find(55);
+        $mahasiswa = auth()->user()->mahasiswa;
+        $pegawai = auth()->user()->pegawai;
 
         $validateData['lembar_persetujuan'] = $request->file('persetujuan')->store('lembarPersetujuan');
         $validateData['lembar_pengesahan'] = $request->file('pengesahan')->store('lembarPengesahan');
@@ -46,7 +47,7 @@ class TugasAkhirController extends Controller
         $validateData['lembar_konsul_pemb_2'] = $request->file('persetujuan')->store('lembarKonsul2');
         $validateData['lembar_revisi'] = $request->file('persetujuan')->store('lembarRevisi');
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
-        $validateData['id_pegawai'] = $pegawai->id_pegawai;
+        $validateData['id_pegawai'] = null;
 
         $tugas_akhir = new tugas_akhir;
         $tugas_akhir->lembar_persetujuan = $validateData['lembar_persetujuan'];
@@ -55,7 +56,13 @@ class TugasAkhirController extends Controller
         $tugas_akhir->lembar_konsul_pemb_2 = $validateData['lembar_konsul_pemb_2'];
         $tugas_akhir->lembar_revisi = $validateData['lembar_revisi'];
         $tugas_akhir->id_mahasiswa = $mahasiswa->id_mahasiswa;
-        $tugas_akhir->id_pegawai = $pegawai->id_pegawai;
+
+        if ($pegawai) {
+            $tugas_akhir->id_pegawai = $pegawai->id_pegawai;
+        } else {
+            $tugas_akhir->id_pegawai = null;
+        }
+
         $tugas_akhir->save();
 
         return redirect('/dashboardMhs/uploadTa');
@@ -151,17 +158,38 @@ class TugasAkhirController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tugas_akhir $tugas_akhir)
+    public function destroy(tugas_akhir $tugas_akhir, Request $request)
     {
+        if ($tugas_akhir->lembar_persetujuan) {
+            Storage::delete($tugas_akhir->lembar_persetujuan);
+        }
+
+        if ($tugas_akhir->lembar_pengesahan) {
+            Storage::delete($tugas_akhir->lembar_pengesahan);
+        }
+
+        if ($tugas_akhir->lembar_konsul_pemb_1) {
+            Storage::delete($tugas_akhir->lembar_konsul_pemb_1);
+        }
+
+        if ($tugas_akhir->lembar_konsul_pemb_2) {
+            Storage::delete($tugas_akhir->lembar_konsul_pemb_2);
+        }
+
+        if ($tugas_akhir->lembar_revisi) {
+            Storage::delete($tugas_akhir->lembar_revisi);
+        }
+
         $tugas_akhir->delete();
 
         return redirect('/dashboardMhs/uploadTa');
     }
 
-    public function showTa(mahasiswa $mahasiswa)
+    public function showTa(mahasiswa $mahasiswa, akademik $tugas_akhir)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
+        $mahasiswa = Mahasiswa::find($mahasiswa->id_mahasiswa);
+
+        $tugas_akhir = tugas_akhir::all();
 
         return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir', 'mahasiswa'));
     }

@@ -6,6 +6,7 @@ use App\Models\keuangan;
 use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
+use \Illuminate\Support\Facades\Storage;
 
 class RegistrasiController extends Controller
 {
@@ -14,7 +15,7 @@ class RegistrasiController extends Controller
      */
     public function index()
     {
-        $mahasiswa = mahasiswa::find(10);
+        $mahasiswa = auth()->user()->mahasiswa;
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();
@@ -35,18 +36,24 @@ class RegistrasiController extends Controller
      */
     public function store(Request $request)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $pegawai = pegawai::find(55);
+        $mahasiswa = auth()->user()->mahasiswa;
+        $pegawai = auth()->user()->pegawai;
 
         $validateData['dokumen_keuangan'] = $request->file('registrasi')->store('dokumenRegis');
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
-        $validateData['id_pegawai'] = $pegawai->id_pegawai;
+        $validateData['id_pegawai'] = null;
 
         $keuangan = new keuangan;
         $keuangan->dokumen_keuangan = $validateData['dokumen_keuangan'];
 
         $keuangan->id_mahasiswa = $mahasiswa->id_mahasiswa;
-        $keuangan->id_pegawai = $pegawai->id_pegawai;
+
+        if ($pegawai) {
+            $keuangan->id_pegawai = $pegawai->id_pegawai;
+        } else {
+            $keuangan->id_pegawai = null;
+        }
+
         $keuangan->save();
 
         return redirect('/dashboardMhs/uploadRegis');
@@ -81,15 +88,19 @@ class RegistrasiController extends Controller
      */
     public function destroy(keuangan $keuangan)
     {
-        $keuangan->delete();
+        if ($keuangan->dokumen_keuangan) {
+            Storage::delete($keuangan->dokumen_keuangan);
+        }
 
+        $keuangan->delete();
         return redirect('/dashboardMhs/uploadRegis');
     }
 
     public function showRegis(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $keuangan = $mahasiswa->keuangan()->get();
+        $mahasiswa = Mahasiswa::find($mahasiswa->id_mahasiswa);
+
+        $keuangan = keuangan::all();
 
         return view('dashboard.menuMhs.uploadRegis', compact('keuangan', 'mahasiswa'));
     }

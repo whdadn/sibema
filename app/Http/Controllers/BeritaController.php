@@ -30,7 +30,7 @@ class BeritaController extends Controller
 
     public function store(berita $berita, Request $request)
     {
-        $pegawai = pegawai::find(47);
+        $pegawai = auth()->user()->pegawai;
 
         $berita = new berita;
         $berita->judul_berita = $request->judul;
@@ -54,8 +54,6 @@ class BeritaController extends Controller
 
     public function update(berita $berita, Request $request)
     {
-        $pegawai = pegawai::find(47);
-
         $berita = berita::find($berita->id_berita);
         $berita->judul_berita = $request->judul;
         $berita->isi_berita = $request->berita;
@@ -80,7 +78,6 @@ class BeritaController extends Controller
             if ($request->oldGambar) {
                 Storage::delete($request->oldGambar);
             }
-            $berita->gambar = $request->file('gambar')->store('Gambar');
         }
 
         $berita->delete();
