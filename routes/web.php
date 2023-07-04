@@ -62,6 +62,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'create']);
             Route::post('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'store']);
             Route::get('/cetakStatus', [MahasiswaController::class, 'cetakStatus']);
+            Route::get('/profileMhs{mahasiswa}', [MahasiswaController::class, 'edit']);
+            Route::put('/profileMhs{mahasiswa}', [MahasiswaController::class, 'update']);
             // Route::get('/uploadTa/perbaruiDokTa{tugas_akhir}', [TugasAkhirController::class, 'edit']);
             // Route::post('/uploadTa/perbaruiDokTa{tugas_akhir}', [TugasAkhirController::class, 'update']);
 

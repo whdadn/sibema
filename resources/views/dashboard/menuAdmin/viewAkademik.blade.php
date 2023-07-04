@@ -67,30 +67,12 @@
                 <div class="card-box pricing-card-style2">
                     <div class="pricing-card-header">
                         <div class="left">
-                            <h5>Advanced</h5>
-                            <p>For big businesses</p>
-                        </div>
-                        <div class="right">
-                            <div class="pricing-price">
-                                €15<span>/month</span>
-                            </div>
+                            <h5>KHS Semester 2</h5>
                         </div>
                     </div>
                     <div class="pricing-card-body">
-                        <div class="pricing-points">
-                            <ul>
-                                <li>Everything in Standard</li>
-                                <li>As much space as needed</li>
-                                <li>Advanced admin controls</li>
-                                <li>Dropbox Showcase</li>
-                                <li>Tiered admin roles</li>
-                                <li>Advanced user management tools</li>
-                                <li>Domain verification</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="cta">
-                        <a href="#" class="btn btn-primary btn-rounded btn-lg">Get Started</a>
+                        <iframe src="{{ asset('storage/' . $akademik->khs_semester_2) }}" width="350px"
+                            height="500px"></iframe>
                     </div>
                 </div>
             </div>
@@ -98,66 +80,69 @@
                 <div class="card-box pricing-card-style2">
                     <div class="pricing-card-header">
                         <div class="left">
-                            <h5>Enterprise</h5>
-                            <p>For enterprises</p>
-                        </div>
-                        <div class="right">
-                            <div class="pricing-price">
-                                €25<span>/month</span>
-                            </div>
+                            <h5>KHS Semester 3</h5>
                         </div>
                     </div>
                     <div class="pricing-card-body">
-                        <div class="pricing-points">
-                            <ul>
-                                <li>Everything in Advanced</li>
-                                <li>Account Capture</li>
-                                <li>Network control</li>
-                                <li>Enterprise management support</li>
-                                <li>Domain Insights</li>
-                                <li>Advanced training for end users</li>
-                                <li>24/7 phone support</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="cta">
-                        <a href="#" class="btn btn-primary btn-rounded btn-lg">Get Started</a>
+                        <iframe src="{{ asset('storage/' . $akademik->khs_semester_3) }}" width="350px"
+                            height="500px"></iframe>
                     </div>
                 </div>
             </div>
-
             <div class="col-md-4 mb-30">
                 <div class="card-box pricing-card-style2">
                     <div class="pricing-card-header">
                         <div class="left">
-                            <h5>Enterprise</h5>
-                            <p>For enterprises</p>
-                        </div>
-                        <div class="right">
-                            <div class="pricing-price">
-                                €25<span>/month</span>
-                            </div>
+                            <h5>KHS Semester 4</h5>
                         </div>
                     </div>
                     <div class="pricing-card-body">
-                        <div class="pricing-points">
-                            <ul>
-                                <li>Everything in Advanced</li>
-                                <li>Account Capture</li>
-                                <li>Network control</li>
-                                <li>Enterprise management support</li>
-                                <li>Domain Insights</li>
-                                <li>Advanced training for end users</li>
-                                <li>24/7 phone support</li>
-                            </ul>
+                        <iframe src="{{ asset('storage/' . $akademik->khs_semester_4) }}" width="350px"
+                            height="500px"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-30">
+                <div class="card-box pricing-card-style2">
+                    <div class="pricing-card-header">
+                        <div class="left">
+                            <h5>KHS Semester 5</h5>
                         </div>
                     </div>
-                    <div class="cta">
-                        <a href="#" class="btn btn-primary btn-rounded btn-lg">Get Started</a>
+                    <div class="pricing-card-body">
+                        <iframe src="{{ asset('storage/' . $akademik->khs_semester_5) }}" width="350px"
+                            height="500px"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-30">
+                <div class="card-box pricing-card-style2">
+                    <div class="pricing-card-header">
+                        <div class="left">
+                            <h5>KHS Semester 6</h5>
+                        </div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <iframe src="{{ asset('storage/' . $akademik->khs_semester_6) }}" width="350px"
+                            height="500px"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-30">
+                <div class="card-box pricing-card-style2">
+                    <div class="pricing-card-header">
+                        <div class="left">
+                            <h5>Lembar SP</h5>
+                        </div>
+                    </div>
+                    <div class="pricing-card-body">
+                        <iframe src="{{ asset('storage/' . $akademik->lembar_sp) }}" width="350px" height="500px"></iframe>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    </div>
 
     </div>
 @endsection

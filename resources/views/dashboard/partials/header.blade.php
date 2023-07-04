@@ -9,7 +9,14 @@
                     <span class="user-name">Selamat Datang, {{ Auth::User()->username }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    <a class="dropdown-item" href=""><i class="dw dw-user1"></i>Profile</a>
+                    @if (Auth::user()->role === 'Mahasiswa' && $mahasiswa)
+                        <a class="dropdown-item" href="/dashboardMhs/profileMhs{{ $mahasiswa->id_mahasiswa }}"><i
+                                class="dw dw-user1"></i>Profile</a>
+                    @endif
+
+                    @if (Auth::user()->role === 'Admin Prodi')
+                        <a class="dropdown-item" href="/dashboardMhs/profileMhs"><i class="dw dw-user1"></i>Profile</a>
+                    @endif
                     <a class="dropdown-item" href="/"><i class="dw dw-newspaper-1"></i>Halaman Utama</a>
                     <form action="/logout" method="POST">
                         @csrf

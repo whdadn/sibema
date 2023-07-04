@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\jurusan;
 use App\Models\mahasiswa;
 use App\Models\pegawai;
 use App\Models\tugas_akhir;
@@ -49,15 +50,35 @@ class MahasiswaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit()
+    public function edit(mahasiswa $mahasiswa)
     {
+        $mahasiswa = auth()->user()->mahasiswa;
+
+        return view('dashboard.menuMhs.profileMhs', compact('mahasiswa'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, mahasiswa $mahasiswa, jurusan $jurusan)
     {
+        $jurusan = new jurusan;
+        $jurusan->nama_jurusan = $request->jurusan;
+        $jurusan->nama_prodi = $request->prodi;
+        $jurusan->save();
+
+
+        $mahasiswa = mahasiswa::find($mahasiswa->id_mahasiswa);
+
+        $mahasiswa->nim = $request->nim;
+        $mahasiswa->nama_mhs = $request->nama;
+        $mahasiswa->no_telpon_mhs = $request->telpon;
+        $mahasiswa->alamat_mhs = $request->alamat;
+        $mahasiswa->tahun_lulus = $request->lulus;
+        $mahasiswa->id_jurusan = $jurusan->id_jurusan;
+        $mahasiswa->save();
+
+        return back();
     }
 
     /**
