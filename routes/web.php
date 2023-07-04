@@ -117,6 +117,8 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'editAkademik']);
             Route::put('/ubahStatusAkademik{akademik}', [AdminProdiController::class, 'updateAkademik']);
             Route::get('/statusAkademik/detail{akademik}', [AdminProdiController::class, 'viewAkademik']);
+            Route::get('/profileAdmin', [AdminProdiController::class, 'editProfile']);
+            Route::put('/profileAdmin{pegawai}', [AdminProdiController::class, 'updateProfile']);
 
             Route::get('/akunMahasiswa', [AdminProdiController::class, 'showAkunMhs']);
             Route::get('/akunMahasiswa/tambahAkunMhs', [AdminProdiController::class, 'createAkunMhs']);

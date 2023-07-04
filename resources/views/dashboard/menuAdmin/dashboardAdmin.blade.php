@@ -68,10 +68,8 @@
                         <a class="btn dropdown-toggle dw dw-filter-1" href="#" role="button" data-toggle="dropdown">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Teknik Elektro</a>
-                            <a class="dropdown-item" href="#">Teknik Mesin</a>
-                            <a class="dropdown-item" href="#">Bebas Masalah</a>
-                            <a class="dropdown-item" href="#">Bermasalah</a>
+                            <a class="dropdown-item" href="#" data-status="bebas masalah">Bebas Masalah</a>
+                            <a class="dropdown-item" href="#" data-status="bermasalah">Bermasalah</a>
                         </div>
                     </div>
                 </div>

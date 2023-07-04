@@ -220,4 +220,24 @@ class AdminProdiController extends Controller
 
         return view('dashboard.menuAdmin.viewAkademik', compact('akademik'));
     }
+
+    public function editProfile(pegawai $pegawai)
+    {
+        $pegawai = auth()->user()->pegawai;
+
+        return view('dashboard.menuAdmin.profilePegawai', compact('pegawai'));
+    }
+
+    public function updateProfile(pegawai $pegawai, Request $request)
+    {
+        $pegawai = pegawai::find($pegawai->id_pegawai);
+
+        $pegawai->nama_pegawai = $request->nama;
+        $pegawai->no_telepon_pegawai = $request->telpon;
+        $pegawai->alamat_pegawai = $request->alamat;
+
+        $pegawai->save();
+
+        return back();
+    }
 }

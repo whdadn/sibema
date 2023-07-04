@@ -15,7 +15,8 @@
                     @endif
 
                     @if (Auth::user()->role === 'Admin Prodi')
-                        <a class="dropdown-item" href="/dashboardMhs/profileMhs"><i class="dw dw-user1"></i>Profile</a>
+                        <a class="dropdown-item" href="/dashboardAdmin/profileAdmin"><i
+                                class="dw dw-user1"></i>Profile</a>
                     @endif
                     <a class="dropdown-item" href="/"><i class="dw dw-newspaper-1"></i>Halaman Utama</a>
                     <form action="/logout" method="POST">

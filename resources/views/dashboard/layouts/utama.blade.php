@@ -65,6 +65,9 @@
     <script src="{{ asset('src/plugins/datatables/js/responsive.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('vendors/scripts/dashboard.js') }}"></script>
     <script src="{{ asset('/js/klik.js') }}"></script>
+    <script src="{{ asset('/js/filterUmum.js') }}"></script>
+    <script src="{{ asset('/js/filterAkademik.js') }}"></script>
+
 </body>
 
 </html>

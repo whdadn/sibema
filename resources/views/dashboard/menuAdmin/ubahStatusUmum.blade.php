@@ -56,7 +56,7 @@
             <div class="form-group">
                 <label>Status Bebas Masalah</label>
                 <select class="form-control" name="umum" id="umum">
-                    <option value="Bermaslah">Bermasalah</option>
+                    <option value="Bermasalah">Bermasalah</option>
                     <option value="Bebas Masalah">Bebas Masalah</option>
                 </select>
             </div>
