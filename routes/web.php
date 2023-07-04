@@ -61,6 +61,7 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('/uploadTa{tugas_akhir}', [TugasAkhirController::class, 'destroy']);
             Route::get('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'create']);
             Route::post('/uploadTa/tambahDokTa', [TugasAkhirController::class, 'store']);
+            Route::get('/cetakStatus', [MahasiswaController::class, 'cetakStatus']);
             // Route::get('/uploadTa/perbaruiDokTa{tugas_akhir}', [TugasAkhirController::class, 'edit']);
             // Route::post('/uploadTa/perbaruiDokTa{tugas_akhir}', [TugasAkhirController::class, 'update']);
 

@@ -23,7 +23,6 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        $mahasiswa = mahasiswa::find(10);
         return view('dashboard/menuMhs/tambahDokTa', compact('mahasiswa'));
     }
 
@@ -66,5 +65,16 @@ class MahasiswaController extends Controller
      */
     public function destroy(mahasiswa $mahasiswa)
     {
+    }
+
+    public function cetakStatus(mahasiswa $mahasiswa)
+    {
+        $mahasiswa = auth()->user()->mahasiswa;
+        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
+        $keuangan = $mahasiswa->keuangan()->get();
+        $perpustakaan = $mahasiswa->perpustakaan()->get();
+        $akademik = $mahasiswa->akademik()->get();
+
+        return view('dashboard.menuMhs.cetakMhs', compact('mahasiswa'));
     }
 }
