@@ -185,11 +185,12 @@ class TugasAkhirController extends Controller
         return redirect('/dashboardMhs/uploadTa');
     }
 
-    public function showTa(mahasiswa $mahasiswa, akademik $tugas_akhir)
+    public function showTa(mahasiswa $mahasiswa)
     {
-        $mahasiswa = Mahasiswa::find($mahasiswa->id_mahasiswa);
+        $user = auth()->user();
+        $mahasiswa = $user->mahasiswa;
 
-        $tugas_akhir = tugas_akhir::all();
+        $tugas_akhir = tugas_akhir::where('id_mahasiswa', $mahasiswa->id_mahasiswa)->get();
 
         return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir', 'mahasiswa'));
     }

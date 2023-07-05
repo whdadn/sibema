@@ -68,8 +68,13 @@
                         <a class="btn dropdown-toggle dw dw-filter-1" href="#" role="button" data-toggle="dropdown">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#" data-status="bebas masalah">Bebas Masalah</a>
-                            <a class="dropdown-item" href="#" data-status="bermasalah">Bermasalah</a>
+                            <a class="dropdown-item"
+                                href="{{ route('dashboardAdmin', ['status_umum' => 'semua']) }}">Semua</a>
+                            <a class="dropdown-item"
+                                href="{{ route('dashboardAdmin', ['status_umum' => 'bebas_masalah']) }}">Bebas
+                                Masalah</a>
+                            <a class="dropdown-item"
+                                href="{{ route('dashboardAdmin', ['status_umum' => 'bermasalah']) }}">Bermasalah</a>
                         </div>
                     </div>
                 </div>

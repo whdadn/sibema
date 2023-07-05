@@ -15,12 +15,6 @@ class AkademikController extends Controller
      */
     public function index()
     {
-        $mahasiswa = auth()->user()->mahasiswa;
-        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
-        $keuangan = $mahasiswa->keuangan()->get();
-        $perpustakaan = $mahasiswa->perpustakaan()->get();
-        $akademik = $mahasiswa->akademik()->get();
-        return view('dashboard.menuMhs.dasboardMhs', compact('mahasiswa', 'tugas_akhir', 'keuangan', 'perpustakaan', 'akademik'));
     }
 
     /**
@@ -140,9 +134,10 @@ class AkademikController extends Controller
 
     public function showAkademik(mahasiswa $mahasiswa, akademik $akademik)
     {
-        $mahasiswa = Mahasiswa::find($mahasiswa->id_mahasiswa);
+        $user = auth()->user();
+        $mahasiswa = $user->mahasiswa;
 
-        $akademik = akademik::all();
+        $akademik = akademik::where('id_mahasiswa', $mahasiswa->id_mahasiswa)->get();
 
         return view('dashboard.menuMhs.uploadAkademik', compact('akademik', 'mahasiswa'));
     }

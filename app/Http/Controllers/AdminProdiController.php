@@ -240,4 +240,25 @@ class AdminProdiController extends Controller
 
         return back();
     }
+
+    public function filter(Request $request)
+    {
+        $statusUmum = $request->input('status_umum');
+
+        // Query atau filter data mahasiswa berdasarkan $statusUmum
+        $mahasiswa = mahasiswa::query();
+
+        if ($statusUmum === 'bebas_masalah') {
+            $mahasiswa->where('status_umum', 'bebas masalah');
+        } elseif ($statusUmum === 'bermasalah') {
+            $mahasiswa->where('status_umum', 'bermasalah');
+        }
+
+        $mahasiswa = $mahasiswa->paginate(10);
+
+        return view('dashboard.menuAdmin.dashboardAdmin', [
+            'statusUmum' => $statusUmum,
+            'mahasiswa' => $mahasiswa,
+        ]);
+    }
 }

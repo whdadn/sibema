@@ -107,9 +107,10 @@ class PerpusController extends Controller
 
     public function showPerpus(mahasiswa $mahasiswa)
     {
-        $mahasiswa = Mahasiswa::find($mahasiswa->id_mahasiswa);
+        $user = auth()->user();
+        $mahasiswa = $user->mahasiswa;
 
-        $perpustakaan = perpustakaan::all();
+        $perpustakaan = perpustakaan::where('id_mahasiswa', $mahasiswa->id_mahasiswa)->get();
 
 
         return view('dashboard.menuMhs.uploadPerpus', compact('mahasiswa', 'perpustakaan'));

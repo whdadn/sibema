@@ -9,9 +9,8 @@
                     <span class="user-name">Selamat Datang, {{ Auth::User()->username }}</span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                    @if (Auth::user()->role === 'Mahasiswa' && $mahasiswa)
-                        <a class="dropdown-item" href="/dashboardMhs/profileMhs{{ $mahasiswa->id_mahasiswa }}"><i
-                                class="dw dw-user1"></i>Profile</a>
+                    @if (Auth::user()->role === 'Mahasiswa')
+                        <a class="dropdown-item" href="/dashboardMhs/profileMhs"><i class="dw dw-user1"></i>Profile</a>
                     @endif
 
                     @if (Auth::user()->role === 'Admin Prodi')

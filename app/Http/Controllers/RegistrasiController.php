@@ -98,9 +98,10 @@ class RegistrasiController extends Controller
 
     public function showRegis(mahasiswa $mahasiswa)
     {
-        $mahasiswa = Mahasiswa::find($mahasiswa->id_mahasiswa);
+        $user = auth()->user();
+        $mahasiswa = $user->mahasiswa;
 
-        $keuangan = keuangan::all();
+        $keuangan = keuangan::where('id_mahasiswa', $mahasiswa->id_mahasiswa)->get();
 
         return view('dashboard.menuMhs.uploadRegis', compact('keuangan', 'mahasiswa'));
     }
