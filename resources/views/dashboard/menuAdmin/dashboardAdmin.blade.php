@@ -105,7 +105,7 @@
                             <td>{{ $mhs->perpustakaan->pluck('status_perpus')->implode(', ') }}</td>
                             <td>{{ $mhs->akademik->pluck('status_akademik')->implode(', ') }}</td>
                             <td>{{ $mhs->status_umum }}</td>
-                            <td><a href="/dashboardAdmin/ubahStatusUmum{{ $mhs->id_mahasiswa }}" class="badge"><i
+                            <td><a href="/dashboardAdmin/ubahStatusUmum{{ $mhs->id_mahasiswa }}"><i
                                         class="icon-copy dw dw-edit-1 ml-2 linked"></i></a></td>
                         </tr>
                     @endforeach

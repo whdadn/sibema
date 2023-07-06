@@ -1,14 +1,31 @@
-@extends('halamanUtama.main')
+@extends('halamanUtama.utama')
 
 @section('container')
     <div class="row justify-content-center">
         <div class="col-md-4">
             <main class="form-signin w-100 m-auto">
-                <form>
+                <form action="/ubahPassword" method="POST">
+                    @csrf
+                    @method('PUT')
+
                     <h1 class="h3 mb-3 fw-normal text-center">Ubah Password</h1>
 
+                    @if (session()->has('berhasil'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('berhasil') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    @if (session()->has('gagal'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('gagal') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
                     <div class="form-floating">
-                        <input type="text" name="username" class="form-control" id="username" placeholder="Usernamer" />
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Username" />
                         <label for="username">Username</label>
                     </div>
                     <div class="form-floating">

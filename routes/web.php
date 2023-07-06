@@ -34,12 +34,10 @@ Route::middleware(['guest'])->group(function () {
     //Bagian Login, Lupa Passowrd, dan Ubah Password
     Route::get('login', [LoginController::class, 'index'])->name('login');
     Route::post('login', [LoginController::class, 'login']);
-    Route::get('/lupaPassword', function () {
-        return view('lupaPassword');
-    });
-    Route::get('/ubahPassword', function () {
-        return view('ubahPassword');
-    });
+    Route::get('/lupaPassword', [LoginController::class, 'showLupaPass']);
+    Route::post('/lupaPassword', [LoginController::class, 'lupaPass']);
+    Route::get('/ubahPassword', [LoginController::class, 'ubahPass']);
+    Route::put('/ubahPassword', [LoginController::class, 'rubahPass']);
 });
 
 Route::get('/', [BeritaController::class, 'index']);
