@@ -13,14 +13,18 @@
                     @if (session()->has('berhasil'))
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('berhasil') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     @endif
 
                     @if (session()->has('gagal'))
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
                             {{ session('gagal') }}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                     @endif
 
@@ -36,8 +40,8 @@
                     <button class="btn btn-primary w-100 py-2 mt-2" type="submit">
                         Simpan
                     </button>
-                    <small class="d-block text-center mt-3">Lupa Password? <a href="/lupaPassword">Klik
-                            Disni</a></small>
+                    {{-- <small class="d-block text-center mt-3">Lupa Password? <a href="/lupaPassword">Klik
+                            Disni</a></small> --}}
                 </form>
             </main>
         </div>

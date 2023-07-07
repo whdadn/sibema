@@ -36,7 +36,7 @@ Route::middleware(['guest'])->group(function () {
     Route::post('login', [LoginController::class, 'login']);
     Route::get('/lupaPassword', [LoginController::class, 'showLupaPass']);
     Route::post('/lupaPassword', [LoginController::class, 'lupaPass']);
-    Route::get('/ubahPassword', [LoginController::class, 'ubahPass']);
+    Route::get('/ubahPassword{token}', [LoginController::class, 'ubahPass']);
     Route::put('/ubahPassword', [LoginController::class, 'rubahPass']);
 });
 
