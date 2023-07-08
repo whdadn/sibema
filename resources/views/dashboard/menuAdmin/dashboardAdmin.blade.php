@@ -68,10 +68,13 @@
                         <a class="btn dropdown-toggle dw dw-filter-1" href="#" role="button" data-toggle="dropdown">
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#">Teknik Elektro</a>
-                            <a class="dropdown-item" href="#">Teknik Mesin</a>
-                            <a class="dropdown-item" href="#">Bebas Masalah</a>
-                            <a class="dropdown-item" href="#">Bermasalah</a>
+                            <a class="dropdown-item"
+                                href="{{ route('dashboardAdmin', ['status_umum' => 'semua']) }}">Semua</a>
+                            <a class="dropdown-item"
+                                href="{{ route('dashboardAdmin', ['status_umum' => 'bebas_masalah']) }}">Bebas
+                                Masalah</a>
+                            <a class="dropdown-item"
+                                href="{{ route('dashboardAdmin', ['status_umum' => 'bermasalah']) }}">Bermasalah</a>
                         </div>
                     </div>
                 </div>
@@ -102,7 +105,7 @@
                             <td>{{ $mhs->perpustakaan->pluck('status_perpus')->implode(', ') }}</td>
                             <td>{{ $mhs->akademik->pluck('status_akademik')->implode(', ') }}</td>
                             <td>{{ $mhs->status_umum }}</td>
-                            <td><a href="/dashboardAdmin/ubahStatusUmum{{ $mhs->id_mahasiswa }}" class="badge"><i
+                            <td><a href="/dashboardAdmin/ubahStatusUmum{{ $mhs->id_mahasiswa }}"><i
                                         class="icon-copy dw dw-edit-1 ml-2 linked"></i></a></td>
                         </tr>
                     @endforeach

@@ -6,6 +6,8 @@ use App\Models\perpustakaan;
 use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PerpusController extends Controller
 {
@@ -14,7 +16,7 @@ class PerpusController extends Controller
      */
     public function index()
     {
-        $mahasiswa = mahasiswa::find(10);
+        $mahasiswa = auth()->user()->mahasiswa;
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();
@@ -35,19 +37,26 @@ class PerpusController extends Controller
      */
     public function store(Request $request)
     {
-        $mahasiswa = Mahasiswa::find(10);
-        $pegawai = Pegawai::find(55);
+        $mahasiswa = auth()->user()->mahasiswa;
+        $pegawai = auth()->user()->pegawai;
+
+        $validator = Validator::make($request->all(), [
+            'pengembalian' => 'file|mimes:jpeg,jpg,png,pdf|max:2048',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $validateData['keterangan'] = $request->keterangan;
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
-        $validateData['id_pegawai'] = $pegawai->id_pegawai;
+        $validateData['id_pegawai'] = null;
 
         if ($request->hasFile('pengembalian')) {
             $validateData['dokumen_perpus'] = $request->file('pengembalian')->store('DokPengembalian');
-            $filePerpus = $request->file('pengembalian')->getClientOriginalName();
         } else {
             $validateData['dokumen_perpus'] = null;
-            $filePerpus = null;
         }
 
         $ketPerpus = $request->keterangan;
@@ -56,7 +65,13 @@ class PerpusController extends Controller
         $perpus->dokumen_perpus = $validateData['dokumen_perpus'];
         $perpus->keterangan = $ketPerpus;
         $perpus->id_mahasiswa = $mahasiswa->id_mahasiswa;
-        $perpus->id_pegawai = $pegawai->id_pegawai;
+
+        if ($pegawai) {
+            $perpus->id_pegawai = $pegawai->id_pegawai;
+        } else {
+            $perpus->id_pegawai = null;
+        }
+
         $perpus->save();
 
         return redirect('/dashboardMhs/uploadPerpus');
@@ -91,6 +106,10 @@ class PerpusController extends Controller
      */
     public function destroy(perpustakaan $perpustakaan)
     {
+        if ($perpustakaan->dokumen_perpus) {
+            Storage::delete($perpustakaan->dokumen_perpus);
+        }
+
         $perpustakaan->delete();
 
         return redirect('/dashboardMhs/uploadPerpus');
@@ -98,9 +117,19 @@ class PerpusController extends Controller
 
     public function showPerpus(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $perpustakaan = $mahasiswa->perpustakaan()->get();
+        $user = auth()->user();
+        $mahasiswa = $user->mahasiswa;
+
+        $perpustakaan = perpustakaan::where('id_mahasiswa', $mahasiswa->id_mahasiswa)->get();
+
 
         return view('dashboard.menuMhs.uploadPerpus', compact('mahasiswa', 'perpustakaan'));
+    }
+
+    public function viewPerpus(perpustakaan $perpus)
+    {
+        $perpus = perpustakaan::find($perpus->id_perpus);
+
+        return view('dashboard.menuMhs.viewperpus', compact('perpus'));
     }
 }

@@ -42,8 +42,8 @@
                     </button>
                     <small class="d-block text-center mt-3">Lupa Password? <a href="/lupaPassword">Klik
                             Disni</a></small>
-                    <small class="d-block text-center mt-1">Ubah Password? <a href="/ubahPassword">Klik
-                            Disini</a></small>
+                    {{-- <small class="d-block text-center mt-1">Ubah Password? <a href="/ubahPassword">Klik
+                            Disini</a></small> --}}
                 </form>
             </main>
         </div>

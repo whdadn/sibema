@@ -69,21 +69,18 @@
         <table class="table" id="data-table">
             <thead>
                 <tr>
-                    <th scope="col">Lembar Persetujuan</th>
-                    <th scope="col">Lembar Pengesahan</th>
-                    <th scope="col">Lembar Konsultasi Pembimbing Pertama</th>
-                    <th scope="col">Lembar Konsultasi Pembimbing Kedua</th>
-                    <th scope="col">Lembar Revisi</th>
+                    <th scope="col">Status Dokumen</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($tugas_akhir as $ta)
                     <tr class="clickable-row" data-id="{{ $ta->id_ta }}">
-                        <td>{{ $ta->lembar_persetujuan }}</td>
-                        <td>{{ $ta->lembar_pengesahan }}</td>
-                        <td>{{ $ta->lembar_konsul_pemb_1 }}</td>
-                        <td>{{ $ta->lembar_konsul_pemb_2 }}</td>
-                        <td>{{ $ta->lembar_revisi }}</td>
+                        <td>Dokumen Berhasil Diupload </td>
+                        <td>
+                            <a class="btn" href="/dashboardMhs/uploadTa{{ $ta->id_ta }}"><i
+                                    class="icon-copy dw dw-eye mr-n5"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

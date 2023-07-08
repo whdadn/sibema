@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tugas_akhirs', function (Blueprint $table) {
             $table->unsignedBigInteger('id_ta')->autoIncrement();
             $table->unsignedBigInteger('id_mahasiswa');
-            $table->unsignedBigInteger('id_pegawai');
+            $table->unsignedBigInteger('id_pegawai')->nullable();
             $table->string('lembar_persetujuan')->nullable();
             $table->string('lembar_pengesahan')->nullable();
             $table->string('lembar_konsul_pemb_1')->nullable();

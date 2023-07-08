@@ -66,15 +66,19 @@
         <table class="table" id="data-table">
             <thead>
                 <tr>
-                    <th scope="col">Bukti Pengembalian</th>
+                    <th scope="col">Status Dokumen</th>
                     <th scope="col">Keterangan</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($perpustakaan as $perpus)
                     <tr class="clickable-row" data-id="{{ $perpus->id_perpus }}">
-                        <td>{{ $perpus->dokumen_perpus }}</td>
+                        <td>Dokumen/Keterangan Berhasil Diupload</td>
                         <td>{{ $perpus->keterangan }}</td>
+                        <td>
+                            <a class="btn" href="/dashboardMhs/uploadPerpus{{ $perpus->id_perpus }}"><i
+                                    class="icon-copy dw dw-eye mr-n5"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

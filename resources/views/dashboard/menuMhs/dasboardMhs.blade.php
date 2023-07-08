@@ -47,7 +47,8 @@
                     </h4>
                     <p class="font-18 max-width-600 text-danger">
                         {{ $mahasiswa->status_umum }}
-                        <button type="button" class="btn btn-outline-info btn-sm">Print</button>
+                        <a href="/dashboardMhs/cetakStatus" target="_blank"> <button type="button"
+                                class="btn btn-outline-info btn-sm">Print</button></a>
                     </p>
                 </div>
             </div>

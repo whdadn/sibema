@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('akademiks', function (Blueprint $table) {
             $table->unsignedBigInteger('id_akademik')->autoIncrement();
             $table->unsignedBigInteger('id_mahasiswa');
-            $table->unsignedBigInteger('id_pegawai',);
+            $table->unsignedBigInteger('id_pegawai',)->nullable();
             $table->string('status_akademik')->default('Bermasalah');
             $table->string('khs_semester_1')->nullable();
             $table->string('khs_semester_2')->nullable();

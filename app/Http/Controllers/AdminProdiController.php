@@ -8,6 +8,7 @@ use App\Models\pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminProdiController extends Controller
 {
@@ -93,6 +94,7 @@ class AdminProdiController extends Controller
         $akademik = akademik::find($akademik->id_akademik);
 
         $akademik->status_akademik = $request->akademik;
+        $akademik->rincian_akademik = $request->rincian;
         $akademik->save();
 
         return redirect('/dashboardAdmin/statusAkademik');
@@ -211,5 +213,53 @@ class AdminProdiController extends Controller
         $pegawai->delete();
 
         return redirect('/dashboardAdmin/akunPanitia');
+    }
+
+    public function viewAkademik(akademik $akademik)
+    {
+        $akademik = akademik::find($akademik->id_akademik);
+
+        return view('dashboard.menuAdmin.viewAkademik', compact('akademik'));
+    }
+
+    public function editProfile(pegawai $pegawai)
+    {
+        $pegawai = auth()->user()->pegawai;
+
+        return view('dashboard.menuAdmin.profilePegawai', compact('pegawai'));
+    }
+
+    public function updateProfile(pegawai $pegawai, Request $request)
+    {
+        $pegawai = pegawai::find($pegawai->id_pegawai);
+
+        $pegawai->nama_pegawai = $request->nama;
+        $pegawai->no_telepon_pegawai = $request->telpon;
+        $pegawai->alamat_pegawai = $request->alamat;
+
+        $pegawai->save();
+
+        return back();
+    }
+
+    public function filter(Request $request)
+    {
+        $statusUmum = $request->input('status_umum');
+
+        // Query atau filter data mahasiswa berdasarkan $statusUmum
+        $mahasiswa = mahasiswa::query();
+
+        if ($statusUmum === 'bebas_masalah') {
+            $mahasiswa->where('status_umum', 'bebas masalah');
+        } elseif ($statusUmum === 'bermasalah') {
+            $mahasiswa->where('status_umum', 'bermasalah');
+        }
+
+        $mahasiswa = $mahasiswa->paginate(10);
+
+        return view('dashboard.menuAdmin.dashboardAdmin', [
+            'statusUmum' => $statusUmum,
+            'mahasiswa' => $mahasiswa,
+        ]);
     }
 }

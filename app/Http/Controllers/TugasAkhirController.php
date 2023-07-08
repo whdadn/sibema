@@ -3,20 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PerbaruiTaRequset;
+use App\Models\akademik;
 use App\Models\tugas_akhir;
 use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class TugasAkhirController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(10);
+        $mahasiswa = mahasiswa::find($mahasiswa->id_mahasiswa);
         $tugas_akhir = $mahasiswa->tugas_akhir()->get();
         $keuangan = $mahasiswa->keuangan()->get();
         $perpustakaan = $mahasiswa->perpustakaan()->get();
@@ -37,22 +39,28 @@ class TugasAkhirController extends Controller
      */
     public function store(Request $request)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $pegawai = pegawai::find(55);
+        $mahasiswa = auth()->user()->mahasiswa;
+        $pegawai = auth()->user()->pegawai;
+
+        $validator = Validator::make($request->all(), [
+            'persetujuan' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'pengesahan' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'konsul1' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'konsul2' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'revisi' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $validateData['lembar_persetujuan'] = $request->file('persetujuan')->store('lembarPersetujuan');
         $validateData['lembar_pengesahan'] = $request->file('pengesahan')->store('lembarPengesahan');
         $validateData['lembar_konsul_pemb_1'] = $request->file('konsul1')->store('lembarKonsul1');
-        $validateData['lembar_konsul_pemb_2'] = $request->file('persetujuan')->store('lembarKonsul2');
-        $validateData['lembar_revisi'] = $request->file('persetujuan')->store('lembarRevisi');
+        $validateData['lembar_konsul_pemb_2'] = $request->file('konsul2')->store('lembarKonsul2');
+        $validateData['lembar_revisi'] = $request->file('revisi')->store('lembarRevisi');
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
-        $validateData['id_pegawai'] = $pegawai->id_pegawai;
-
-        $filePersetujuan = $request->file('persetujuan')->getClientOriginalName();
-        $filePengesahan = $request->file('pengesahan')->getClientOriginalName();
-        $fileKonsul1 = $request->file('konsul1')->getClientOriginalName();
-        $fileKonsul2 = $request->file('persetujuan')->getClientOriginalName();
-        $fileRevisi = $request->file('persetujuan')->getClientOriginalName();
+        $validateData['id_pegawai'] = null;
 
         $tugas_akhir = new tugas_akhir;
         $tugas_akhir->lembar_persetujuan = $validateData['lembar_persetujuan'];
@@ -60,13 +68,14 @@ class TugasAkhirController extends Controller
         $tugas_akhir->lembar_konsul_pemb_1 = $validateData['lembar_konsul_pemb_1'];
         $tugas_akhir->lembar_konsul_pemb_2 = $validateData['lembar_konsul_pemb_2'];
         $tugas_akhir->lembar_revisi = $validateData['lembar_revisi'];
-        $tugas_akhir->lembar_persetujuan = $filePersetujuan;
-        $tugas_akhir->lembar_pengesahan = $filePengesahan;
-        $tugas_akhir->lembar_konsul_pemb_1 = $fileKonsul1;
-        $tugas_akhir->lembar_konsul_pemb_2 = $fileKonsul2;
-        $tugas_akhir->lembar_revisi = $fileRevisi;
         $tugas_akhir->id_mahasiswa = $mahasiswa->id_mahasiswa;
-        $tugas_akhir->id_pegawai = $pegawai->id_pegawai;
+
+        if ($pegawai) {
+            $tugas_akhir->id_pegawai = $pegawai->id_pegawai;
+        } else {
+            $tugas_akhir->id_pegawai = null;
+        }
+
         $tugas_akhir->save();
 
         return redirect('/dashboardMhs/uploadTa');
@@ -162,8 +171,28 @@ class TugasAkhirController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tugas_akhir $tugas_akhir)
+    public function destroy(tugas_akhir $tugas_akhir, Request $request)
     {
+        if ($tugas_akhir->lembar_persetujuan) {
+            Storage::delete($tugas_akhir->lembar_persetujuan);
+        }
+
+        if ($tugas_akhir->lembar_pengesahan) {
+            Storage::delete($tugas_akhir->lembar_pengesahan);
+        }
+
+        if ($tugas_akhir->lembar_konsul_pemb_1) {
+            Storage::delete($tugas_akhir->lembar_konsul_pemb_1);
+        }
+
+        if ($tugas_akhir->lembar_konsul_pemb_2) {
+            Storage::delete($tugas_akhir->lembar_konsul_pemb_2);
+        }
+
+        if ($tugas_akhir->lembar_revisi) {
+            Storage::delete($tugas_akhir->lembar_revisi);
+        }
+
         $tugas_akhir->delete();
 
         return redirect('/dashboardMhs/uploadTa');
@@ -171,9 +200,18 @@ class TugasAkhirController extends Controller
 
     public function showTa(mahasiswa $mahasiswa)
     {
-        $mahasiswa = mahasiswa::find(10);
-        $tugas_akhir = $mahasiswa->tugas_akhir()->get();
+        $user = auth()->user();
+        $mahasiswa = $user->mahasiswa;
+
+        $tugas_akhir = tugas_akhir::where('id_mahasiswa', $mahasiswa->id_mahasiswa)->get();
 
         return view('dashboard.menuMhs.uploadTa', compact('tugas_akhir', 'mahasiswa'));
+    }
+
+    public function viewTa(tugas_akhir $tugas_akhir)
+    {
+        $tugas_akhir = tugas_akhir::find($tugas_akhir->id_ta);
+
+        return view('dashboard.menuMhs.viewTa', compact('tugas_akhir'));
     }
 }

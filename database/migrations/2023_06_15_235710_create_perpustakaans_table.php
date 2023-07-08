@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('perpustakaans', function (Blueprint $table) {
             $table->unsignedBigInteger('id_perpus')->autoIncrement();
             $table->unsignedBigInteger('id_mahasiswa');
-            $table->unsignedBigInteger('id_pegawai');
+            $table->unsignedBigInteger('id_pegawai')->nullable();
             $table->string('dokumen_perpus')->nullable();
             $table->string('keterangan')->nullable();
             $table->string('status_perpus')->default('Bermasalah');
