@@ -44,14 +44,16 @@
         </div>
         <form action="/dashboardMhs/uploadRegis/tambahDokRegis" method="POST" enctype="multipart/form-data">
             @csrf
+
             <div class="form-group">
                 <label>Bukti Registrasi</label>
                 <div class="custom-file">
-                    <input type="file" name="registrasi" class="custom-file-input" id="registrasi" required>
                     <label class="custom-file-label">Choose file</label>
+                    <input type="file" name="registrasi" class="custom-file-input" id="registrasi" required>
                 </div>
             </div>
             <button class="btn btn-primary">Simpan</button>
+
         </form>
     </div>
 @endsection

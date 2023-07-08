@@ -67,7 +67,6 @@
     <script src="{{ asset('/js/klik.js') }}"></script>
     <script src="{{ asset('/js/filterUmum.js') }}"></script>
     <script src="{{ asset('/js/filterAkademik.js') }}"></script>
-
 </body>
 
 </html>

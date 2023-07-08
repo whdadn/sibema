@@ -13,7 +13,26 @@
             <div class="btn-group" role="group">
                 <button type="button" class="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown"
                     aria-expanded="false">
-                    Selamat Datang, {{ Auth::User()->username }}
+                    Selamat Datang,
+                    @if (Auth::User()->role == 'Mahasiswa')
+                        @if (Auth::User()->mahasiswa && Auth::User()->mahasiswa->nama_mhs)
+                            {{ Auth::User()->mahasiswa->nama_mhs }}
+                        @else
+                            {{ Auth::User()->username }}
+                        @endif
+                    @elseif(Auth::User()->role == 'Admin Prodi' ||
+                            Auth::User()->role == 'Panitia Tugas Akhir' ||
+                            Auth::User()->role == 'Panitia Keuangan' ||
+                            Auth::User()->role == 'Panitia Perpustakaan' ||
+                            Auth::User()->role == 'Ketua Jurusan')
+                        @if (Auth::User()->pegawai && Auth::User()->pegawai->nama_pegawai)
+                            {{ Auth::User()->pegawai->nama_pegawai }}
+                        @else
+                            {{ Auth::User()->username }}
+                        @endif
+                    @else
+                        {{ Auth::User()->username }}
+                    @endif
                 </button>
                 <ul class="dropdown-menu">
                     @if (Auth::user()->role === 'Mahasiswa')

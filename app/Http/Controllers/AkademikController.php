@@ -7,6 +7,7 @@ use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class AkademikController extends Controller
 {
@@ -32,6 +33,20 @@ class AkademikController extends Controller
     {
         $mahasiswa = auth()->user()->mahasiswa;
         $pegawai = auth()->user()->pegawai;
+
+        $validator = Validator::make($request->all(), [
+            'sem1' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'sem2' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'sem3' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'sem4' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'sem5' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'sem6' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'sp' => 'file|mimes:jpeg,jpg,png,pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $validateData['khs_semester_1'] = $request->file('sem1')->store('KHSSem1');
         $validateData['khs_semester_2'] = $request->file('sem2')->store('KHSSem2');

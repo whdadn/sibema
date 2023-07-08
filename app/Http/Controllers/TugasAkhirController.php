@@ -9,6 +9,7 @@ use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class TugasAkhirController extends Controller
 {
@@ -41,11 +42,23 @@ class TugasAkhirController extends Controller
         $mahasiswa = auth()->user()->mahasiswa;
         $pegawai = auth()->user()->pegawai;
 
+        $validator = Validator::make($request->all(), [
+            'persetujuan' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'pengesahan' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'konsul1' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'konsul2' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+            'revisi' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
         $validateData['lembar_persetujuan'] = $request->file('persetujuan')->store('lembarPersetujuan');
         $validateData['lembar_pengesahan'] = $request->file('pengesahan')->store('lembarPengesahan');
         $validateData['lembar_konsul_pemb_1'] = $request->file('konsul1')->store('lembarKonsul1');
-        $validateData['lembar_konsul_pemb_2'] = $request->file('persetujuan')->store('lembarKonsul2');
-        $validateData['lembar_revisi'] = $request->file('persetujuan')->store('lembarRevisi');
+        $validateData['lembar_konsul_pemb_2'] = $request->file('konsul2')->store('lembarKonsul2');
+        $validateData['lembar_revisi'] = $request->file('revisi')->store('lembarRevisi');
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
         $validateData['id_pegawai'] = null;
 

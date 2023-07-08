@@ -6,8 +6,30 @@
         <div class="user-info-dropdown">
             <div class="dropdown">
                 <a class="dropdown-toggle mt-2" href="#" role="button" data-toggle="dropdown">
-                    <span class="user-name">Selamat Datang, {{ Auth::User()->username }}</span>
+                    <span class="user-name">Selamat Datang,
+                        @if (Auth::User()->role == 'Mahasiswa')
+                            @if (Auth::User()->mahasiswa && Auth::User()->mahasiswa->nama_mhs)
+                                {{ Auth::User()->mahasiswa->nama_mhs }}
+                            @else
+                                {{ Auth::User()->username }}
+                            @endif
+                        @elseif(Auth::User()->role == 'Admin Prodi' ||
+                                Auth::User()->role == 'Panitia Tugas Akhir' ||
+                                Auth::User()->role == 'Panitia Keuangan' ||
+                                Auth::User()->role == 'Panitia Perpustakaan' ||
+                                Auth::User()->role == 'Ketua Jurusan')
+                            @if (Auth::User()->pegawai && Auth::User()->pegawai->nama_pegawai)
+                                {{ Auth::User()->pegawai->nama_pegawai }}
+                            @else
+                                {{ Auth::User()->username }}
+                            @endif
+                        @else
+                            {{ Auth::User()->username }}
+                        @endif
+                    </span>
                 </a>
+
+
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     @if (Auth::user()->role === 'Mahasiswa')
                         <a class="dropdown-item" href="/dashboardMhs/profileMhs"><i class="dw dw-user1"></i>Profile</a>

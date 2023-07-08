@@ -7,6 +7,7 @@ use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class PerpusController extends Controller
 {
@@ -38,6 +39,15 @@ class PerpusController extends Controller
     {
         $mahasiswa = auth()->user()->mahasiswa;
         $pegawai = auth()->user()->pegawai;
+
+        $validator = Validator::make($request->all(), [
+            'pengembalian' => 'file|mimes:jpeg,jpg,png,pdf|max:2048',
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $validateData['keterangan'] = $request->keterangan;
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
@@ -118,7 +128,7 @@ class PerpusController extends Controller
 
     public function viewPerpus(perpustakaan $perpus)
     {
-        $perpus = perpustakaan::find($perpus->id_keuangan);
+        $perpus = perpustakaan::find($perpus->id_perpus);
 
         return view('dashboard.menuMhs.viewperpus', compact('perpus'));
     }

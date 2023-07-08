@@ -55,7 +55,7 @@
                 Status Tugas Akhir
             </div>
             <div class="col">
-                : {{ $mahasiswa->tugas_akhir->first()->status_ta }}
+                : {{ $mahasiswa->tugas_akhir->first()->status_ta ?? '' }}
             </div>
         </div>
 
@@ -64,7 +64,7 @@
                 Status Registrasi
             </div>
             <div class="col">
-                : {{ $mahasiswa->keuangan->first()->status_keuangan }}
+                : {{ $mahasiswa->keuangan->first()->status_keuangan ?? '' }}
             </div>
         </div>
 
@@ -73,7 +73,7 @@
                 Status Perpustakaan
             </div>
             <div class="col">
-                : {{ $mahasiswa->perpustakaan->first()->status_perpus }}
+                : {{ $mahasiswa->perpustakaan->first()->status_perpus ?? '' }}
             </div>
         </div>
 
@@ -82,7 +82,7 @@
                 Status Akademik
             </div>
             <div class="col">
-                : {{ $mahasiswa->akademik->first()->status_akademik }}
+                : {{ $mahasiswa->akademik->first()->status_akademik ?? '' }}
             </div>
         </div>
 

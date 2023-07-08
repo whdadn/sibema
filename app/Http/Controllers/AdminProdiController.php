@@ -94,6 +94,7 @@ class AdminProdiController extends Controller
         $akademik = akademik::find($akademik->id_akademik);
 
         $akademik->status_akademik = $request->akademik;
+        $akademik->rincian_akademik = $request->rincian;
         $akademik->save();
 
         return redirect('/dashboardAdmin/statusAkademik');

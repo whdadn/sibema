@@ -7,6 +7,7 @@ use App\Models\mahasiswa;
 use App\Models\pegawai;
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class RegistrasiController extends Controller
 {
@@ -38,6 +39,14 @@ class RegistrasiController extends Controller
     {
         $mahasiswa = auth()->user()->mahasiswa;
         $pegawai = auth()->user()->pegawai;
+
+        $validator = Validator::make($request->all(), [
+            'registrasi' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
         $validateData['dokumen_keuangan'] = $request->file('registrasi')->store('dokumenRegis');
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;

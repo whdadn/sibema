@@ -61,6 +61,12 @@
                 </select>
             </div>
 
+            <div class="form-group">
+                <label for="username">Rincian Status</label>
+                <input type="text" name="rincian" class="form-control" id="rincian" placeholder="Rincian Status"
+                    value="{{ old('rincian'), $akademik->rincian_akademik }}" />
+            </div>
+
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
