@@ -66,12 +66,17 @@
         <table class="table" id="data-table">
             <thead>
                 <tr>
-                    <thead scope="col">Dokumen Registrasi</th>
-                    </thead>
+                    <th scope="col">Status Dokumen</th>
+                    <th scope="col"></th>
+            </thead>
             <tbody>
                 @foreach ($keuangan as $regis)
                     <tr class="clickable-row" data-id="{{ $regis->id_keuangan }}">
-                        <td>{{ $regis->dokumen_keuangan }}</td>
+                        <td>Dokumen Berhasil Diupload </td>
+                        <td>
+                            <a class="btn" href="/dashboardMhs/uploadRegis{{ $regis->id_keuangan }}"><i
+                                    class="icon-copy dw dw-eye mr-n5"></i></a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

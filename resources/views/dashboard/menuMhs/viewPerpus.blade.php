@@ -35,25 +35,32 @@
     </div>
 
     <div class="pd-20 card-box mb-30">
-        <div class="row justify-content-center mb-lg-5">
-            <div class="col-md-6 col-sm-12">
-                <div class="title text-center mb-45">
-                    <h4>Tambah Dokumen Registrasi</h4>
-                </div>
+        <div class="clearfix mb-8">
+            <div class="text-center mb-30">
+                <h4>Detail Dokumen Perpustakaan</h4>
             </div>
         </div>
-        <form action="/dashboardMhs/uploadRegis/tambahDokRegis" method="POST" enctype="multipart/form-data">
-            @csrf
 
-            <div class="form-group">
-                <label>Bukti Registrasi</label>
-                <div class="custom-file">
-                    <label class="custom-file-label">Choose file</label>
-                    <input type="file" name="registrasi" class="custom-file-input" id="registrasi" required>
+        <div class="row">
+            <div class="col-md-4 mb-30">
+                <div class="card-box pricing-card-style2">
+                    <div class="pricing-card-header">
+                        <div class="left">
+                            <h5>Bukti Penyerahan Buku</h5>
+                        </div>
+                    </div>
+                    <div class="pricing-card-body">
+                        @if ($perpus && $perpus->dokumen_perpus)
+                            <iframe src="{{ asset('storage/' . $perpus->dokumen_perpus) }}" width="350px"
+                                height="500px"></iframe>
+                        @else
+                            <p>Tidak Ada Dokumen</p>
+                        @endif
+                    </div>
                 </div>
             </div>
-            <button class="btn btn-primary">Simpan</button>
 
-        </form>
+        </div>
+
     </div>
 @endsection

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('keuangans', function (Blueprint $table) {
             $table->unsignedBigInteger('id_keuangan')->autoIncrement();
             $table->unsignedBigInteger('id_mahasiswa');
-            $table->unsignedBigInteger('id_pegawai');
+            $table->unsignedBigInteger('id_pegawai')->nullable();
             $table->string('dokumen_keuangan')->nullable();
             $table->string('status_keuangan')->default('Bermasalah');
             $table->text('rincian_keuangan')->nullable();

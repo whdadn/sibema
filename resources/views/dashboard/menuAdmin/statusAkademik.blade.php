@@ -53,8 +53,8 @@
                     <a class="btn dropdown-toggle dw dw-filter-1" href="#" role="button" data-toggle="dropdown">
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Jurusan</a>
-                        <a class="dropdown-item" href="#">Status Bebas Masalah</a>
+                        <a class="dropdown-item" href="#">Bermasalah</a>
+                        <a class="dropdown-item" href="#">Bebas Masalah</a>
                     </div>
                 </div>
             </div>
@@ -66,13 +66,6 @@
                     <th scope="col">Nama</th>
                     <th scope="col">Jurusan</th>
                     <th scope="col">Prodi</th>
-                    <th scope="col">KHS Semester 1</th>
-                    <th scope="col">KHS Semester 2</th>
-                    <th scope="col">KHS Semester 3</th>
-                    <th scope="col">KHS Semester 4</th>
-                    <th scope="col">KHS Semester 5</th>
-                    <th scope="col">KHS Semester 6</th>
-                    <th scope="col">Lembar SP</th>
                     <th scope="col">Status Akademik</th>
                 </tr>
             </thead>
@@ -83,18 +76,15 @@
                         <td>{{ $mhs->nama_mhs }}</td>
                         <td>{{ $mhs->jurusan->nama_jurusan ?? '' }}</td>
                         <td>{{ $mhs->jurusan->nama_prodi ?? '' }}</td>
-                        <td>{{ $mhs->akademik->pluck('khs_semester_1')->implode(', ') }}</td>
-                        <td>{{ $mhs->akademik->pluck('khs_semester_2')->implode(', ') }}</td>
-                        <td>{{ $mhs->akademik->pluck('khs_semester_3')->implode(', ') }}</td>
-                        <td>{{ $mhs->akademik->pluck('khs_semester_4')->implode(', ') }}</td>
-                        <td>{{ $mhs->akademik->pluck('khs_semester_5')->implode(', ') }}</td>
-                        <td>{{ $mhs->akademik->pluck('khs_semester_6')->implode(', ') }}</td>
-                        <td>{{ $mhs->akademik->pluck('lembar_sp')->implode(', ') }}</td>
                         <td>{{ $mhs->akademik->pluck('status_akademik')->implode(', ') }}</td>
-                        <td><a class="btn ml-n2" href=""><i class="icon-copy dw dw-eye mr-n5"></i></a></td>
+                        <td><a class="btn ml-n5"
+                                href="/dashboardAdmin/statusAkademik/detail{{ $mhs->akademik->pluck('id_akademik')->implode(', ') }}"><i
+                                    class="icon-copy dw dw-eye mr-n5"></i>
+                            </a>
+                        </td>
                         <td>
                             @if ($mhs->first() != null)
-                                <a class="btn ml-n3"
+                                <a class="btn ml-n4"
                                     href="/dashboardAdmin/ubahStatusAkademik{{ $mhs->akademik->pluck('id_akademik')->implode(', ') }}"><i
                                         class="icon-copy dw dw-edit-1 ml-2 linked"></i></a>
                             @endif

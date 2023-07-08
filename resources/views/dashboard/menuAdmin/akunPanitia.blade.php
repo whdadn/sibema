@@ -52,15 +52,6 @@
                     Tambah</a>
             </div>
 
-            <div class="pull-right mt-15">
-                <div class="dropdown">
-                    <a class="btn dropdown-toggle dw dw-filter-1" href="#" role="button" data-toggle="dropdown">
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="#">Peran</a>
-                    </div>
-                </div>
-            </div>
         </div>
         <table class="table mt-2" id="data-table">
             <thead>
