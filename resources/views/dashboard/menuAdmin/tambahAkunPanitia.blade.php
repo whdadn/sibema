@@ -71,7 +71,7 @@
                     <option value="Admin Prodi">Admin Prodi</option>
                     <option value="Panitia Tugas Akhir">Panitia Tugas Akhir</option>
                     <option value="Panitia Keuangan">Panitia Keuangan</option>
-                    <option value="Panitia Perpustakan">Panitia Perpustakaan</option>
+                    <option value="Panitia Perpustakaan">Panitia Perpustakaan</option>
                     <option value="Ketua Jurusan">Ketua Jurusan</option>
                 </select>
             </div>
