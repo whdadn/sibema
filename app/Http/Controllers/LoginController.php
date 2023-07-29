@@ -34,6 +34,26 @@ class LoginController extends Controller
                 $request->session()->regenerate();
                 return redirect()->intended('/dashboardAdmin');
             }
+
+            if (Auth::user()->role === 'Panitia Tugas Akhir') {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboardPanitiaTa');
+            }
+
+            if (Auth::user()->role === 'Panitia Keuangan') {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboardPanitiaKeuangan');
+            }
+
+            if (Auth::user()->role === 'Panitia Perpustakaan') {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboardPanitiaPerpustakaan');
+            }
+
+            if (Auth::user()->role === 'Ketua Jurusan') {
+                $request->session()->regenerate();
+                return redirect()->intended('/dashboardKetuaJurusan');
+            }
         }
         return back()->with('loginError', 'Login Gagal');
     }

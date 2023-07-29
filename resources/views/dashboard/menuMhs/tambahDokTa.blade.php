@@ -43,7 +43,9 @@
             </div>
         </div>
 
-        <form action="/dashboardMhs/uploadTa/tambahDokTa" method="POST" enctype="multipart/form-data">
+        <div id="errorContainer"></div>
+
+        <form action="/dashboardMhs/uploadTa/tambahDokTa" method="POST" enctype="multipart/form-data" id="uploadForm">
             @csrf
 
             <div class="form-group">
@@ -85,3 +87,41 @@
         </form>
     </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#uploadForm').on('submit', function(event) {
+            event.preventDefault();
+
+            const form = $(this);
+            const formData = new FormData(form[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function() {
+                    // Jika berhasil diunggah, redirect ke halaman yang dituju
+                    window.location.href = "/dashboardMhs/uploadTa";
+                },
+                error: function(xhr) {
+                    const errors = xhr.responseJSON.errors;
+                    const errorContainer = $('#errorContainer');
+                    errorContainer.empty();
+
+                    $.each(errors, function(field, messages) {
+                        const label = $(".file-input-label[for='" + field + "']")
+                            .text();
+                        $.each(messages, function(key, message) {
+                            errorContainer.append('<p>' + label + ' ' +
+                                message + '</p>');
+                        });
+                    });
+                }
+            });
+        });
+    });
+</script>

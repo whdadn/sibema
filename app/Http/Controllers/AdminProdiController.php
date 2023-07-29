@@ -8,7 +8,7 @@ use App\Models\pegawai;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class AdminProdiController extends Controller
 {
@@ -61,8 +61,10 @@ class AdminProdiController extends Controller
     public function update(Request $request, mahasiswa $mahasiswa)
     {
         $mahasiswa = mahasiswa::find($mahasiswa->id_mahasiswa);
+        $pegawaiId = Auth::user()->pegawai->id_pegawai;
 
         $mahasiswa->status_umum = $request->umum;
+        $mahasiswa->id_pegawai = $pegawaiId;
         $mahasiswa->save();
 
         return redirect('/dashboardAdmin');
@@ -92,9 +94,11 @@ class AdminProdiController extends Controller
     public function updateAkademik(akademik $akademik, Request $request)
     {
         $akademik = akademik::find($akademik->id_akademik);
+        $pegawaiId = Auth::user()->pegawai->id_pegawai;
 
         $akademik->status_akademik = $request->akademik;
         $akademik->rincian_akademik = $request->rincian;
+        $akademik->id_pegawai = $pegawaiId;
         $akademik->save();
 
         return redirect('/dashboardAdmin/statusAkademik');
@@ -159,7 +163,7 @@ class AdminProdiController extends Controller
     //panitia
     public function showAkunPanitia(pegawai $pegawai)
     {
-        $pegawai = pegawai::with('akademik', 'tugas_akhir', 'keuangan', 'perpustakaan', 'user')->paginate(10);
+        $pegawai = pegawai::with('User')->paginate(10);
 
         return view('dashboard.menuAdmin.akunPanitia', compact('pegawai'));
     }

@@ -44,8 +44,18 @@ class AkademikController extends Controller
             'sp' => 'file|mimes:jpeg,jpg,png,pdf|max:2048',
         ]);
 
+        $validator->setAttributeNames([
+            'sem1' => 'KHS Semester 1',
+            'sem2' => 'KHS Semester 2',
+            'sem3' => 'KHS Semester 3',
+            'sem4' => 'KHS Semester 4',
+            'sem5' => 'KHS Semester 5',
+            'sem6' => 'KHS Semester 6',
+            'sp' => 'Lembar SP',
+        ]);
+
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
         $validateData['khs_semester_1'] = $request->file('sem1')->store('KHSSem1');
@@ -81,8 +91,6 @@ class AkademikController extends Controller
         }
 
         $akademik->save();
-
-        return redirect('/dashboardMhs/uploadAkademik');
     }
 
     /**

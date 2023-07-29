@@ -50,8 +50,16 @@ class TugasAkhirController extends Controller
             'revisi' => 'required|file|mimes:jpeg,jpg,png,pdf|max:2048',
         ]);
 
+        $validator->setAttributeNames([
+            'persetujuan' => 'Lembar Persetujuan',
+            'pengesahan' => 'Lembar Pengesahan',
+            'konsul1' => 'Lembar Konsultasi Pembimbing Pertama',
+            'konsul2' => 'Lembar Konsultasi Pembimbing Kedua',
+            'revisi' => 'Lembar Revisi',
+        ]);
+
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
         $validateData['lembar_persetujuan'] = $request->file('persetujuan')->store('lembarPersetujuan');
@@ -78,7 +86,7 @@ class TugasAkhirController extends Controller
 
         $tugas_akhir->save();
 
-        return redirect('/dashboardMhs/uploadTa');
+        return response()->json(['message' => 'File berhasil diunggah'], 200);
     }
 
     /**

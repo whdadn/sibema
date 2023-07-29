@@ -45,8 +45,9 @@ class RegistrasiController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json(['errors' => $validator->errors()], 422);
         }
+
 
         $validateData['dokumen_keuangan'] = $request->file('registrasi')->store('dokumenRegis');
         $validateData['id_mahasiswa'] = $mahasiswa->id_mahasiswa;
@@ -65,7 +66,7 @@ class RegistrasiController extends Controller
 
         $keuangan->save();
 
-        return redirect('/dashboardMhs/uploadRegis');
+        return response()->json(['message' => 'File berhasil diunggah'], 200);
     }
 
     /**

@@ -27,7 +27,7 @@
             Nama
         </div>
         <div class="col">
-            : {{ $mahasiswa->pluck('nama_mhs')->implode(', ') }}
+            : {{ $mahasiswa->nama_mhs }}
         </div>
     </div>
 
@@ -36,7 +36,7 @@
             Nim
         </div>
         <div class="col">
-            : {{ $mahasiswa->pluck('nim')->implode(', ') }}
+            : {{ $mahasiswa->nim }}
         </div>
     </div>
 

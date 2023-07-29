@@ -52,7 +52,7 @@
                                     </li>
                                     <li>
                                         <span>Nomor Telepon:</span>
-                                        {{ $mahasiswa->no_telepon_mhs }}
+                                        {{ $mahasiswa->no_telpon_mhs }}
                                     </li>
                                     <li>
                                         <span>Tahun Lulus:</span>

@@ -36,12 +36,29 @@
                 </button>
                 <ul class="dropdown-menu">
                     @if (Auth::user()->role === 'Mahasiswa')
-                        <li><a class="dropdown-item" href="/dashboardMhs">Dashboard Mahasiswa</a></li>
+                        <li><a class="dropdown-item" href="/dashboardMhs">Dashboard</a></li>
                     @endif
 
                     @if (Auth::user()->role === 'Admin Prodi')
-                        <li><a class="dropdown-item" href="/dashboardAdmin">Dashboard Admin Prodi</a></li>
+                        <li><a class="dropdown-item" href="/dashboardAdmin">Dashboard</a></li>
                     @endif
+
+                    @if (Auth::user()->role === 'Panitia Tugas Akhir')
+                        <li><a class="dropdown-item" href="/dashboardPanitiaTa">Dashboard</a></li>
+                    @endif
+
+                    @if (Auth::user()->role === 'Panitia Keuangan')
+                        <li><a class="dropdown-item" href="/dashboardPanitiaKeuangan">Dashboard</a></li>
+                    @endif
+
+                    @if (Auth::user()->role === 'Panitia Perpustakaan')
+                        <li><a class="dropdown-item" href="/dashboardPanitiaPerpustakaan">Dashboard</a></li>
+                    @endif
+
+                    @if (Auth::user()->role === 'Ketua Jurusan')
+                        <li><a class="dropdown-item" href="/dashboardKetuaJurusan">Dashboard</a></li>
+                    @endif
+
                     <li>
                         <form action="/logout" method="POST">
                             @csrf

@@ -5,11 +5,15 @@ use App\Http\Controllers\AkademikController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\KajurController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PanitiaKeuanganController;
+use App\Http\Controllers\PanitiaPerpusController;
+use App\Http\Controllers\PanitiaTaController;
 use App\Http\Controllers\PerpusController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\TugasAkhirController;
-use App\Models\mahasiswa;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -139,6 +143,48 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/beritaUtama/perbaruiBeritaUtama{berita}', [BeritaController::class, 'edit']);
             Route::put('/beritaUtama/perbaruiBeritaUtama{berita}', [BeritaController::class, 'update']);
             Route::delete('/beritaUtama{berita}', [BeritaController::class, 'destroy']);
+        });
+    });
+
+    Route::middleware(['userAkses:Panitia Tugas Akhir'])->group(function () {
+        Route::prefix('/dashboardPanitiaTa')->group(function () {
+            Route::get('/', [PanitiaTaController::class, 'index']);
+            Route::get('/ubahStatusTa{tugas_akhir}', [PanitiaTaController::class, 'editTa']);
+            Route::put('/ubahStatusTa{tugas_akhir}', [PanitiaTaController::class, 'updateTa']);
+            Route::get('/statusTa/detail{tugas_akhir}', [PanitiaTaController::class, 'viewTa']);
+            Route::get('/profilePanitiaTa', [PanitiaTaController::class, 'edit']);
+            Route::put('/profilePanitiaTa{pegawai}', [PanitiaTaController::class, 'update']);
+        });
+    });
+
+    Route::middleware(['userAkses:Panitia Keuangan'])->group(function () {
+        Route::prefix('/dashboardPanitiaKeuangan')->group(function () {
+            Route::get('/', [PanitiaKeuanganController::class, 'index']);
+            Route::get('/ubahStatusRegistrasi{keuangan}', [PanitiaKeuanganController::class, 'editKeuangan']);
+            Route::put('/ubahStatusRegistrasi{keuangan}', [PanitiaKeuanganController::class, 'updateKeuangan']);
+            Route::get('/statusRegistrasi/detail{keuangan}', [PanitiaKeuanganController::class, 'viewKeuangan']);
+            Route::get('/profilePanitiaKeuangan', [PanitiaKeuanganController::class, 'edit']);
+            Route::put('/profilePanitiaKeuangan{pegawai}', [PanitiaKeuanganController::class, 'update']);
+        });
+    });
+
+    Route::middleware(['userAkses:Panitia Perpustakaan'])->group(function () {
+        Route::prefix('/dashboardPanitiaPerpustakaan')->group(function () {
+            Route::get('/', [PanitiaPerpusController::class, 'index']);
+            Route::get('/ubahStatusPerpustakaan{perpus}', [PanitiaPerpusController::class, 'editPerpus']);
+            Route::put('/ubahStatusPerpustakaan{perpus}', [PanitiaPerpusController::class, 'updatePerpus']);
+            Route::get('/statusPerpustakaan/detail{perpus}', [PanitiaPerpusController::class, 'viewPerpus']);
+            Route::get('/profilePanitiaPerpustakaan', [PanitiaPerpusController::class, 'edit']);
+            Route::put('/profilePanitiaPerpustakaan{pegawai}', [PanitiaPerpusController::class, 'update']);
+        });
+    });
+
+    Route::middleware(['userAkses:Ketua Jurusan'])->group(function () {
+        Route::prefix('/dashboardKetuaJurusan')->group(function () {
+            Route::get('/', [KajurController::class, 'index']);
+            Route::get('/', [KajurController::class, 'filter'])->name('dashboardKajur');
+            Route::get('/profileKetuaJurusan', [KajurController::class, 'edit']);
+            Route::put('/profileKetuaJurusan{pegawai}', [KajurController::class, 'update']);
         });
     });
 });

@@ -42,18 +42,55 @@
                 </div>
             </div>
         </div>
-        <form action="/dashboardMhs/uploadRegis/tambahDokRegis" method="POST" enctype="multipart/form-data">
+
+        <div id="errorContainer"></div>
+
+        <form action="/dashboardMhs/uploadRegis/tambahDokRegis" method="POST" enctype="multipart/form-data"
+            id="uploadForm">
             @csrf
 
             <div class="form-group">
                 <label>Bukti Registrasi</label>
                 <div class="custom-file">
                     <label class="custom-file-label">Choose file</label>
-                    <input type="file" name="registrasi" class="custom-file-input" id="registrasi" required>
+                    <input type="file" name="registrasi" class="custom-file-input" id="fileInput" required>
                 </div>
             </div>
             <button class="btn btn-primary">Simpan</button>
-
         </form>
     </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#uploadForm').on('submit', function(event) {
+            event.preventDefault();
+
+            const form = $(this);
+            const formData = new FormData(form[0]);
+
+            $.ajax({
+                type: 'POST',
+                url: form.attr('action'),
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function(data) {
+                    // Jika berhasil diunggah, redirect ke halaman yang dituju
+                    window.location.href = "/dashboardMhs/uploadRegis";
+                },
+                error: function(xhr) {
+                    const errors = xhr.responseJSON.errors;
+                    const errorContainer = $('#errorContainer');
+                    errorContainer.empty();
+
+                    $.each(errors, function(key, value) {
+                        errorContainer.append('<p>' + value + '</p>');
+                    });
+                }
+            });
+        });
+    });
+</script>

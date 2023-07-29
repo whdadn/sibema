@@ -1,90 +1,94 @@
 @extends('dashboard.layouts.utama')
 
 @section('container')
-    <div class="left-side-bar">
+    <div class="container-fluid">
+        <div class="left-side-bar">
 
-        <p class="text-light text-center">Politeknik Negeri Banjarmasin</p>
-        <img class="rounded mx-auto d-block mb-3" src="/gambar/poliban.png" alt="Logo" width="95">
+            <p class="text-light text-center">Politeknik Negeri Banjarmasin</p>
+            <img class="rounded mx-auto d-block mb-3" src="/gambar/poliban.png" alt="Logo" width="95">
 
-        <div class="menu-block
+            <div class="menu-block
                 customscroll">
-            <div class="sidebar-menu">
-                <ul id="accordion-menu">
-                    <li class="dropdown">
-                        <a href="/dashboardMhs" class="dropdown-toggle no-arrow">
-                            <span class="micon dw dw-grid"></span><span class="mtext">Dasboard</span>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon dw dw-upload1"></span><span class="mtext">Upload Dokumen</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="/dashboardMhs/uploadTa">Dokumen Tugas Akhir</a></li>
-                            <li>
-                                <a href="/dashboardMhs/uploadRegis">Dokumen Registrasi</a>
-                            </li>
-                            <li><a href="/dashboardMhs/uploadPerpus">Dokumen Perpustakaan</a></li>
-                            <li><a href="/dashboardMhs/uploadAkademik">Dokumen Akademik</a></li>
-                        </ul>
-                    </li>
+                <div class="sidebar-menu">
+                    <ul id="accordion-menu">
+                        <li class="dropdown">
+                            <a href="/dashboardMhs" class="dropdown-toggle no-arrow">
+                                <span class="micon dw dw-grid"></span><span class="mtext">Dasboard</span>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="javascript:;" class="dropdown-toggle">
+                                <span class="micon dw dw-upload1"></span><span class="mtext">Upload Dokumen</span>
+                            </a>
+                            <ul class="submenu">
+                                <li><a href="/dashboardMhs/uploadTa">Dokumen Tugas Akhir</a></li>
+                                <li>
+                                    <a href="/dashboardMhs/uploadRegis">Dokumen Registrasi</a>
+                                </li>
+                                <li><a href="/dashboardMhs/uploadPerpus">Dokumen Perpustakaan</a></li>
+                                <li><a href="/dashboardMhs/uploadAkademik">Dokumen Akademik</a></li>
+                            </ul>
+                        </li>
 
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="pd-20 card-box mb-30">
-        <div class="row justify-content-center mb-lg-5">
-            <div class="col-md-6 col-sm-12">
-                <div class="title text-center mb-45">
-                    <h4>Dokumen Tugas Akhir</h4>
+                    </ul>
                 </div>
             </div>
         </div>
 
-        <div class="clearfix mb-20">
-            <div class="pull-left">
-                <a href="/dashboardMhs/uploadTa/tambahDokTa" class="btn btn-link-red ml-1 p-0" id="add-button"><i
-                        class="bi bi-plus-circle"></i> Tambah</a>
-                {{-- @if ($tugas_akhir->first() != null)
+        <div class="pd-20 card-box mb-30">
+            <div class="row justify-content-center mb-lg-5">
+                <div class="col-md-6 col-sm-12">
+                    <div class="title text-center mb-45">
+                        <h4>Dokumen Tugas Akhir</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix mb-20 mt-30">
+                <div class="pull-left">
+                    <a href="/dashboardMhs/uploadTa/tambahDokTa" class="btn btn-link-red ml-1 p-0" id="add-button"><i
+                            class="bi bi-plus-circle"></i> Tambah</a>
+                    {{-- @if ($tugas_akhir->first() != null)
                     <a href="/dashboardMhs/uploadTa/perbaruiDokTa{{ $tugas_akhir->first()->id_ta }}"><i
                             class="icon-copy dw dw-edit-1 ml-2 linked" id="1"></i>
                         Perbarui</a>
                 @endif --}}
 
-                @if ($tugas_akhir->first() != null)
-                    <form action="/dashboardMhs/uploadTa{{ $tugas_akhir->first()->id_ta }}" method="POST" class="d-inline">
-                        @method('delete')
-                        @csrf
+                    @if ($tugas_akhir->first() != null)
+                        <form action="/dashboardMhs/uploadTa{{ $tugas_akhir->first()->id_ta }}" method="POST"
+                            class="d-inline">
+                            @method('delete')
+                            @csrf
 
-                        <button class="btn btn-link-red ml-1 p-0" id="1"
-                            onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
-                            Hapus</button>
-                    </form>
-                @endif
+                            <button class="btn btn-link-red ml-1 p-0" id="1"
+                                onclick="return confirm('Yakin ingin hapus?')"><i class="icon-copy dw dw-delete-2"></i>
+                                Hapus</button>
+                        </form>
+                    @endif
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table" id="data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Status Dokumen</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($tugas_akhir as $ta)
+                            <tr class="clickable-row" data-id="{{ $ta->id_ta }}">
+                                <td>Dokumen Berhasil Diupload </td>
+                                <td>
+                                    <a class="btn" href="/dashboardMhs/uploadTa{{ $ta->id_ta }}"><i
+                                            class="icon-copy dw dw-eye mr-n5"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <table class="table" id="data-table">
-            <thead>
-                <tr>
-                    <th scope="col">Status Dokumen</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($tugas_akhir as $ta)
-                    <tr class="clickable-row" data-id="{{ $ta->id_ta }}">
-                        <td>Dokumen Berhasil Diupload </td>
-                        <td>
-                            <a class="btn" href="/dashboardMhs/uploadTa{{ $ta->id_ta }}"><i
-                                    class="icon-copy dw dw-eye mr-n5"></i></a>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-
     </div>
 @endsection

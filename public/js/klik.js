@@ -5,7 +5,6 @@ var table = document.getElementById('data-table');
       var currentRow = rows[i];
       currentRow.addEventListener('click', function() {
         var id = this.getAttribute('data-id');
-        // Lakukan operasi lain dengan ID yang dipilih
       });
     }
 

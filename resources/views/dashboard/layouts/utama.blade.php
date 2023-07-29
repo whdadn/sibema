@@ -42,6 +42,26 @@
             background-color: #90BCFF;
             cursor: pointer;
         }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #e1e1e1;
+        }
+
+        .table th {
+            background-color: #f1f1f1;
+        }
+
+        .table .clickable-row:hover {
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
 
@@ -67,6 +87,9 @@
     <script src="{{ asset('/js/klik.js') }}"></script>
     <script src="{{ asset('/js/filterUmum.js') }}"></script>
     <script src="{{ asset('/js/filterAkademik.js') }}"></script>
+    <script src="{{ asset('/js/filterTa.js') }}"></script>
+    <script src="{{ asset('/js/filterKajur.js') }}"></script>
+    <script src="{{ asset('/js/jquery-3.5.0.min.js') }}"></script>
 </body>
 
 </html>

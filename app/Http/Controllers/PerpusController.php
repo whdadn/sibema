@@ -45,8 +45,12 @@ class PerpusController extends Controller
 
         ]);
 
+        $validator->setAttributeNames([
+            'pengembalian' => 'Lembar Persetujuan',
+        ]);
+
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return response()->json(['errors' => $validator->errors()], 422);
         }
 
         $validateData['keterangan'] = $request->keterangan;
@@ -74,7 +78,7 @@ class PerpusController extends Controller
 
         $perpus->save();
 
-        return redirect('/dashboardMhs/uploadPerpus');
+        return response()->json(['message' => 'File berhasil diunggah'], 200);
     }
 
     /**
